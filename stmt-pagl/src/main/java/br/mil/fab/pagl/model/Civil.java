@@ -1,8 +1,5 @@
 package br.mil.fab.pagl.model;
 
-import jakarta.persistence.Entity;
-
-@Entity
 public class Civil extends Motorista{
     private String nome_civil;
     private Integer rg;

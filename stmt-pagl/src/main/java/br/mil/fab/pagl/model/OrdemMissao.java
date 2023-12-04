@@ -1,21 +1,13 @@
 package br.mil.fab.pagl.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Objects;
 import java.util.SimpleTimeZone;
 
-@Entity
 public class OrdemMissao implements Serializable {
     private final static long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id_ordem;
     private SimpleDateFormat data;
     private String destino;

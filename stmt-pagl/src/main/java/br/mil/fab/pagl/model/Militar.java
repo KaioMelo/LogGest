@@ -1,8 +1,5 @@
 package br.mil.fab.pagl.model;
 
-import jakarta.persistence.Entity;
-
-@Entity
 public class Militar extends Motorista{
     private String nome_militar;
     private String om;

@@ -16,7 +16,7 @@ public class Main extends Application {
         if (fxmlURL != null) {
             FXMLLoader loader = new FXMLLoader(fxmlURL);
             Parent root = loader.load();
-            primaryStage.setTitle("JavaFX Maven Project");
+            primaryStage.setTitle("Prefeitura da Aéronautica do Galeão (PAGL)");
             primaryStage.setScene(new Scene(root, 600, 400));
             primaryStage.show();
         } else {
