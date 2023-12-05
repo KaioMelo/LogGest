@@ -4,10 +4,7 @@ import br.mil.fab.pagl.dao.VeiculoDAO;
 import br.mil.fab.pagl.model.Veiculo;
 import br.mil.fab.pagl.util.ConfigConnectionDB;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +29,10 @@ public class VeiculoController implements VeiculoDAO {
 
     @Override
     public void update(Veiculo veiculo) {
+        if (veiculo == null || veiculo.getId_veiculo() == null) {
+            System.out.println("Não foi possivel atualizar o registro");
+            return;
+        }
         String sql = "UPDATE veiculo SET tipo=?, modelo=?, rg_fab=?, volume=?, observacao=? WHERE id_veiculo=?";
         try(Connection con = ConfigConnectionDB.connect();
         PreparedStatement ps = con.prepareStatement(sql)){
@@ -49,11 +50,11 @@ public class VeiculoController implements VeiculoDAO {
     }
 
     @Override
-    public void deleteById(Veiculo veiculo) {
+    public void deleteById(Integer id) {
         String sql = "DELETE FROM veiculo WHERE id_veiculo=?";
         try(Connection con = ConfigConnectionDB.connect();
         PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, veiculo.getId_veiculo());
+            ps.setInt(1, id);
             ps.executeUpdate();
         }
         catch (SQLException e){

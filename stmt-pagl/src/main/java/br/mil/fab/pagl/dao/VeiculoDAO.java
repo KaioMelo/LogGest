@@ -7,7 +7,7 @@ import java.util.List;
 public interface VeiculoDAO {
     void create (Veiculo veiculo);
     void update (Veiculo veiculo);
-    void deleteById(Veiculo veiculo);
+    void deleteById(Integer id);
     void findById(Integer id);
     List<Veiculo> findAll();
 }

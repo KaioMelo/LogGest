@@ -47,6 +47,7 @@ public class OrdemMissao implements Serializable {
         return data;
     }
 
+
     public void setData(SimpleDateFormat data) {
         this.data = data;
     }

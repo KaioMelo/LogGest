@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.veiculo.Veiculo">
+   <children>
+      <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="600.0">
+         <menus>
+            <Menu mnemonicParsing="false" text="Cadastros">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Veículos" />
+                  <MenuItem mnemonicParsing="false" text="Motoristas" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Processos">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="SAU" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Relatórios">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Gerar relatório PDF" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <SplitPane dividerPositions="0.5484625668449197" prefHeight="400.0" prefWidth="600.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <TableView prefHeight="398.0" prefWidth="326.0">
+                          <columns>
+                            <TableColumn prefWidth="78.39999085664749" text="RG FAB" />
+                            <TableColumn prefWidth="88.79998779296875" text="TIPO" />
+                              <TableColumn prefWidth="84.0" text="MODELO" />
+                              <TableColumn prefWidth="81.60005187988281" text="AÇÃO" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="297.0">
+                     <children>
+                        <Label layoutX="29.0" layoutY="14.0" prefHeight="27.0" prefWidth="209.0" text="Cadastrar Viatura Oficial">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="83.0" fitWidth="105.0" layoutX="81.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../img/fab.png" />
+                           </image>
+                        </ImageView>
+                        <TextField layoutX="24.0" layoutY="162.0" prefHeight="26.0" prefWidth="218.0" />
+                        <TextField layoutX="24.0" layoutY="209.0" prefHeight="26.0" prefWidth="218.0" />
+                        <TextField layoutX="24.0" layoutY="255.0" prefHeight="26.0" prefWidth="218.0" />
+                        <Label layoutX="24.0" layoutY="142.0" text="Reg FAB">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="25.0" layoutY="189.0" text="Tipo">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="26.0" layoutY="235.0" text="Modelo">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="81.0" layoutY="306.0" mnemonicParsing="false" text="Cadastar Viatura" />
+                     </children></AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
