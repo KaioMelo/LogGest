@@ -12,15 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Home">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.mil.fab.pagl.controller.FXMLHomeController">
    <children>
       <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="600.0">
         <menus>
           <Menu mnemonicParsing="false" text="Cadastros">
             <items>
-              <MenuItem mnemonicParsing="false" text="Veículos" />
-                  <MenuItem mnemonicParsing="false" text="Motoristas" />
+              <MenuItem fx:id="menuItemVeiculo" mnemonicParsing="false" onAction="#entrarEmInterfaceVeiculo" text="Veículos" />
+                  <MenuItem fx:id="menuItemMotorista" mnemonicParsing="false" text="Motoristas" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Processos">
@@ -35,27 +34,28 @@
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane prefHeight="400.0" prefWidth="800.0">
          <children>
-            <Label layoutX="194.0" layoutY="24.0" text="Ordens de Missões">
+            <Label layoutX="294.0" layoutY="21.0" text="Ordens de Missões">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TableView layoutX="15.0" layoutY="75.0" prefHeight="250.0" prefWidth="570.0">
+            <TableView layoutX="50.0" layoutY="75.0" prefHeight="250.0" prefWidth="700.0">
               <columns>
                 <TableColumn prefWidth="83.20001220703125" text="Data" />
                   <TableColumn prefWidth="65.60003662109375" text="Hora" />
                   <TableColumn prefWidth="119.199951171875" text="Contato" />
-                <TableColumn prefWidth="142.39996337890625" text="Destino" />
-                  <TableColumn prefWidth="160.79998779296875" text="Serviço" />
+                <TableColumn prefWidth="160.79998779296875" text="Destino" />
+                  <TableColumn prefWidth="164.79998779296875" text="Serviço" />
+                  <TableColumn prefWidth="104.800048828125" text="Carro" />
               </columns>
             </TableView>
-            <HBox alignment="CENTER" layoutX="140.0" layoutY="325.0" prefHeight="54.0" prefWidth="319.0" spacing="10.0">
+            <HBox alignment="CENTER" layoutX="107.0" layoutY="325.0" prefHeight="54.0" prefWidth="585.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" text="Criar Ordem" />
-                  <Button mnemonicParsing="false" text="Editar" />
-                  <Button mnemonicParsing="false" text="Remover" />
+                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" text="Criar Ordem de Missão" />
+                  <Button mnemonicParsing="false" text="Editar Ordem de Missão" />
+                  <Button mnemonicParsing="false" text="Remover Ordem de Missão" />
                   <Button mnemonicParsing="false" text="Mais Detalhes" />
                </children>
             </HBox>

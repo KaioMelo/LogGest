@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.mil.fab.pagl.controller.FXMLMainController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -33,11 +32,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="206.0" layoutY="328.0" mnemonicParsing="false" text="Entrar como Administrador">
+            <Button fx:id="entrarLogin" layoutX="264.0" layoutY="329.0" mnemonicParsing="false" onAction="#entrarLoginAdmin" text="Entrar">
                <font>
-                  <Font size="14.0" />
+                  <Font size="18.0" />
                </font>
             </Button>
+            <Label layoutX="230.0" layoutY="22.0" text="FORÇA ÁEREA BRASILEIRA" />
          </children>
       </AnchorPane>
    </children>

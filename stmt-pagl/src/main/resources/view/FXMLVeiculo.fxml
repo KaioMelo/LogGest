@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.veiculo.Veiculo">
+<VBox prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.mil.fab.pagl.controller.FXMLVeiculoController">
    <children>
       <MenuBar nodeOrientation="LEFT_TO_RIGHT" prefHeight="30.0" prefWidth="600.0">
          <menus>
@@ -37,48 +37,49 @@
             </Menu>
          </menus>
       </MenuBar>
-      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+      <AnchorPane prefHeight="400.0" prefWidth="480.0">
          <children>
-            <SplitPane dividerPositions="0.5484625668449197" prefHeight="400.0" prefWidth="600.0">
+            <SplitPane dividerPositions="0.6427855711422845" prefHeight="400.0" prefWidth="800.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <TableView prefHeight="398.0" prefWidth="326.0">
+                        <TableView prefHeight="398.0" prefWidth="510.0">
                           <columns>
-                            <TableColumn prefWidth="78.39999085664749" text="RG FAB" />
-                            <TableColumn prefWidth="88.79998779296875" text="TIPO" />
-                              <TableColumn prefWidth="84.0" text="MODELO" />
-                              <TableColumn prefWidth="81.60005187988281" text="AÇÃO" />
+                            <TableColumn prefWidth="79.19997864961624" text="RG FAB" />
+                            <TableColumn prefWidth="88.0" text="TIPO" />
+                              <TableColumn prefWidth="88.80006408691406" text="MODELO" />
+                              <TableColumn prefWidth="147.99993896484375" text="OBSERVAÇÃO" />
+                              <TableColumn prefWidth="107.199951171875" text="AÇÃO" />
                           </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="297.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="349.0">
                      <children>
-                        <Label layoutX="29.0" layoutY="14.0" prefHeight="27.0" prefWidth="209.0" text="Cadastrar Viatura Oficial">
+                        <Label layoutX="36.0" layoutY="14.0" prefHeight="27.0" prefWidth="209.0" text="Cadastrar Viatura Oficial">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="83.0" fitWidth="105.0" layoutX="81.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="83.0" fitWidth="105.0" layoutX="88.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../img/fab.png" />
+                              <Image url="@../img/fab.png" />
                            </image>
                         </ImageView>
-                        <TextField layoutX="24.0" layoutY="162.0" prefHeight="26.0" prefWidth="218.0" />
-                        <TextField layoutX="24.0" layoutY="209.0" prefHeight="26.0" prefWidth="218.0" />
-                        <TextField layoutX="24.0" layoutY="255.0" prefHeight="26.0" prefWidth="218.0" />
-                        <Label layoutX="24.0" layoutY="142.0" text="Reg FAB">
+                        <TextField layoutX="32.0" layoutY="162.0" prefHeight="26.0" prefWidth="218.0" />
+                        <TextField layoutX="32.0" layoutY="209.0" prefHeight="26.0" prefWidth="218.0" />
+                        <TextField layoutX="32.0" layoutY="255.0" prefHeight="26.0" prefWidth="218.0" />
+                        <Label layoutX="30.0" layoutY="142.0" text="Reg FAB">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="25.0" layoutY="189.0" text="Tipo">
+                        <Label layoutX="32.0" layoutY="189.0" text="Tipo">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="26.0" layoutY="235.0" text="Modelo">
+                        <Label layoutX="32.0" layoutY="235.0" text="Modelo">
                            <font>
                               <Font size="14.0" />
                            </font>

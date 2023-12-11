@@ -1,20 +1,22 @@
-package br.mil.fab.pagl.controller;
+package br.mil.fab.pagl.dao.impl;
 
 import br.mil.fab.pagl.dao.VeiculoDAO;
 import br.mil.fab.pagl.model.Veiculo;
 import br.mil.fab.pagl.util.ConfigConnectionDB;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VeiculoController implements VeiculoDAO {
-
+public class VeiculoDAOImpl implements VeiculoDAO {
     @Override
     public void create(Veiculo veiculo) {
         String sql = "INSERT INTO veiculo (tipo, modelo, rg_fab, volume, observacao) VALUE (?,?,?,?,?)";
         try(Connection con = ConfigConnectionDB.connect();
-        PreparedStatement ps = con.prepareStatement(sql)) {
+            PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, veiculo.getTipo());
             ps.setString(2, veiculo.getModelo());
             ps.setString(3, veiculo.getRg_fab());
@@ -35,7 +37,7 @@ public class VeiculoController implements VeiculoDAO {
         }
         String sql = "UPDATE veiculo SET tipo=?, modelo=?, rg_fab=?, volume=?, observacao=? WHERE id_veiculo=?";
         try(Connection con = ConfigConnectionDB.connect();
-        PreparedStatement ps = con.prepareStatement(sql)){
+            PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, veiculo.getTipo());
             ps.setString(2, veiculo.getModelo());
             ps.setString(3, veiculo.getRg_fab());
@@ -53,7 +55,7 @@ public class VeiculoController implements VeiculoDAO {
     public void deleteById(Integer id) {
         String sql = "DELETE FROM veiculo WHERE id_veiculo=?";
         try(Connection con = ConfigConnectionDB.connect();
-        PreparedStatement ps = con.prepareStatement(sql)) {
+            PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
             ps.executeUpdate();
         }
@@ -67,7 +69,7 @@ public class VeiculoController implements VeiculoDAO {
         String sql = "SELECT * FROM veiculo WHERE id_veiculo=?";
         Veiculo veiculo = null;
         try(Connection con = ConfigConnectionDB.connect();
-        PreparedStatement ps = con.prepareStatement(sql)){
+            PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
@@ -90,7 +92,7 @@ public class VeiculoController implements VeiculoDAO {
         String sql = "SELECT * FROM veiculo";
         List<Veiculo> veiculoList = new ArrayList<>();
         try(Connection con = ConfigConnectionDB.connect();
-        PreparedStatement ps = con.prepareStatement(sql)){
+            PreparedStatement ps = con.prepareStatement(sql)){
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 veiculoList.add(new Veiculo(
