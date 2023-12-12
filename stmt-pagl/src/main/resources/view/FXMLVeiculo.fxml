@@ -21,7 +21,7 @@
          <menus>
             <Menu mnemonicParsing="false" text="Cadastros">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Veículos" />
+                  <MenuItem fx:id="menuItemVeiculo" mnemonicParsing="false" text="Veículos" />
                   <MenuItem mnemonicParsing="false" text="Motoristas" />
                </items>
             </Menu>
