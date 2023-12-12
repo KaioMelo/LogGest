@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLVeiculoController implements Initializable {
+public class FXMLMotoristaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -47,20 +47,4 @@ public class FXMLVeiculoController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
-    @FXML
-    public void handleAdicionarVeiculo(){
-
-    }
-
-    @FXML
-    public void handleEditarVeiculo(){
-
-    }
-
-    @FXML
-    public void handleDeletarVeiculo(){
-
-    }
-
 }
