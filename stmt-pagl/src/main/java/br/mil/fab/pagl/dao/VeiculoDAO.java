@@ -8,7 +8,7 @@ import java.util.List;
 public interface VeiculoDAO {
     void create (Veiculo veiculo);
     void update (Veiculo veiculo);
-    void deleteById(Integer id);
+    void deleteByRgFab(String rgFab);
     void findById(Integer id);
     List<Veiculo> findAll();
 }

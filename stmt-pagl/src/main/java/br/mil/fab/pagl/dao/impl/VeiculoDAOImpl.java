@@ -57,11 +57,11 @@ public class VeiculoDAOImpl implements VeiculoDAO {
     }
 
     @Override
-    public void deleteById(Integer id) {
-        String sql = "DELETE FROM veiculo WHERE id_veiculo=?";
+    public void deleteByRgFab(String rgFab) {
+        String sql = "DELETE FROM veiculo WHERE rg_fab=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, id);
+            ps.setString(1, rgFab);
             ps.executeUpdate();
         }
         catch (SQLException e){
