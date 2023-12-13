@@ -4,24 +4,31 @@ import br.mil.fab.pagl.dao.VeiculoDAO;
 import br.mil.fab.pagl.model.Veiculo;
 import br.mil.fab.pagl.util.ConfigConnectionDB;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class VeiculoDAOImpl implements VeiculoDAO {
     @Override
     public void create(Veiculo veiculo) {
-        String sql = "INSERT INTO veiculo (rg_fab, placa, marca, modelo) VALUE (?,?,?,?)";
         try(Connection con = ConfigConnectionDB.connect();
-            PreparedStatement ps = con.prepareStatement(sql)) {
+            ) {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO veiculo (rg_fab, placa, marca, modelo) " +
+                    "VALUES (?,?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, veiculo.getRg_fab());
             ps.setString(2, veiculo.getPlaca());
             ps.setString(3, veiculo.getMarca());
             ps.setString(4, veiculo.getModelo());
-            ps.executeUpdate();
+            int rowsAffected = ps.executeUpdate();
+            if(rowsAffected > 0){
+                ResultSet rs = ps.getGeneratedKeys();
+                if(rs.next()){
+                    int id = rs.getInt(1);
+                    veiculo.setId_veiculo(id);
+                }
+                rs.close();
+            }
         }
         catch (SQLException e){
             e.printStackTrace();
