@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbox" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.mil.fab.pagl.controller.FXMLHomeController">
+<VBox fx:id="vbox" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.mil.fab.pagl.controller.FXMLVeiculoController">
    <children>
       <SplitPane dividerPositions="0.2606856634016028" prefHeight="545.0" prefWidth="800.0">
         <items>
@@ -34,12 +34,12 @@
             </AnchorPane>
             <AnchorPane fx:id="anchoPane" prefHeight="498.0" prefWidth="535.0">
                <children>
-                  <TableView layoutX="281.0" layoutY="-1.0" prefHeight="380.0" prefWidth="379.0">
+                  <TableView fx:id="tableViewVeiculo" layoutX="281.0" layoutY="-1.0" onSort="#carregarTableViewVeiculos" prefHeight="380.0" prefWidth="379.0">
                     <columns>
-                      <TableColumn prefWidth="84.0" text="REG FAB" />
-                        <TableColumn prefWidth="81.60003662109375" text="PLACA" />
-                      <TableColumn prefWidth="102.4000244140625" text="MARCA" />
-                        <TableColumn prefWidth="109.5999755859375" text="MODELO" />
+                      <TableColumn fx:id="tableColumnRegFab" prefWidth="84.0" text="REG FAB" />
+                        <TableColumn fx:id="tableColumnPlaca" prefWidth="81.60003662109375" text="PLACA" />
+                      <TableColumn fx:id="tableColumnMarca" prefWidth="102.4000244140625" text="MARCA" />
+                        <TableColumn fx:id="tableColumnModelo" prefWidth="109.5999755859375" text="MODELO" />
                     </columns>
                   </TableView>
                   <Label layoutX="45.0" layoutY="28.0" text="Registrar Viatura Oficial">
@@ -53,14 +53,14 @@
                      </image>
                   </ImageView>
                   <Label layoutX="40.0" layoutY="175.0" text="REG FAB" />
-                  <TextField fx:id="reg_fab" layoutX="39.0" layoutY="193.0" prefHeight="26.0" prefWidth="200.0" />
+                  <TextField fx:id="textFieldRegFab" layoutX="39.0" layoutY="193.0" prefHeight="26.0" prefWidth="200.0" />
                   <Label layoutX="40.0" layoutY="230.0" text="PLACA" />
-                  <TextField fx:id="placa" layoutX="40.0" layoutY="248.0" prefHeight="26.0" prefWidth="200.0" />
+                  <TextField fx:id="textFieldPlaca" layoutX="40.0" layoutY="248.0" prefHeight="26.0" prefWidth="200.0" />
                   <Label layoutX="40.0" layoutY="281.0" text="MARCA" />
-                  <TextField fx:id="marca" layoutX="40.0" layoutY="299.0" prefHeight="26.0" prefWidth="200.0" />
+                  <TextField fx:id="textFieldMarca" layoutX="40.0" layoutY="299.0" prefHeight="26.0" prefWidth="200.0" />
                   <Label layoutX="40.0" layoutY="333.0" text="MODELO" />
-                  <TextField fx:id="modelo" layoutX="40.0" layoutY="351.0" prefHeight="26.0" prefWidth="200.0" />
-                  <Button layoutX="38.0" layoutY="395.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="Adicionar" />
+                  <TextField fx:id="textFieldModelo" layoutX="40.0" layoutY="351.0" prefHeight="26.0" prefWidth="200.0" />
+                  <Button fx:id="buttonAdicionar" layoutX="38.0" layoutY="395.0" mnemonicParsing="false" onAction="#handleAdicionarVeiculo" prefHeight="26.0" prefWidth="200.0" text="Adicionar" />
                   <TextField layoutX="281.0" layoutY="396.0" />
                   <SplitMenuButton layoutX="281.0" layoutY="432.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0">
                     <items>
@@ -68,8 +68,8 @@
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </SplitMenuButton>
-                  <Button layoutX="447.0" layoutY="395.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Editar" />
-                  <Button layoutX="536.0" layoutY="395.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Deletar" />
+                  <Button fx:id="buttonEditar" layoutX="447.0" layoutY="395.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Editar" />
+                  <Button fx:id="buttonDeletar" layoutX="536.0" layoutY="395.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Deletar" />
                </children>
             </AnchorPane>
         </items>

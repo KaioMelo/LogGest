@@ -1,6 +1,7 @@
 package br.mil.fab.pagl.dao;
 
 import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.util.ConfigConnectionDB;
 
 import java.util.List;
 

@@ -69,11 +69,11 @@ public class Veiculo implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Veiculo veiculo = (Veiculo) o;
-        return Objects.equals(id_veiculo, veiculo.id_veiculo) && Objects.equals(rg_fab, veiculo.rg_fab) && Objects.equals(placa, veiculo.placa);
+        return Objects.equals(id_veiculo, veiculo.id_veiculo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_veiculo, rg_fab, placa);
+        return Objects.hash(id_veiculo);
     }
 }

@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vbox" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.mil.fab.pagl.controller.FXMLHomeController">
+<VBox fx:id="vbox" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.mil.fab.pagl.controller.FXMLMotoristaController">
    <children>
       <SplitPane dividerPositions="0.2606856634016028" prefHeight="545.0" prefWidth="800.0">
         <items>
