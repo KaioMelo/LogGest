@@ -19,18 +19,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class FXMLVeiculoController implements Initializable {
-
-    @FXML
-    private TableView<Veiculo> tableViewVeiculo;
-    @FXML
-    private TableColumn<Veiculo, String> tableColumnRegFab;
-    @FXML
-    private TableColumn<Veiculo, String> tableColumnPlaca;
-    @FXML
-    private TableColumn<Veiculo, String> tableColumnMarca;
-    @FXML
-    private TableColumn<Veiculo, String> tableColumnModelo;
+public class FXMLVeiculoEditarController implements Initializable {
     @FXML
     private TextField textFieldRegFab;
     @FXML
@@ -40,13 +29,9 @@ public class FXMLVeiculoController implements Initializable {
     @FXML
     private TextField textFieldModelo;
     @FXML
-    private TextField textFieldList;
-    @FXML
-    private Button buttonAdicionar;
-    @FXML
     private Button buttonEditar;
     @FXML
-    private Button buttonDeletar;
+    private Button buttonCancelar;
 
     private List<Veiculo> listVeiculos;
     private ObservableList<Veiculo> observableListVeiculo;
@@ -55,21 +40,11 @@ public class FXMLVeiculoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        carregarTableViewVeiculos();
+
     }
 
     @FXML
-    public void handleHome(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLHome.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void handleVeiculo(ActionEvent event) throws IOException {
+    public void handleCancelarAtualizacao(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculo.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -78,67 +53,7 @@ public class FXMLVeiculoController implements Initializable {
         stage.show();
     }
 
-    @FXML
-    public void handleMotorista(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLMotorista.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void handleAdicionarVeiculo(ActionEvent event) {
-        Veiculo obj = new Veiculo();
-        obj = registarVeiculo();
-        veiculoDAO.create(obj);
-        tableViewVeiculo.getItems().clear();
-        carregarTableViewVeiculos();
-    }
-
-    @FXML
-    public void carregarTableViewVeiculos() {
-        tableColumnRegFab.setCellValueFactory(new PropertyValueFactory<>("rg_fab"));
-        tableColumnPlaca.setCellValueFactory(new PropertyValueFactory<>("placa"));
-        tableColumnMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
-        tableColumnModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-        tableViewVeiculo.getItems().addAll(veiculoDAO.findAll());
-    }
-
-    @FXML
-    public void handleEditarVeiculo(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculoEditar.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void handleDeletarVeiculo(){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        String rgFab = "";
-        Veiculo selectedVeiculo = tableViewVeiculo.getSelectionModel().getSelectedItem();
-        if (selectedVeiculo != null) {
-            rgFab = selectedVeiculo.getRg_fab();
-        }
-        clearFileds();
-        alert.setTitle("SUCESSO!");
-        alert.setHeaderText("Veículo Deletado!");
-        alert.show();
-        veiculoDAO.deleteByRgFab(rgFab);
-        tableViewVeiculo.getItems().clear();
-        carregarTableViewVeiculos();
-    }
-
-    @FXML
-    private void handleTextFieldList(){
-
-    }
-
-    private Veiculo registarVeiculo() {
+    private Veiculo AtualizarVeiculo() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         Veiculo obj = new Veiculo();
         try {
