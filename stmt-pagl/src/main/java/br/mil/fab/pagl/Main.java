@@ -17,6 +17,7 @@ public class Main extends Application {
             FXMLLoader loader = new FXMLLoader(fxmlURL);
             Parent root = loader.load();
             primaryStage.setTitle("Prefeitura da Aéronautica do Galeão (PAGL)");
+            primaryStage.setMaximized(false);
             primaryStage.setScene(new Scene(root, 600, 400));
             primaryStage.show();
         } else {

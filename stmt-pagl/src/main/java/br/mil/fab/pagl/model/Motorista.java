@@ -10,18 +10,16 @@ public class Motorista implements Serializable {
     private Integer id_motorista;
     private String nome;
     private Integer cnh;
-    private String carreira;
     private String om;
     private String sessao;
 
     public Motorista() {
     }
 
-    public Motorista(Integer id_motorista, String nome, Integer cnh, String carreira, String om, String sessao) {
+    public Motorista(Integer id_motorista, String nome, Integer cnh, String om, String sessao) {
         this.id_motorista = id_motorista;
         this.nome = nome;
         this.cnh = cnh;
-        this.carreira = carreira;
         this.om = om;
         this.sessao = sessao;
     }
@@ -48,14 +46,6 @@ public class Motorista implements Serializable {
 
     public void setCnh(Integer cnh) {
         this.cnh = cnh;
-    }
-
-    public String getCarreira() {
-        return carreira;
-    }
-
-    public void setCarreira(String carreira) {
-        this.carreira = carreira;
     }
 
     public String getOm() {

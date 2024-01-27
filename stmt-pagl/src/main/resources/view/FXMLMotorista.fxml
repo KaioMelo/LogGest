@@ -2,7 +2,6 @@
 
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -62,22 +61,16 @@
                      </rowConstraints>
                      <children>
                         <Label text="NOME" />
-                        <TextField prefHeight="26.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                        <TextField fx:id="textFieldNomeMotorista" prefHeight="26.0" prefWidth="200.0" GridPane.rowIndex="1" />
                         <Label text="CNH" GridPane.rowIndex="2" />
-                        <TextField prefHeight="26.0" prefWidth="200.0" GridPane.rowIndex="3" />
+                        <TextField fx:id="textFieldCNH" prefHeight="26.0" prefWidth="200.0" GridPane.rowIndex="3" />
                         <Label text="OM" GridPane.rowIndex="4" />
-                        <TextField prefHeight="26.0" prefWidth="200.0" GridPane.rowIndex="5" />
+                        <TextField fx:id="textFieldOM" prefHeight="26.0" prefWidth="200.0" GridPane.rowIndex="5" />
                         <Label text="SESSÃO" GridPane.rowIndex="6" />
-                        <TextField prefHeight="26.0" prefWidth="200.0" GridPane.rowIndex="7" />
+                        <TextField fx:id="textFieldSessao" prefHeight="26.0" prefWidth="200.0" GridPane.rowIndex="7" />
                      </children>
                   </GridPane>
-                  <Button layoutX="39.0" layoutY="457.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="Adicionar" />
-                  <HBox layoutX="75.0" layoutY="421.0" prefHeight="26.0" prefWidth="128.0" spacing="20.0">
-                     <children>
-                        <CheckBox mnemonicParsing="false" text="Civil" />
-                        <CheckBox mnemonicParsing="false" text="Militar" />
-                     </children>
-                  </HBox>
+                  <Button layoutX="37.0" layoutY="448.0" mnemonicParsing="false" onAction="#btnAdicionarMotorista" prefHeight="26.0" prefWidth="200.0" text="Adicionar" />
                   <Group layoutX="46.0" layoutY="20.0">
                      <children>
                         <Label layoutX="1.0" layoutY="-6.0" text="Registrar Motorista">

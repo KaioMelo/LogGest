@@ -34,15 +34,15 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="cpf" layoutX="48.0" layoutY="187.0" prefHeight="26.0" prefWidth="203.0" />
+            <TextField fx:id="textFieldCPF" layoutX="48.0" layoutY="187.0" prefHeight="26.0" prefWidth="203.0" />
             <Label layoutX="48.0" layoutY="230.0" prefHeight="20.0" prefWidth="43.0" text="Senha">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <PasswordField fx:id="senha" layoutX="48.0" layoutY="256.0" prefHeight="26.0" prefWidth="203.0" />
+            <PasswordField fx:id="textFieldsSenha" layoutX="48.0" layoutY="256.0" prefHeight="26.0" prefWidth="203.0" />
             <Label fx:id="recuperarSenha" layoutX="51.0" layoutY="291.0" text="Esqueceu sua senha?" />
-            <Button fx:id="entrarInterfaceHome" layoutX="104.0" layoutY="334.0" mnemonicParsing="false" onAction="#entrarInterfaceHome" prefHeight="30.0" prefWidth="89.0" text="Continuar">
+            <Button fx:id="btnLogin" layoutX="104.0" layoutY="334.0" mnemonicParsing="false" onAction="#entrarInterfaceHome" prefHeight="30.0" prefWidth="89.0" text="Continuar">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
