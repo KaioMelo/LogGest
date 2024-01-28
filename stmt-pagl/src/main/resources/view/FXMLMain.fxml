@@ -2,43 +2,49 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.mil.fab.pagl.controller.FXMLMainController">
-   <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.mil.fab.pagl.controller.FXMLMainController">
+   <content>
+      <VBox>
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="236.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/pagl.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="269.0" layoutY="209.0" text="PAGL">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="133.0" layoutY="251.0" text="PREFEITURA DE AERONÁUTICA DO GALEÃO">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="215.0" layoutY="288.0" text="Sessão de Transporte">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Button fx:id="entrarLogin" layoutX="264.0" layoutY="329.0" mnemonicParsing="false" onAction="#entrarLoginAdmin" text="Entrar">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Label layoutX="230.0" layoutY="22.0" text="FORÇA ÁEREA BRASILEIRA" />
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="236.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/pagl.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="269.0" layoutY="209.0" text="PAGL">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="133.0" layoutY="251.0" text="PREFEITURA DE AERONÁUTICA DO GALEÃO">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="215.0" layoutY="288.0" text="Sessão de Transporte">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="entrarLogin" layoutX="264.0" layoutY="329.0" mnemonicParsing="false" onAction="#entrarLoginAdmin" text="Entrar">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="230.0" layoutY="22.0" text="FORÇA ÁEREA BRASILEIRA" />
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
-   </children>
-</VBox>
+      </VBox>
+   </content>
+</ScrollPane>

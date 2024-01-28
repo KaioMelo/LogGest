@@ -58,34 +58,28 @@ public class FXMLVeiculoController implements Initializable {
         carregarTableViewVeiculos();
     }
 
-    @FXML
-    public void handleHome(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLHome.fxml"));
+    private void loadScene(String fxmlPath, ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void handleHome(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLHome.fxml", event);
     }
 
     @FXML
     public void handleVeiculo(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculo.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        loadScene("/view/FXMLVeiculo.fxml", event);
     }
 
     @FXML
     public void handleMotorista(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLMotorista.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        loadScene("/view/FXMLMotorista.fxml", event);
     }
 
     @FXML

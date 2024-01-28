@@ -2,8 +2,8 @@ package br.mil.fab.pagl;
 
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 import javafx.application.Application;
 
@@ -15,10 +15,14 @@ public class Main extends Application {
         URL fxmlURL = getClass().getResource("/view/FXMLMain.fxml");
         if (fxmlURL != null) {
             FXMLLoader loader = new FXMLLoader(fxmlURL);
-            Parent root = loader.load();
+            ScrollPane root = loader.load();
+
+            root.setFitToHeight(true);
+            root.setFitToWidth(true);
+
+            Scene mainScene = new Scene(root);
+            primaryStage.setScene(mainScene);
             primaryStage.setTitle("Prefeitura da Aéronautica do Galeão (PAGL)");
-            primaryStage.setMaximized(false);
-            primaryStage.setScene(new Scene(root, 600, 400));
             primaryStage.show();
         } else {
             System.out.println("Arquivo FXML não encontrado!");

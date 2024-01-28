@@ -52,9 +52,8 @@ public class FXMLMotoristaController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         carregarTableViewMotorista();
     }
-    @FXML
-    public void handleHome (ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLHome.fxml"));
+    private void loadScene(String fxmlPath, ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
@@ -63,23 +62,18 @@ public class FXMLMotoristaController implements Initializable {
     }
 
     @FXML
-    public void handleVeiculo (ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculo.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+    public void handleHome(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLHome.fxml", event);
     }
 
     @FXML
-    public void handleMotorista (ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLMotorista.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+    public void handleVeiculo(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLVeiculo.fxml", event);
+    }
+
+    @FXML
+    public void handleMotorista(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLMotorista.fxml", event);
     }
 
     public void handleAdicionarMotorista (ActionEvent event){
