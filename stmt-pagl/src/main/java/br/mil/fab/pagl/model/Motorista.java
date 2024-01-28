@@ -8,7 +8,7 @@ public class Motorista implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Integer id_motorista;
-    private String nome;
+    private String nome_motorista;
     private Integer cnh;
     private String om;
     private String sessao;
@@ -16,9 +16,9 @@ public class Motorista implements Serializable {
     public Motorista() {
     }
 
-    public Motorista(Integer id_motorista, String nome, Integer cnh, String om, String sessao) {
+    public Motorista(Integer id_motorista, String nome_motorista, Integer cnh, String om, String sessao) {
         this.id_motorista = id_motorista;
-        this.nome = nome;
+        this.nome_motorista = nome_motorista;
         this.cnh = cnh;
         this.om = om;
         this.sessao = sessao;
@@ -32,12 +32,12 @@ public class Motorista implements Serializable {
         this.id_motorista = id_motorista;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNome_motorista() {
+        return nome_motorista;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNome_motorista(String nome_motorista) {
+        this.nome_motorista = nome_motorista;
     }
 
     public Integer getCnh() {

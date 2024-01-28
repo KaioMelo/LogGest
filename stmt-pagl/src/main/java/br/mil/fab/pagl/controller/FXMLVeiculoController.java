@@ -107,17 +107,30 @@ public class FXMLVeiculoController implements Initializable {
     }
 
     @FXML
-    public void handleEditarVeiculo(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculoEditar.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+    public void handleEditarVeiculo(ActionEvent event) throws IOException {
+        Veiculo selectedVeiculo = tableViewVeiculo.getSelectionModel().getSelectedItem();
+        if (selectedVeiculo != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculoEditar.fxml"));
+            Parent root = loader.load();
+
+            FXMLVeiculoEditarController editarVeiculo = loader.getController();
+
+            editarVeiculo.HandleCarregarCampos(
+                    selectedVeiculo.getRg_fab(),
+                    selectedVeiculo.getPlaca(),
+                    selectedVeiculo.getMarca(),
+                    selectedVeiculo.getModelo()
+            );
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     @FXML
-    public void handleDeletarVeiculo(){
+    public void handleDeletarVeiculo() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         String rgFab = "";
         Veiculo selectedVeiculo = tableViewVeiculo.getSelectionModel().getSelectedItem();
@@ -133,16 +146,11 @@ public class FXMLVeiculoController implements Initializable {
         carregarTableViewVeiculos();
     }
 
-    @FXML
-    private void handleTextFieldList(){
-
-    }
-
-    private Veiculo registarVeiculo() {
+    public Veiculo registarVeiculo() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         Veiculo obj = new Veiculo();
         try {
-            if(validarEntradasDeDados()){
+            if (validarEntradasDeDados()) {
                 obj.setRg_fab(textFieldRegFab.getText().toUpperCase());
                 obj.setPlaca(textFieldPlaca.getText().toUpperCase());
                 obj.setMarca(textFieldMarca.getText());
@@ -158,19 +166,23 @@ public class FXMLVeiculoController implements Initializable {
         return obj;
     }
 
-    private boolean validarEntradasDeDados(){
+    private boolean validarEntradasDeDados() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         Veiculo obj = new Veiculo();
         String errorMessage = "";
         if (textFieldRegFab.getText() == null || textFieldRegFab.getText().trim().equals("")) {
             errorMessage += "RegFab Inválido: \n";
-        } if (textFieldPlaca.getText() == null || textFieldPlaca.getText().trim().equals("")) {
+        }
+        if (textFieldPlaca.getText() == null || textFieldPlaca.getText().trim().equals("")) {
             errorMessage += "Placa Inválida: \n";
-        } if (textFieldMarca.getText() == null || textFieldMarca.getText().trim().equals("")) {
+        }
+        if (textFieldMarca.getText() == null || textFieldMarca.getText().trim().equals("")) {
             errorMessage += "Marca Inválida: \n";
-        } if (textFieldModelo.getText() == null || textFieldModelo.getText().trim().equals("")) {
+        }
+        if (textFieldModelo.getText() == null || textFieldModelo.getText().trim().equals("")) {
             errorMessage += "Modelo Inválido: \n";
-        } if (errorMessage.length() == 0) {
+        }
+        if (errorMessage.length() == 0) {
             return true;
         } else {
             clearFileds();

@@ -1,7 +1,9 @@
 package br.mil.fab.pagl.controller;
 
 import br.mil.fab.pagl.dao.MotoristaDAO;
+import br.mil.fab.pagl.dao.VeiculoDAO;
 import br.mil.fab.pagl.dao.impl.MotoristaDAOImpl;
+import br.mil.fab.pagl.dao.impl.VeiculoDAOImpl;
 import br.mil.fab.pagl.model.Motorista;
 import br.mil.fab.pagl.model.Veiculo;
 import javafx.collections.ObservableList;
@@ -12,10 +14,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,19 +23,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-
-public class FXMLMotoristaController implements Initializable {
-
-    @FXML
-    private TableView<Motorista> tableViewMotorista;
-    @FXML
-    private TableColumn<Motorista, String> tableColumnNome;
-    @FXML
-    private TableColumn<Motorista, Integer> tableColumnCNH;
-    @FXML
-    private TableColumn<Motorista, String> tableColumnOM;
-    @FXML
-    private TableColumn<Motorista, String> tableColumnSessao;
+public class FXMLMotoristaEditarController implements Initializable {
     @FXML
     private TextField textFieldNomeMotorista;
     @FXML
@@ -44,36 +32,23 @@ public class FXMLMotoristaController implements Initializable {
     private  TextField textFieldOM;
     @FXML
     private  TextField textFieldSessao;
+    @FXML
+    private Button buttonEditar;
+    @FXML
+    private Button buttonCancelar;
+
     private List<Motorista> listaMotoristas;
     private ObservableList<Motorista> observableListMotorista;
     private MotoristaDAO motoristaDAO = new MotoristaDAOImpl();
+    private Stage dialoStage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        carregarTableViewMotorista();
-    }
-    @FXML
-    public void handleHome (ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLHome.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+
     }
 
     @FXML
-    public void handleVeiculo (ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculo.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void handleMotorista (ActionEvent event) throws IOException{
+    public void handleCancelarAtualizacao(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLMotorista.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -82,24 +57,7 @@ public class FXMLMotoristaController implements Initializable {
         stage.show();
     }
 
-    public void handleAdicionarMotorista (ActionEvent event){
-        Motorista obj = new Motorista();
-        obj = registrarMotorista();
-        motoristaDAO.create(obj);
-        tableViewMotorista.getItems().clear();
-        carregarTableViewMotorista();
-    }
-
-    @FXML
-    public void carregarTableViewMotorista() {
-        tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome_motorista"));
-        tableColumnCNH.setCellValueFactory(new PropertyValueFactory<>("cnh"));
-        tableColumnOM.setCellValueFactory(new PropertyValueFactory<>("om"));
-        tableColumnSessao.setCellValueFactory(new PropertyValueFactory<>("sessao"));
-        tableViewMotorista.getItems().addAll(motoristaDAO.findAll());
-    }
-
-    private Motorista registrarMotorista(){
+    private Motorista AtualizarMotorista() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         Motorista obj = new Motorista();
         try {
@@ -110,40 +68,13 @@ public class FXMLMotoristaController implements Initializable {
                 obj.setSessao(textFieldSessao.getText());
                 clearFileds();
                 alert.setTitle("SUCESSO!");
-                alert.setHeaderText("Motorista Cadastrado!");
+                alert.setHeaderText("Motorista Atualizado!");
                 alert.show();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return obj;
-    }
-
-    @FXML
-    public void handleEditarMotorista(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLMotoristaEditar.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void handleDeletarMotorista(){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        Integer cnh = null;
-        Motorista selectedMotorista = tableViewMotorista.getSelectionModel().getSelectedItem();
-        if (selectedMotorista != null) {
-            cnh = selectedMotorista.getCnh();
-        }
-        clearFileds();
-        alert.setTitle("SUCESSO!");
-        alert.setHeaderText("Motorista Deletado!");
-        alert.show();
-        motoristaDAO.deleteByCNH(cnh);
-        tableViewMotorista.getItems().clear();
-        carregarTableViewMotorista();
     }
 
     private boolean validarEntradasDeDados(){

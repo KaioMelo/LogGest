@@ -37,12 +37,12 @@
             </AnchorPane>
             <AnchorPane fx:id="anchoPane" prefHeight="498.0" prefWidth="535.0">
                <children>
-                  <TableView layoutX="280.0" layoutY="-1.0" prefHeight="430.0" prefWidth="380.0">
+                  <TableView fx:id="tableViewMotorista" layoutX="280.0" layoutY="-1.0" prefHeight="430.0" prefWidth="380.0">
                     <columns>
-                      <TableColumn prefWidth="123.20001220703125" text="NOME" />
-                        <TableColumn prefWidth="105.5999755859375" text="CNH" />
-                      <TableColumn prefWidth="68.00003051757812" text="OM" />
-                        <TableColumn prefWidth="79.99992675781249" text="STATUS" />
+                      <TableColumn fx:id="tableColumnNome" prefWidth="123.20001220703125" text="NOME" />
+                        <TableColumn fx:id="tableColumnCNH" prefWidth="105.5999755859375" text="CNH" />
+                      <TableColumn fx:id="tableColumnOM" prefWidth="68.00003051757812" text="OM" />
+                        <TableColumn fx:id="tableColumnSessao" prefWidth="79.99992675781249" text="SESSÃO" />
                     </columns>
                   </TableView>
                   <GridPane layoutX="39.0" layoutY="152.0" prefHeight="255.0" prefWidth="200.0">
@@ -70,7 +70,7 @@
                         <TextField fx:id="textFieldSessao" prefHeight="26.0" prefWidth="200.0" GridPane.rowIndex="7" />
                      </children>
                   </GridPane>
-                  <Button layoutX="37.0" layoutY="448.0" mnemonicParsing="false" onAction="#btnAdicionarMotorista" prefHeight="26.0" prefWidth="200.0" text="Adicionar" />
+                  <Button layoutX="37.0" layoutY="448.0" mnemonicParsing="false" onAction="#handleAdicionarMotorista" prefHeight="26.0" prefWidth="200.0" text="Adicionar" />
                   <Group layoutX="46.0" layoutY="20.0">
                      <children>
                         <Label layoutX="1.0" layoutY="-6.0" text="Registrar Motorista">
@@ -87,8 +87,8 @@
                   </Group>
                   <HBox layoutX="385.0" layoutY="444.0" spacing="20.0">
                      <children>
-                        <Button fx:id="buttonEditar" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Editar" />
-                        <Button fx:id="buttonDeletar" mnemonicParsing="false" prefHeight="26.0" prefWidth="75.0" text="Deletar" />
+                        <Button fx:id="buttonEditar" mnemonicParsing="false" onAction="#handleEditarMotorista" prefHeight="26.0" prefWidth="75.0" text="Editar" />
+                        <Button fx:id="buttonDeletar" mnemonicParsing="false" onAction="#handleDeletarMotorista" prefHeight="26.0" prefWidth="75.0" text="Deletar" />
                      </children>
                   </HBox>
                </children>

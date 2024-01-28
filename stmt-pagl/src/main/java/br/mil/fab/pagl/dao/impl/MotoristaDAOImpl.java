@@ -16,7 +16,7 @@ public class MotoristaDAOImpl implements MotoristaDAO {
             PreparedStatement ps = con.prepareStatement("INSERT INTO motorista (nome_motorista, cnh, om, sessao) " +
                     "VALUES (?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, obj.getNome());
+            ps.setString(1, obj.getNome_motorista());
             ps.setInt(2, obj.getCnh());
             ps.setString(3, obj.getOm());
             ps.setString(4, obj.getSessao());
@@ -44,7 +44,7 @@ public class MotoristaDAOImpl implements MotoristaDAO {
         String sql = "UPDATE motorista SET nome_motorista=?, cnh=?, om=?, sessao=? WHERE id_motorista=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setString(1, obj.getNome());
+            ps.setString(1, obj.getNome_motorista());
             ps.setInt(2, obj.getCnh());
             ps.setString(3, obj.getOm());
             ps.setString(4, obj.getSessao());
@@ -80,7 +80,7 @@ public class MotoristaDAOImpl implements MotoristaDAO {
             if(rs.next()){
                 motorista = new Motorista(
                         rs.getInt("id_motorista"),
-                        rs.getString("nome"),
+                        rs.getString("nome_motorista"),
                         rs.getInt("cnh"),
                         rs.getString("om"),
                         rs.getString("sessao"));
@@ -101,7 +101,7 @@ public class MotoristaDAOImpl implements MotoristaDAO {
             while (rs.next()){
                 motoristaList.add(new Motorista(
                         rs.getInt("id_motorista"),
-                        rs.getString("nome"),
+                        rs.getString("nome_motorista"),
                         rs.getInt("cnh"),
                         rs.getString("om"),
                         rs.getString("sessao")

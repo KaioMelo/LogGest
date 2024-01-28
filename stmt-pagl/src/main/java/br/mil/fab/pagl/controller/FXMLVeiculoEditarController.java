@@ -7,19 +7,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
 
-public class FXMLVeiculoEditarController implements Initializable {
+public class FXMLVeiculoEditarController {
     @FXML
     private TextField textFieldRegFab;
     @FXML
@@ -36,15 +34,9 @@ public class FXMLVeiculoEditarController implements Initializable {
     private List<Veiculo> listVeiculos;
     private ObservableList<Veiculo> observableListVeiculo;
     private VeiculoDAO veiculoDAO = new VeiculoDAOImpl();
-    private Stage dialoStage;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
 
     @FXML
-    public void handleCancelarAtualizacao(ActionEvent event) throws IOException{
+    public void handleCancelarAtualizacao(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculo.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -53,43 +45,63 @@ public class FXMLVeiculoEditarController implements Initializable {
         stage.show();
     }
 
-    private Veiculo AtualizarVeiculo() {
+    @FXML
+    public void handleAtualizarVeiculo(ActionEvent event){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         Veiculo obj = new Veiculo();
         try {
-            if(validarEntradasDeDados()){
-                obj.setRg_fab(textFieldRegFab.getText().toUpperCase());
-                obj.setPlaca(textFieldPlaca.getText().toUpperCase());
+            if (validarEntradasDeDados()) {
+                obj.setRg_fab(textFieldRegFab.getText());
+                obj.setPlaca(textFieldPlaca.getText());
                 obj.setMarca(textFieldMarca.getText());
                 obj.setModelo(textFieldModelo.getText());
                 clearFileds();
                 alert.setTitle("SUCESSO!");
-                alert.setHeaderText("Veículo Cadastrado!");
+                alert.setHeaderText("Veículo Atualizado!");
                 alert.show();
+                veiculoDAO.update(obj);
             }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculo.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return obj;
     }
 
-    private boolean validarEntradasDeDados(){
+    @FXML
+    public void HandleCarregarCampos(String rgFab, String placa, String marca, String modelo) {
+        textFieldRegFab.setText(rgFab);
+        textFieldPlaca.setText(placa);
+        textFieldMarca.setText(marca);
+        textFieldModelo.setText(modelo);
+    }
+
+    private boolean validarEntradasDeDados() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        Veiculo obj = new Veiculo();
         String errorMessage = "";
+        Veiculo obj = new Veiculo();
+
         if (textFieldRegFab.getText() == null || textFieldRegFab.getText().trim().equals("")) {
             errorMessage += "RegFab Inválido: \n";
-        } if (textFieldPlaca.getText() == null || textFieldPlaca.getText().trim().equals("")) {
+        }
+        if (textFieldPlaca.getText() == null || textFieldPlaca.getText().trim().equals("")) {
             errorMessage += "Placa Inválida: \n";
-        } if (textFieldMarca.getText() == null || textFieldMarca.getText().trim().equals("")) {
+        }
+        if (textFieldMarca.getText() == null || textFieldMarca.getText().trim().equals("")) {
             errorMessage += "Marca Inválida: \n";
-        } if (textFieldModelo.getText() == null || textFieldModelo.getText().trim().equals("")) {
+        }
+        if (textFieldModelo.getText() == null || textFieldModelo.getText().trim().equals("")) {
             errorMessage += "Modelo Inválido: \n";
-        } if (errorMessage.length() == 0) {
+        }
+        if (errorMessage.length() == 0) {
             return true;
         } else {
             clearFileds();
-            alert.setTitle("ERROR ao Cadastrar Veículo!");
+            alert.setTitle("ERROR ao Atualizar Veículo!");
             alert.setHeaderText("Campos inválidos, por favor, corrija!");
             alert.setContentText(errorMessage);
             alert.show();
