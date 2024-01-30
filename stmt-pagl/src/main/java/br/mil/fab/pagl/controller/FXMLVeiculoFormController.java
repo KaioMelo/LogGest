@@ -3,10 +3,12 @@ package br.mil.fab.pagl.controller;
 import br.mil.fab.pagl.dao.VeiculoDAO;
 import br.mil.fab.pagl.dao.impl.VeiculoDAOImpl;
 import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.util.Utils;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -15,9 +17,17 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class FXMLVeiculoEditarController {
+public class FXMLVeiculoFormController implements Initializable {
+    private List<Veiculo> listVeiculos;
+    private ObservableList<Veiculo> observableListVeiculo;
+    private VeiculoDAO veiculoDAO = new VeiculoDAOImpl();
+    private Veiculo veiculo;
+    @FXML
+    private TextField textFieldIdVeiculo;
     @FXML
     private TextField textFieldRegFab;
     @FXML
@@ -31,18 +41,17 @@ public class FXMLVeiculoEditarController {
     @FXML
     private Button buttonCancelar;
 
-    private List<Veiculo> listVeiculos;
-    private ObservableList<Veiculo> observableListVeiculo;
-    private VeiculoDAO veiculoDAO = new VeiculoDAOImpl();
+    public void setVeiculo(Veiculo veiculo){
+        this.veiculo = veiculo;
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
 
     @FXML
     public void handleCancelarAtualizacao(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculo.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        Utils.currentStage(event).close();
     }
 
     @FXML
@@ -51,6 +60,7 @@ public class FXMLVeiculoEditarController {
         Veiculo obj = new Veiculo();
         try {
             if (validarEntradasDeDados()) {
+                obj.setId_veiculo(Integer.parseInt(textFieldIdVeiculo.getText()));
                 obj.setRg_fab(textFieldRegFab.getText());
                 obj.setPlaca(textFieldPlaca.getText());
                 obj.setMarca(textFieldMarca.getText());
@@ -60,24 +70,11 @@ public class FXMLVeiculoEditarController {
                 alert.setHeaderText("Veículo Atualizado!");
                 alert.show();
                 veiculoDAO.update(obj);
+                Utils.currentStage(event).close();
             }
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculo.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    @FXML
-    public void HandleCarregarCampos(String rgFab, String placa, String marca, String modelo) {
-        textFieldRegFab.setText(rgFab);
-        textFieldPlaca.setText(placa);
-        textFieldMarca.setText(marca);
-        textFieldModelo.setText(modelo);
     }
 
     private boolean validarEntradasDeDados() {
@@ -114,5 +111,20 @@ public class FXMLVeiculoEditarController {
         textFieldPlaca.setText("");
         textFieldMarca.setText("");
         textFieldModelo.setText("");
+    }
+
+    public void updateFormData(){
+        if(veiculo == null){
+            throw  new IllegalArgumentException("Veículo está nulo");
+        }
+        textFieldIdVeiculo.setText(String.valueOf(veiculo.getId_veiculo()));
+        textFieldRegFab.setText(String.valueOf(veiculo.getRg_fab()));
+        textFieldPlaca.setText(String.valueOf(veiculo.getPlaca()));
+        textFieldMarca.setText(String.valueOf(veiculo.getMarca()));
+        textFieldModelo.setText(String.valueOf(veiculo.getModelo()));
+    }
+
+    public void setVeiculoDAO(VeiculoDAO veiculoDAO) {
+        this.veiculoDAO = veiculoDAO;
     }
 }

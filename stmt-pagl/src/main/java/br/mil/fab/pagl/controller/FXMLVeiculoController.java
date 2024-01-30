@@ -3,6 +3,9 @@ package br.mil.fab.pagl.controller;
 import br.mil.fab.pagl.dao.VeiculoDAO;
 import br.mil.fab.pagl.dao.impl.VeiculoDAOImpl;
 import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.util.Alerts;
+import br.mil.fab.pagl.util.Utils;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,6 +29,8 @@ public class FXMLVeiculoController implements Initializable {
     @FXML
     private TableView<Veiculo> tableViewVeiculo;
     @FXML
+    private TableColumn<Veiculo, String> tableColumnIDVeiculo;
+    @FXML
     private TableColumn<Veiculo, String> tableColumnRegFab;
     @FXML
     private TableColumn<Veiculo, String> tableColumnPlaca;
@@ -31,6 +38,10 @@ public class FXMLVeiculoController implements Initializable {
     private TableColumn<Veiculo, String> tableColumnMarca;
     @FXML
     private TableColumn<Veiculo, String> tableColumnModelo;
+    @FXML
+    private TableColumn<Veiculo, Veiculo> tableColumnUPDATE;
+    @FXML
+    private TableColumn<Veiculo, String> tableColumnDELETE;
     @FXML
     private TextField textFieldRegFab;
     @FXML
@@ -51,7 +62,6 @@ public class FXMLVeiculoController implements Initializable {
     private List<Veiculo> listVeiculos;
     private ObservableList<Veiculo> observableListVeiculo;
     private VeiculoDAO veiculoDAO = new VeiculoDAOImpl();
-    private Stage dialoStage;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -93,51 +103,20 @@ public class FXMLVeiculoController implements Initializable {
 
     @FXML
     public void carregarTableViewVeiculos() {
+        tableColumnIDVeiculo.setCellValueFactory(new PropertyValueFactory<>("id_veiculo"));
         tableColumnRegFab.setCellValueFactory(new PropertyValueFactory<>("rg_fab"));
         tableColumnPlaca.setCellValueFactory(new PropertyValueFactory<>("placa"));
         tableColumnMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
         tableColumnModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
         tableViewVeiculo.getItems().addAll(veiculoDAO.findAll());
+        initEditButtons();
     }
 
     @FXML
-    public void handleEditarVeiculo(ActionEvent event) throws IOException {
-        Veiculo selectedVeiculo = tableViewVeiculo.getSelectionModel().getSelectedItem();
-        if (selectedVeiculo != null) {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLVeiculoEditar.fxml"));
-            Parent root = loader.load();
-
-            FXMLVeiculoEditarController editarVeiculo = loader.getController();
-
-            editarVeiculo.HandleCarregarCampos(
-                    selectedVeiculo.getRg_fab(),
-                    selectedVeiculo.getPlaca(),
-                    selectedVeiculo.getMarca(),
-                    selectedVeiculo.getModelo()
-            );
-
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        }
-    }
-
-    @FXML
-    public void handleDeletarVeiculo() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        String rgFab = "";
-        Veiculo selectedVeiculo = tableViewVeiculo.getSelectionModel().getSelectedItem();
-        if (selectedVeiculo != null) {
-            rgFab = selectedVeiculo.getRg_fab();
-        }
-        clearFileds();
-        alert.setTitle("SUCESSO!");
-        alert.setHeaderText("Veículo Deletado!");
-        alert.show();
-        veiculoDAO.deleteByRgFab(rgFab);
-        tableViewVeiculo.getItems().clear();
-        carregarTableViewVeiculos();
+    public void handleEditarVeiculo(ActionEvent event){
+        Stage parentStage = Utils.currentStage(event);
+        Veiculo obj = new Veiculo();
+        createDialogForm(obj,"/view/FXMLVeiculoForm.fxml", parentStage);
     }
 
     public Veiculo registarVeiculo() {
@@ -193,5 +172,45 @@ public class FXMLVeiculoController implements Initializable {
         textFieldPlaca.setText("");
         textFieldMarca.setText("");
         textFieldModelo.setText("");
+    }
+
+    private void createDialogForm(Veiculo obj, String absolutName, Stage parentStage){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
+            Pane pane = loader.load();
+
+            FXMLVeiculoFormController controller = loader.getController();
+            controller.setVeiculo(obj);
+            controller.updateFormData();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Entre com os dados de atualização");
+            dialogStage.setScene(new Scene(pane));
+            dialogStage.setResizable(false);
+            dialogStage.initOwner(parentStage);
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.showAndWait();
+        }catch (IOException e){
+            Alerts.showAlert("IO Exception", "Error Loading View", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    private void initEditButtons() {
+        tableColumnUPDATE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tableColumnUPDATE.setCellFactory(param -> new TableCell<Veiculo, Veiculo>() {
+            private final Button button = new Button("Editar");
+            @Override
+            protected void updateItem(Veiculo obj, boolean empty) {
+                super.updateItem(obj, empty);
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(button);
+                button.setOnAction(
+                        event -> createDialogForm(
+                                obj, "/view/FXMLVeiculoForm.fxml",Utils.currentStage(event)));
+            }
+        });
     }
 }

@@ -41,7 +41,7 @@ public class VeiculoDAOImpl implements VeiculoDAO {
             System.out.println("Não foi possivel atualizar o registro");
             return;
         }
-        String sql = "UPDATE veiculo SET rg_fab=?, placao=?, marca=?, modelo=? WHERE id_veiculo=?";
+        String sql = "UPDATE veiculo SET rg_fab=?, placa=?, marca=?, modelo=? WHERE id_veiculo=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, veiculo.getRg_fab());

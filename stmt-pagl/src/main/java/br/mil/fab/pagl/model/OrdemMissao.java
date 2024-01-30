@@ -9,29 +9,23 @@ public class OrdemMissao implements Serializable {
     private final static long serialVersionUID = 1L;
 
     private Integer id_ordem;
-    private SimpleDateFormat data;
+    private String soliciante;
+    private String contato;
     private String destino;
     private String servico;
-    private String contato;
-    private String combustivel;
-    private String hodometro;
+    private SimpleDateFormat data;
     private SimpleTimeZone hora;
 
-    private Veiculo veiculo;
-    private Motorista motorista;
     public OrdemMissao() {
     }
 
-    public OrdemMissao(Integer id_ordem, SimpleDateFormat data, String destino,
-                       String servico, String contato, String combustivel,
-                       String hodometro, SimpleTimeZone hora) {
+    public OrdemMissao(Integer id_ordem, String soliciante, String contato, String destino, String servico, SimpleDateFormat data, SimpleTimeZone hora) {
         this.id_ordem = id_ordem;
-        this.data = data;
+        this.soliciante = soliciante;
+        this.contato = contato;
         this.destino = destino;
         this.servico = servico;
-        this.contato = contato;
-        this.combustivel = combustivel;
-        this.hodometro = hodometro;
+        this.data = data;
         this.hora = hora;
     }
 
@@ -43,13 +37,20 @@ public class OrdemMissao implements Serializable {
         this.id_ordem = id_ordem;
     }
 
-    public SimpleDateFormat getData() {
-        return data;
+    public String getSoliciante() {
+        return soliciante;
     }
 
+    public void setSoliciante(String soliciante) {
+        this.soliciante = soliciante;
+    }
 
-    public void setData(SimpleDateFormat data) {
-        this.data = data;
+    public String getContato() {
+        return contato;
+    }
+
+    public void setContato(String contato) {
+        this.contato = contato;
     }
 
     public String getDestino() {
@@ -68,28 +69,12 @@ public class OrdemMissao implements Serializable {
         this.servico = servico;
     }
 
-    public String getContato() {
-        return contato;
+    public SimpleDateFormat getData() {
+        return data;
     }
 
-    public void setContato(String contato) {
-        this.contato = contato;
-    }
-
-    public String getCombustivel() {
-        return combustivel;
-    }
-
-    public void setCombustivel(String combustivel) {
-        this.combustivel = combustivel;
-    }
-
-    public String getHodometro() {
-        return hodometro;
-    }
-
-    public void setHodometro(String hodometro) {
-        this.hodometro = hodometro;
+    public void setData(SimpleDateFormat data) {
+        this.data = data;
     }
 
     public SimpleTimeZone getHora() {
@@ -98,22 +83,6 @@ public class OrdemMissao implements Serializable {
 
     public void setHora(SimpleTimeZone hora) {
         this.hora = hora;
-    }
-
-    public Veiculo getVeiculo() {
-        return veiculo;
-    }
-
-    public void setVeiculo(Veiculo veiculo) {
-        this.veiculo = veiculo;
-    }
-
-    public Motorista getMotorista() {
-        return motorista;
-    }
-
-    public void setMotorista(Motorista motorista) {
-        this.motorista = motorista;
     }
 
     @Override
