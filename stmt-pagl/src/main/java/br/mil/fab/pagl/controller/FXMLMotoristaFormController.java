@@ -6,63 +6,61 @@ import br.mil.fab.pagl.dao.impl.MotoristaDAOImpl;
 import br.mil.fab.pagl.dao.impl.VeiculoDAOImpl;
 import br.mil.fab.pagl.model.Motorista;
 import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.util.Utils;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class FXMLMotoristaEditarController implements Initializable {
+public class FXMLMotoristaFormController implements Initializable {
+    private List<Veiculo> listVeiculos;
+    private ObservableList<Veiculo> observableListVeiculo;
+    private MotoristaDAO motoristaDAO = new MotoristaDAOImpl();
+    private Motorista motorista;
+    @FXML
+    private TextField textFieldIDMotorista;
     @FXML
     private TextField textFieldNomeMotorista;
     @FXML
     private TextField textFieldCNH;
     @FXML
-    private  TextField textFieldOM;
+    private TextField textFieldOM;
     @FXML
-    private  TextField textFieldSessao;
+    private TextField textFieldSessao;
     @FXML
     private Button buttonEditar;
     @FXML
     private Button buttonCancelar;
 
-    private List<Motorista> listaMotoristas;
-    private ObservableList<Motorista> observableListMotorista;
-    private MotoristaDAO motoristaDAO = new MotoristaDAOImpl();
-    private Stage dialoStage;
-
+    public void setMotorista(Motorista motorista){
+        this.motorista = motorista;
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
     @FXML
-    public void handleCancelarAtualizacao(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLMotorista.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+    public void handleCancelarAtualizacao(ActionEvent event) throws IOException {
+        Utils.currentStage(event).close();
     }
 
-    private Motorista AtualizarMotorista() {
+    @FXML
+    public void handleAtualizarVeiculo(ActionEvent event){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         Motorista obj = new Motorista();
         try {
-            if(validarEntradasDeDados()){
-                obj.setNome_motorista(textFieldNomeMotorista.getText().toUpperCase());
+            if (validarEntradasDeDados()) {
+                obj.setId_motorista(Integer.parseInt(textFieldIDMotorista.getText()));
+                obj.setNome_motorista(textFieldNomeMotorista.getText());
                 obj.setCnh(Integer.parseInt(textFieldCNH.getText()));
                 obj.setOm(textFieldOM.getText());
                 obj.setSessao(textFieldSessao.getText());
@@ -70,11 +68,12 @@ public class FXMLMotoristaEditarController implements Initializable {
                 alert.setTitle("SUCESSO!");
                 alert.setHeaderText("Motorista Atualizado!");
                 alert.show();
+                motoristaDAO.update(obj);
+                Utils.currentStage(event).close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return obj;
     }
 
     private boolean validarEntradasDeDados(){
@@ -106,5 +105,20 @@ public class FXMLMotoristaEditarController implements Initializable {
         textFieldCNH.setText("");
         textFieldOM.setText("");
         textFieldSessao.setText("");
+    }
+
+    public void updateFormData(){
+        if(motorista == null){
+            throw  new IllegalArgumentException("Motorista está nulo");
+        }
+        textFieldIDMotorista.setText(String.valueOf(motorista.getId_motorista()));
+        textFieldNomeMotorista.setText(String.valueOf(motorista.getNome_motorista()));
+        textFieldCNH.setText(String.valueOf(motorista.getCnh()));
+        textFieldOM.setText(String.valueOf(motorista.getOm()));
+        textFieldSessao.setText(String.valueOf(motorista.getSessao()));
+    }
+
+    public void setMotoristaDAO(MotoristaDAO motoristaDAO) {
+        this.motoristaDAO = motoristaDAO;
     }
 }

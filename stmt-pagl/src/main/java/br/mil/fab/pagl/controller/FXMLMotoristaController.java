@@ -4,6 +4,9 @@ import br.mil.fab.pagl.dao.MotoristaDAO;
 import br.mil.fab.pagl.dao.impl.MotoristaDAOImpl;
 import br.mil.fab.pagl.model.Motorista;
 import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.util.Alerts;
+import br.mil.fab.pagl.util.Utils;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,16 +14,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -29,11 +32,17 @@ public class FXMLMotoristaController implements Initializable {
     @FXML
     private TableView<Motorista> tableViewMotorista;
     @FXML
+    private TableColumn<Motorista, String> tableColumnID;
+    @FXML
     private TableColumn<Motorista, String> tableColumnNome;
     @FXML
     private TableColumn<Motorista, Integer> tableColumnCNH;
     @FXML
     private TableColumn<Motorista, String> tableColumnOM;
+    @FXML
+    private TableColumn<Motorista, Motorista> tableColumnUPDATE;
+    @FXML
+    private TableColumn<Motorista, Motorista> tableColumnDELETE;
     @FXML
     private TableColumn<Motorista, String> tableColumnSessao;
     @FXML
@@ -86,11 +95,14 @@ public class FXMLMotoristaController implements Initializable {
 
     @FXML
     public void carregarTableViewMotorista() {
+        tableColumnID.setCellValueFactory(new PropertyValueFactory<>("id_motorista"));
         tableColumnNome.setCellValueFactory(new PropertyValueFactory<>("nome_motorista"));
         tableColumnCNH.setCellValueFactory(new PropertyValueFactory<>("cnh"));
         tableColumnOM.setCellValueFactory(new PropertyValueFactory<>("om"));
         tableColumnSessao.setCellValueFactory(new PropertyValueFactory<>("sessao"));
         tableViewMotorista.getItems().addAll(motoristaDAO.findAll());
+        initEditButtons();
+        initRemoveButtons();
     }
 
     private Motorista registrarMotorista(){
@@ -111,33 +123,6 @@ public class FXMLMotoristaController implements Initializable {
             e.printStackTrace();
         }
         return obj;
-    }
-
-    @FXML
-    public void handleEditarMotorista(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLMotoristaEditar.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    public void handleDeletarMotorista(){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        Integer cnh = null;
-        Motorista selectedMotorista = tableViewMotorista.getSelectionModel().getSelectedItem();
-        if (selectedMotorista != null) {
-            cnh = selectedMotorista.getCnh();
-        }
-        clearFileds();
-        alert.setTitle("SUCESSO!");
-        alert.setHeaderText("Motorista Deletado!");
-        alert.show();
-        motoristaDAO.deleteByCNH(cnh);
-        tableViewMotorista.getItems().clear();
-        carregarTableViewMotorista();
     }
 
     private boolean validarEntradasDeDados(){
@@ -169,5 +154,77 @@ public class FXMLMotoristaController implements Initializable {
         textFieldCNH.setText("");
         textFieldOM.setText("");
         textFieldSessao.setText("");
+    }
+
+    private void createDialogForm(Motorista obj, String absolutName, Stage parentStage){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
+            Pane pane = loader.load();
+
+            FXMLMotoristaFormController controller = loader.getController();
+            controller.setMotorista(obj);
+            controller.updateFormData();
+
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Entre com os dados de atualização");
+            dialogStage.setScene(new Scene(pane));
+            dialogStage.setResizable(false);
+            dialogStage.initOwner(parentStage);
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.showAndWait();
+        }catch (IOException e){
+            Alerts.showAlert("IO Exception", "Error Loading View", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    private void initEditButtons() {
+        tableColumnUPDATE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tableColumnUPDATE.setCellFactory(param -> new TableCell<Motorista, Motorista>() {
+            private final Button button = new Button("Editar");
+            @Override
+            protected void updateItem(Motorista obj, boolean empty) {
+                super.updateItem(obj, empty);
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(button);
+                button.setOnAction(
+                        event -> createDialogForm(
+                                obj, "/view/FXMLMotoristaForm.fxml", Utils.currentStage(event)));
+            }
+        });
+    }
+
+    private void initRemoveButtons() {
+        tableColumnDELETE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tableColumnDELETE.setCellFactory(param -> new TableCell<Motorista, Motorista>() {
+            private final Button button = new Button("Remover");
+            @Override
+            protected void updateItem(Motorista obj, boolean empty) {
+                super.updateItem(obj, empty);
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(button);
+                button.setOnAction(event -> removeMotorista(obj));
+            }
+        });
+    }
+
+    private void removeMotorista(Motorista obj) {
+        Optional<ButtonType> result = Alerts.showConfirmation("Confirmação", "Tem certeza que deseja deletar:");
+        if(result.get() == ButtonType.OK){
+            if(motoristaDAO == null){
+                throw  new IllegalStateException("Service was null");
+            }
+            try{
+                motoristaDAO.deleteById(obj.getId_motorista());
+                carregarTableViewMotorista();
+            }catch (Exception e){
+                Alerts.showAlert("Erro ao remover Motorista", null, e.getMessage(), Alert.AlertType.ERROR);
+            }
+        }
     }
 }

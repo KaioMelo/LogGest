@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -50,20 +49,17 @@
                </children>
             </GridPane>
             <Button layoutX="297.0" layoutY="471.0" mnemonicParsing="false" onAction="#handleAdicionarMotorista" prefHeight="26.0" prefWidth="300.0" text="Adicionar" />
-            <TableView fx:id="tableViewMotorista" layoutX="650.0" prefHeight="500.0" prefWidth="550.0">
+            <TableView fx:id="tableViewMotorista" layoutX="633.0" prefHeight="600.0" prefWidth="566.0">
               <columns>
-                <TableColumn fx:id="tableColumnNome" prefWidth="123.20001220703125" text="NOME" />
-                  <TableColumn fx:id="tableColumnCNH" prefWidth="105.5999755859375" text="CNH" />
-                <TableColumn fx:id="tableColumnOM" prefWidth="68.00003051757812" text="OM" />
-                  <TableColumn fx:id="tableColumnSessao" prefWidth="79.99992675781249" text="SESSÃO" />
+                  <TableColumn fx:id="tableColumnID" prefWidth="51.199951171875" text="ID" />
+                <TableColumn fx:id="tableColumnNome" prefWidth="112.0" text="NOME" />
+                  <TableColumn fx:id="tableColumnCNH" prefWidth="95.20001220703125" text="CNH" />
+                <TableColumn fx:id="tableColumnOM" prefWidth="71.20001220703125" text="OM" />
+                  <TableColumn fx:id="tableColumnSessao" prefWidth="107.1998291015625" text="SESSÃO" />
+                  <TableColumn fx:id="tableColumnUPDATE" prefWidth="56.0" />
+                  <TableColumn fx:id="tableColumnDELETE" prefWidth="69.60009765625" />
               </columns>
             </TableView>
-            <HBox layoutX="844.0" layoutY="538.0" spacing="20.0">
-               <children>
-                  <Button fx:id="buttonEditar" mnemonicParsing="false" onAction="#handleEditarMotorista" prefHeight="26.0" prefWidth="75.0" text="Editar" />
-                  <Button fx:id="buttonDeletar" mnemonicParsing="false" onAction="#handleDeletarMotorista" prefHeight="26.0" prefWidth="75.0" text="Deletar" />
-               </children>
-            </HBox>
             <GridPane layoutX="70.0" layoutY="270.0" prefHeight="230.0" prefWidth="163.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />

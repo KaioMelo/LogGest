@@ -7,7 +7,7 @@ import java.util.List;
 public interface MotoristaDAO {
     void create (Motorista obj);
     void update (Motorista obj);
-    void deleteByCNH(Integer cnh);
+    void deleteById(Integer id);
     void findById(Integer id);
     List<Motorista> findAll();
 }

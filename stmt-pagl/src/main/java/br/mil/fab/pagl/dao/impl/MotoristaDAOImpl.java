@@ -57,11 +57,11 @@ public class MotoristaDAOImpl implements MotoristaDAO {
     }
 
     @Override
-    public void deleteByCNH(Integer cnh) {
-        String sql = "DELETE FROM motorista WHERE cnh=?";
+    public void deleteById(Integer id) {
+        String sql = "DELETE FROM motorista WHERE id_motorista=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, cnh);
+            ps.setInt(1, id);
             ps.executeUpdate();
         }
         catch (SQLException e){

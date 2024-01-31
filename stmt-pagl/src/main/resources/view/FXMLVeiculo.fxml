@@ -46,15 +46,15 @@
                </children>
             </GridPane>
             <Button fx:id="buttonAdicionar" layoutX="300.0" layoutY="471.0" mnemonicParsing="false" onAction="#handleAdicionarVeiculo" prefHeight="26.0" prefWidth="300.0" text="Adicionar" />
-            <TableView fx:id="tableViewVeiculo" layoutX="697.0" prefHeight="600.0" prefWidth="502.0">
+            <TableView fx:id="tableViewVeiculo" layoutX="712.0" prefHeight="600.0" prefWidth="487.0">
               <columns>
-                  <TableColumn fx:id="tableColumnIDVeiculo" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="tableColumnRegFab" prefWidth="84.0" text="REG FAB" />
-                  <TableColumn fx:id="tableColumnPlaca" prefWidth="81.60003662109375" text="PLACA" />
-                <TableColumn fx:id="tableColumnMarca" prefWidth="74.4000244140625" text="MARCA" />
-                  <TableColumn fx:id="tableColumnModelo" prefWidth="79.99993896484375" text="MODELO" />
-                  <TableColumn fx:id="tableColumnUPDATE" onEditStart="#handleEditarVeiculo" prefWidth="52.800048828125" />
-                  <TableColumn fx:id="tableColumnDELETE" prefWidth="51.19998779296873" />
+                  <TableColumn fx:id="tableColumnIDVeiculo" prefWidth="45.60003662109375" text="ID" />
+                <TableColumn fx:id="tableColumnRegFab" prefWidth="76.0" text="REG FAB" />
+                  <TableColumn fx:id="tableColumnPlaca" prefWidth="71.20001220703125" text="PLACA" />
+                <TableColumn fx:id="tableColumnMarca" prefWidth="77.5999755859375" text="MARCA" />
+                  <TableColumn fx:id="tableColumnModelo" prefWidth="88.00006103515625" text="MODELO" />
+                  <TableColumn fx:id="tableColumnUPDATE" onEditStart="#handleEditarVeiculo" prefWidth="53.5999755859375" />
+                  <TableColumn fx:id="tableColumnDELETE" prefWidth="71.199951171875" />
               </columns>
             </TableView>
             <GridPane layoutX="70.0" layoutY="270.0" prefHeight="230.0" prefWidth="163.0">
