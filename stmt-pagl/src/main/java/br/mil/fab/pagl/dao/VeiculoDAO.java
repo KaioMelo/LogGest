@@ -8,6 +8,5 @@ public interface VeiculoDAO {
     void create (Veiculo obj);
     void update (Veiculo obj);
     void deleteById(Integer rgFab);
-    void findById(Integer id);
     List<Veiculo> findAll();
 }

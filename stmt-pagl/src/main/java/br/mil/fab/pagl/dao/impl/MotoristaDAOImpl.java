@@ -70,28 +70,6 @@ public class MotoristaDAOImpl implements MotoristaDAO {
     }
 
     @Override
-    public void findById(Integer id) {
-        String sql = "SELECT * FROM motorista WHERE id_motorista=?";
-        Motorista motorista = null;
-        try(Connection con = ConfigConnectionDB.connect();
-            PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setInt(1, id);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-                motorista = new Motorista(
-                        rs.getInt("id_motorista"),
-                        rs.getString("nome_motorista"),
-                        rs.getInt("cnh"),
-                        rs.getString("om"),
-                        rs.getString("sessao"));
-            };
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
-
-    @Override
     public List<Motorista> findAll() {
         String sql = "SELECT * FROM motorista";
         List<Motorista> motoristaList = new ArrayList<>();

@@ -8,6 +8,5 @@ public interface MotoristaDAO {
     void create (Motorista obj);
     void update (Motorista obj);
     void deleteById(Integer id);
-    void findById(Integer id);
     List<Motorista> findAll();
 }

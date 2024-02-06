@@ -21,7 +21,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -81,7 +80,7 @@ public class FXMLVeiculoController implements Initializable {
 
     @FXML
     public void handleHome(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLHome.fxml", event);
+        loadScene("/view/FXMLOrdemMissao.fxml", event);
     }
 
     @FXML

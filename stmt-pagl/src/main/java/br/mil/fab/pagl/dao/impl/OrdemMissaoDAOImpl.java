@@ -1,31 +1,32 @@
 package br.mil.fab.pagl.dao.impl;
 
-import br.mil.fab.pagl.dao.VeiculoDAO;
-import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.dao.OrdemMissaoDAO;
+import br.mil.fab.pagl.model.OrdemMissao;
 import br.mil.fab.pagl.util.ConfigConnectionDB;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VeiculoDAOImpl implements VeiculoDAO {
+public class OrdemMissaoDAOImpl implements OrdemMissaoDAO {
     @Override
-    public void create(Veiculo veiculo) {
+    public void create(OrdemMissao obj) {
         try(Connection con = ConfigConnectionDB.connect();
             ) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO veiculo (rg_fab, placa, marca, modelo) " +
-                    "VALUES (?,?,?,?)",
+            PreparedStatement ps = con.prepareStatement("INSERT INTO missao (solicitante, contato, destino, servico, data) " +
+                    "VALUES (?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, veiculo.getRg_fab());
-            ps.setString(2, veiculo.getPlaca());
-            ps.setString(3, veiculo.getMarca());
-            ps.setString(4, veiculo.getModelo());
+            ps.setString(1, obj.getSoliciante());
+            ps.setString(2, obj.getContato());
+            ps.setString(3, obj.getDestino());
+            ps.setString(4, obj.getServico());
+            ps.setDate(5, Date.valueOf(obj.getData()));
             int rowsAffected = ps.executeUpdate();
             if(rowsAffected > 0){
                 ResultSet rs = ps.getGeneratedKeys();
                 if(rs.next()){
                     int id = rs.getInt(1);
-                    veiculo.setId_veiculo(id);
+                    obj.setId_ordem(id);
                 }
                 rs.close();
             }
@@ -36,19 +37,20 @@ public class VeiculoDAOImpl implements VeiculoDAO {
     }
 
     @Override
-    public void update(Veiculo veiculo) {
-        if (veiculo == null || veiculo.getId_veiculo() == null) {
+    public void update(OrdemMissao obj) {
+        if (obj == null || obj.getId_ordem() == null) {
             System.out.println("Não foi possivel atualizar o registro");
             return;
         }
-        String sql = "UPDATE veiculo SET rg_fab=?, placa=?, marca=?, modelo=? WHERE id_veiculo=?";
+        String sql = "UPDATE missao SET solicitante=?, contato=?, destino=?, servico=?, data=? WHERE id_ordem=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setString(1, veiculo.getRg_fab());
-            ps.setString(2, veiculo.getPlaca());
-            ps.setString(3, veiculo.getMarca());
-            ps.setString(4, veiculo.getModelo());
-            ps.setInt(5, veiculo.getId_veiculo());
+            ps.setString(1, obj.getSoliciante());
+            ps.setString(2, obj.getContato());
+            ps.setString(3, obj.getDestino());
+            ps.setString(4, obj.getServico());
+            ps.setDate(5, Date.valueOf(obj.getData()));
+            ps.setInt(6, obj.getId_ordem());
             ps.executeUpdate();
         }
         catch (SQLException e){
@@ -58,7 +60,7 @@ public class VeiculoDAOImpl implements VeiculoDAO {
 
     @Override
     public void deleteById(Integer id) {
-        String sql = "DELETE FROM veiculo WHERE id_veiculo=?";
+        String sql = "DELETE FROM missao WHERE id_ordem=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
@@ -70,25 +72,26 @@ public class VeiculoDAOImpl implements VeiculoDAO {
     }
 
     @Override
-    public List<Veiculo> findAll() {
-        String sql = "SELECT * FROM veiculo";
-        List<Veiculo> veiculoList = new ArrayList<>();
+    public List<OrdemMissao> findAll() {
+        String sql = "SELECT * FROM missao";
+        List<OrdemMissao> missaoList = new ArrayList<>();
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)){
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
-                veiculoList.add(new Veiculo(
-                        rs.getInt("id_veiculo"),
-                        rs.getString("rg_fab"),
-                        rs.getString("placa"),
-                        rs.getString("marca"),
-                        rs.getString("modelo")
+                missaoList.add(new OrdemMissao(
+                        rs.getInt("id_ordem"),
+                        rs.getString("soliciante"),
+                        rs.getString("contato"),
+                        rs.getString("destino"),
+                        rs.getString("servico"),
+                        rs.getDate("data").toLocalDate()
                 ));
             }
             con.close();
             ps.close();
             rs.close();
-            return veiculoList;
+            return missaoList;
         }
         catch (SQLException e){
             e.printStackTrace();

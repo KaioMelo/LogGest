@@ -29,7 +29,7 @@ public class FXMLLoginController implements Initializable {
 
     @FXML
     public void entrarInterfaceHome(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLHome.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLOrdemMissao.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();

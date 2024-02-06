@@ -72,7 +72,7 @@ public class FXMLMotoristaController implements Initializable {
 
     @FXML
     public void handleHome(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLHome.fxml", event);
+        loadScene("/view/FXMLOrdemMissao.fxml", event);
     }
 
     @FXML
