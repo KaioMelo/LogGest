@@ -3,6 +3,7 @@ package br.mil.fab.pagl.controller;
 import br.mil.fab.pagl.dao.VeiculoDAO;
 import br.mil.fab.pagl.dao.impl.VeiculoDAOImpl;
 import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.service.VeiculoService;
 import br.mil.fab.pagl.util.Utils;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,9 +23,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class FXMLVeiculoFormController implements Initializable {
-    private List<Veiculo> listVeiculos;
-    private ObservableList<Veiculo> observableListVeiculo;
-    private VeiculoDAO veiculoDAO = new VeiculoDAOImpl();
     private Veiculo veiculo;
     @FXML
     private TextField textFieldIdVeiculo;
@@ -41,8 +39,16 @@ public class FXMLVeiculoFormController implements Initializable {
     @FXML
     private Button buttonCancelar;
 
+    private List<Veiculo> listVeiculos;
+    private ObservableList<Veiculo> observableListVeiculo;
+
+    private VeiculoService service = new VeiculoService();
     public void setVeiculo(Veiculo veiculo){
         this.veiculo = veiculo;
+    }
+
+    private void setVeiculoService(VeiculoService service){
+        this.service = service;
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -69,7 +75,7 @@ public class FXMLVeiculoFormController implements Initializable {
                 alert.setTitle("SUCESSO!");
                 alert.setHeaderText("Veículo Atualizado!");
                 alert.show();
-                veiculoDAO.update(obj);
+                service.saveOrUpdate(obj);
                 Utils.currentStage(event).close();
             }
         } catch (Exception e) {
@@ -122,9 +128,5 @@ public class FXMLVeiculoFormController implements Initializable {
         textFieldPlaca.setText(String.valueOf(veiculo.getPlaca()));
         textFieldMarca.setText(String.valueOf(veiculo.getMarca()));
         textFieldModelo.setText(String.valueOf(veiculo.getModelo()));
-    }
-
-    public void setVeiculoDAO(VeiculoDAO veiculoDAO) {
-        this.veiculoDAO = veiculoDAO;
     }
 }

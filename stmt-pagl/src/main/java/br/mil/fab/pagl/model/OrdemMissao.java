@@ -9,7 +9,7 @@ public class OrdemMissao implements Serializable {
     private final static long serialVersionUID = 1L;
 
     private Integer id_ordem;
-    private String soliciante;
+    private String solicitante;
     private String contato;
     private String destino;
     private String servico;
@@ -18,9 +18,9 @@ public class OrdemMissao implements Serializable {
     public OrdemMissao() {
     }
 
-    public OrdemMissao(Integer id_ordem, String soliciante, String contato, String destino, String servico, Date data) {
+    public OrdemMissao(Integer id_ordem, String solicitante, String contato, String destino, String servico, Date data) {
         this.id_ordem = id_ordem;
-        this.soliciante = soliciante;
+        this.solicitante = solicitante;
         this.contato = contato;
         this.destino = destino;
         this.servico = servico;
@@ -35,12 +35,12 @@ public class OrdemMissao implements Serializable {
         this.id_ordem = id_ordem;
     }
 
-    public String getSoliciante() {
-        return soliciante;
+    public String getSolicitante() {
+        return solicitante;
     }
 
-    public void setSoliciante(String soliciante) {
-        this.soliciante = soliciante;
+    public void setSolicitante(String solicitante) {
+        this.solicitante = solicitante;
     }
 
     public String getContato() {

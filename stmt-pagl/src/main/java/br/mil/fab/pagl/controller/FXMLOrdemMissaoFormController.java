@@ -5,6 +5,7 @@ import br.mil.fab.pagl.dao.OrdemMissaoDAO;
 import br.mil.fab.pagl.dao.impl.OrdemMissaoDAOImpl;
 import br.mil.fab.pagl.model.OrdemMissao;
 import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.service.OrdemMissaoService;
 import br.mil.fab.pagl.util.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,8 +24,6 @@ import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class FXMLOrdemMissaoFormController implements Initializable {
-    private OrdemMissaoDAO missaoDAO = new OrdemMissaoDAOImpl();
-    private OrdemMissao missao;
     @FXML
     private TextField textFieldIdMissao;
     @FXML
@@ -42,12 +41,16 @@ public class FXMLOrdemMissaoFormController implements Initializable {
     @FXML
     private Button buttonCancelar;
 
+    private OrdemMissao missao;
+    private OrdemMissaoService service = new OrdemMissaoService();
+
+    private void setOrdemMissaoService(OrdemMissaoService service){
+        this.service = service;
+    }
     public void setOrdemMissao(OrdemMissao missao){
         this.missao = missao;
     }
-    public void setOrdemMissaoDAO(OrdemMissaoDAO missaoDAO) {
-        this.missaoDAO = missaoDAO;
-    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeNodes();
@@ -68,16 +71,16 @@ public class FXMLOrdemMissaoFormController implements Initializable {
         OrdemMissao obj = new OrdemMissao();
         try {
             if (validarEntradasDeDados()) {
-                obj.setSoliciante(textFieldSolicitante.getText());
-                obj.setContato(textFieldContato.getText());
-                obj.setDestino(textFieldDestino.getText());
-                obj.setServico(textFieldServico.getText());
+                obj.setSolicitante(textFieldSolicitante.getText().trim().toUpperCase());
+                obj.setContato(textFieldContato.getText().trim());
+                obj.setServico(textFieldServico.getText().trim());
+                obj.setDestino(textFieldDestino.getText().trim());
                 obj.setData(Date.valueOf(datePickerData.getValue()));
                 clearFileds();
                 alert.setTitle("SUCESSO!");
                 alert.setHeaderText("Veículo Atualizado!");
                 alert.show();
-                missaoDAO.update(obj);
+                service.saveOrUpdate(obj);
                 Utils.currentStage(event).close();
             }
         } catch (Exception e) {
@@ -96,11 +99,11 @@ public class FXMLOrdemMissaoFormController implements Initializable {
         if (textFieldContato.getText() == null || textFieldContato.getText().trim().equals("")) {
             errorMessage += "Contato Inválido: \n";
         }
-        if (textFieldDestino.getText() == null || textFieldDestino.getText().trim().equals("")) {
-            errorMessage += "Destino Inválido: \n";
-        }
         if (textFieldServico.getText() == null || textFieldServico.getText().trim().equals("")) {
             errorMessage += "Serviço Inválido: \n";
+        }
+        if (textFieldDestino.getText() == null || textFieldDestino.getText().trim().equals("")) {
+            errorMessage += "Destino Inválido: \n";
         }
         if (errorMessage.length() == 0) {
             return true;
@@ -117,8 +120,8 @@ public class FXMLOrdemMissaoFormController implements Initializable {
     public void clearFileds() {
         textFieldSolicitante.setText("");
         textFieldContato.setText("");
-        textFieldDestino.setText("");
         textFieldServico.setText("");
+        textFieldDestino.setText("");
     }
 
     public void updateFormData(){
@@ -126,10 +129,10 @@ public class FXMLOrdemMissaoFormController implements Initializable {
             throw  new IllegalArgumentException("Missão está nulo");
         }
         textFieldIdMissao.setText(String.valueOf(missao.getId_ordem()));
-        textFieldSolicitante.setText(missao.getSoliciante());
+        textFieldSolicitante.setText(missao.getSolicitante());
         textFieldContato.setText(missao.getContato());
-        textFieldDestino.setText(missao.getDestino());
         textFieldServico.setText(missao.getServico());
+        textFieldDestino.setText(missao.getDestino());
         if(missao.getData() != null){
             datePickerData.setValue(LocalDate.ofInstant(missao.getData().toInstant(), ZoneId.systemDefault()));
         }

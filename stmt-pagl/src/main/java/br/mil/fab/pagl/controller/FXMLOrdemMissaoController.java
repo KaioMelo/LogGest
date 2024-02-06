@@ -1,19 +1,18 @@
 package br.mil.fab.pagl.controller;
 
-import br.mil.fab.pagl.dao.OrdemMissaoDAO;
-import br.mil.fab.pagl.dao.impl.OrdemMissaoDAOImpl;
 import br.mil.fab.pagl.model.OrdemMissao;
+import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.service.OrdemMissaoService;
 import br.mil.fab.pagl.util.Alerts;
 import br.mil.fab.pagl.util.Utils;
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -22,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FXMLOrdemMissaoController implements Initializable {
@@ -44,11 +44,15 @@ public class FXMLOrdemMissaoController implements Initializable {
     @FXML
     private TableColumn<OrdemMissao, OrdemMissao> tableColumnDELETE;
 
-    private OrdemMissaoDAO missaoDAO = new OrdemMissaoDAOImpl();
+    private OrdemMissaoService service = new OrdemMissaoService();
+
+    private void setOrdemMissaoService(OrdemMissaoService service){
+        this.service = service;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        carregarTableViewMotorista();
+        carregarTableViewMissoes();
     }
 
     private void loadScene(String fxmlPath, ActionEvent event) throws IOException {
@@ -76,14 +80,16 @@ public class FXMLOrdemMissaoController implements Initializable {
     }
 
     @FXML
-    public void carregarTableViewMotorista() {
+    public void carregarTableViewMissoes() {
         tableColumnID.setCellValueFactory(new PropertyValueFactory<>("id_ordem"));
         tableColumnSolicitante.setCellValueFactory(new PropertyValueFactory<>("solicitante"));
         tableColumnContato.setCellValueFactory(new PropertyValueFactory<>("contato"));
         tableColumnServico.setCellValueFactory(new PropertyValueFactory<>("servico"));
         tableColumnDestino.setCellValueFactory(new PropertyValueFactory<>("destino"));
         tableColumnData.setCellValueFactory(new PropertyValueFactory<>("data"));
-        tableViewMissoes.getItems().addAll(missaoDAO.findAll());
+        tableViewMissoes.getItems().addAll(service.findAll());
+        initEditButtons();
+        initRemoveButtons();
     }
 
     @FXML
@@ -111,6 +117,57 @@ public class FXMLOrdemMissaoController implements Initializable {
             dialogStage.showAndWait();
         }catch (IOException e){
             Alerts.showAlert("IO Exception", "Error Loading View", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    private void initEditButtons() {
+        tableColumnUPDATE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tableColumnUPDATE.setCellFactory(param -> new TableCell<OrdemMissao, OrdemMissao>() {
+            private final Button button = new Button("Editar");
+            @Override
+            protected void updateItem(OrdemMissao obj, boolean empty) {
+                super.updateItem(obj, empty);
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(button);
+                button.setOnAction(
+                        event -> createDialogForm(
+                                obj, "/view/FXMLOrdemMissaoForm.fxml",Utils.currentStage(event)));
+            }
+        });
+    }
+
+    private void initRemoveButtons() {
+        tableColumnDELETE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
+        tableColumnDELETE.setCellFactory(param -> new TableCell<OrdemMissao, OrdemMissao>() {
+            private final Button button = new Button("Remover");
+            @Override
+            protected void updateItem(OrdemMissao obj, boolean empty) {
+                super.updateItem(obj, empty);
+                if (obj == null) {
+                    setGraphic(null);
+                    return;
+                }
+                setGraphic(button);
+                button.setOnAction(event -> removerMissao(obj));
+            }
+        });
+    }
+
+    private void removerMissao(OrdemMissao obj) {
+        Optional<ButtonType> result = Alerts.showConfirmation("Confirmação", "Tem certeza que deseja deletar:");
+        if(result.get() == ButtonType.OK){
+            if(service == null){
+                throw  new IllegalStateException("Service was null");
+            }
+            try{
+                service.remove(obj);
+                carregarTableViewMissoes();
+            }catch (Exception e){
+                Alerts.showAlert("Erro ao remover Missão", null, e.getMessage(), Alert.AlertType.ERROR);
+            }
         }
     }
 }

@@ -4,6 +4,7 @@ import br.mil.fab.pagl.dao.MotoristaDAO;
 import br.mil.fab.pagl.dao.impl.MotoristaDAOImpl;
 import br.mil.fab.pagl.model.Motorista;
 import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.service.MotoristaService;
 import br.mil.fab.pagl.util.Alerts;
 import br.mil.fab.pagl.util.Utils;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -55,7 +56,11 @@ public class FXMLMotoristaController implements Initializable {
     private  TextField textFieldSessao;
     private List<Motorista> listaMotoristas;
     private ObservableList<Motorista> observableListMotorista;
-    private MotoristaDAO motoristaDAO = new MotoristaDAOImpl();
+    private MotoristaService service = new MotoristaService();
+
+    private void setMotoristaService(MotoristaService service){
+        this.service = service;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -88,7 +93,7 @@ public class FXMLMotoristaController implements Initializable {
     public void handleAdicionarMotorista (ActionEvent event){
         Motorista obj = new Motorista();
         obj = registrarMotorista();
-        motoristaDAO.create(obj);
+        service.saveOrUpdate(obj);
         tableViewMotorista.getItems().clear();
         carregarTableViewMotorista();
     }
@@ -100,7 +105,7 @@ public class FXMLMotoristaController implements Initializable {
         tableColumnCNH.setCellValueFactory(new PropertyValueFactory<>("cnh"));
         tableColumnOM.setCellValueFactory(new PropertyValueFactory<>("om"));
         tableColumnSessao.setCellValueFactory(new PropertyValueFactory<>("sessao"));
-        tableViewMotorista.getItems().addAll(motoristaDAO.findAll());
+        tableViewMotorista.getItems().addAll(service.findAll());
         initEditButtons();
         initRemoveButtons();
     }
@@ -216,11 +221,11 @@ public class FXMLMotoristaController implements Initializable {
     private void removeMotorista(Motorista obj) {
         Optional<ButtonType> result = Alerts.showConfirmation("Confirmação", "Tem certeza que deseja deletar:");
         if(result.get() == ButtonType.OK){
-            if(motoristaDAO == null){
+            if(service == null){
                 throw  new IllegalStateException("Service was null");
             }
             try{
-                motoristaDAO.deleteById(obj.getId_motorista());
+                service.remove(obj);
                 carregarTableViewMotorista();
             }catch (Exception e){
                 Alerts.showAlert("Erro ao remover Motorista", null, e.getMessage(), Alert.AlertType.ERROR);

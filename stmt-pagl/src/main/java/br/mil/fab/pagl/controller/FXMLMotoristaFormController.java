@@ -6,6 +6,7 @@ import br.mil.fab.pagl.dao.impl.MotoristaDAOImpl;
 import br.mil.fab.pagl.dao.impl.VeiculoDAOImpl;
 import br.mil.fab.pagl.model.Motorista;
 import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.service.MotoristaService;
 import br.mil.fab.pagl.util.Utils;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,10 +22,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class FXMLMotoristaFormController implements Initializable {
-    private List<Veiculo> listVeiculos;
-    private ObservableList<Veiculo> observableListVeiculo;
-    private MotoristaDAO motoristaDAO = new MotoristaDAOImpl();
-    private Motorista motorista;
     @FXML
     private TextField textFieldIDMotorista;
     @FXML
@@ -39,6 +36,14 @@ public class FXMLMotoristaFormController implements Initializable {
     private Button buttonEditar;
     @FXML
     private Button buttonCancelar;
+
+    private List<Veiculo> listVeiculos;
+    private ObservableList<Veiculo> observableListVeiculo;
+    private MotoristaService service = new MotoristaService();
+    private Motorista motorista;
+    private void setMotoristaService(MotoristaService service){
+        this.service = service;
+    }
 
     public void setMotorista(Motorista motorista){
         this.motorista = motorista;
@@ -68,7 +73,7 @@ public class FXMLMotoristaFormController implements Initializable {
                 alert.setTitle("SUCESSO!");
                 alert.setHeaderText("Motorista Atualizado!");
                 alert.show();
-                motoristaDAO.update(obj);
+                service.saveOrUpdate(obj);
                 Utils.currentStage(event).close();
             }
         } catch (Exception e) {
@@ -116,9 +121,5 @@ public class FXMLMotoristaFormController implements Initializable {
         textFieldCNH.setText(String.valueOf(motorista.getCnh()));
         textFieldOM.setText(String.valueOf(motorista.getOm()));
         textFieldSessao.setText(String.valueOf(motorista.getSessao()));
-    }
-
-    public void setMotoristaDAO(MotoristaDAO motoristaDAO) {
-        this.motoristaDAO = motoristaDAO;
     }
 }

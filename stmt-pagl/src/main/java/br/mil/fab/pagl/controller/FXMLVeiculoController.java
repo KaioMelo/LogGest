@@ -3,6 +3,7 @@ package br.mil.fab.pagl.controller;
 import br.mil.fab.pagl.dao.VeiculoDAO;
 import br.mil.fab.pagl.dao.impl.VeiculoDAOImpl;
 import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.service.VeiculoService;
 import br.mil.fab.pagl.util.Alerts;
 import br.mil.fab.pagl.util.Utils;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -62,7 +63,13 @@ public class FXMLVeiculoController implements Initializable {
 
     private List<Veiculo> listVeiculos;
     private ObservableList<Veiculo> observableListVeiculo;
-    private VeiculoDAO veiculoDAO = new VeiculoDAOImpl();
+
+
+    private VeiculoService service = new VeiculoService();
+
+    private void setVeiculoService(VeiculoService service){
+        this.service = service;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -97,7 +104,7 @@ public class FXMLVeiculoController implements Initializable {
     public void handleAdicionarVeiculo(ActionEvent event) {
         Veiculo obj = new Veiculo();
         obj = registarVeiculo();
-        veiculoDAO.create(obj);
+        service.saveOrUpdate(obj);
         tableViewVeiculo.getItems().clear();
         carregarTableViewVeiculos();
     }
@@ -109,7 +116,7 @@ public class FXMLVeiculoController implements Initializable {
         tableColumnPlaca.setCellValueFactory(new PropertyValueFactory<>("placa"));
         tableColumnMarca.setCellValueFactory(new PropertyValueFactory<>("marca"));
         tableColumnModelo.setCellValueFactory(new PropertyValueFactory<>("modelo"));
-        tableViewVeiculo.getItems().addAll(veiculoDAO.findAll());
+        tableViewVeiculo.getItems().addAll(service.findAll());
         initEditButtons();
         initRemoveButtons();
     }
@@ -236,11 +243,11 @@ public class FXMLVeiculoController implements Initializable {
     private void removeVeiculo(Veiculo obj) {
         Optional<ButtonType> result = Alerts.showConfirmation("Confirmação", "Tem certeza que deseja deletar:");
         if(result.get() == ButtonType.OK){
-            if(veiculoDAO == null){
+            if(service == null){
                 throw  new IllegalStateException("Service was null");
             }
             try{
-                veiculoDAO.deleteById(obj.getId_veiculo());
+                service.remove(obj);
                 carregarTableViewVeiculos();
             }catch (Exception e){
                 Alerts.showAlert("Erro ao remover veículo", null, e.getMessage(), Alert.AlertType.ERROR);

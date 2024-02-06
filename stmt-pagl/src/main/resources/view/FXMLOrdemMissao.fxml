@@ -21,21 +21,21 @@
          <children>
             <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1200.0">
                <children>
-                  <Label layoutX="672.0" layoutY="21.0" text="Ordens de Missões">
+                  <Label layoutX="654.0" layoutY="22.0" text="Ordens de Missões">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tableViewMissoes" layoutX="357.0" layoutY="73.0" prefHeight="454.0" prefWidth="842.0">
+                  <TableView fx:id="tableViewMissoes" layoutX="348.0" layoutY="73.0" prefHeight="454.0" prefWidth="823.0">
                     <columns>
-                        <TableColumn fx:id="tableColumnID" prefWidth="75.0" text="ID" />
-                      <TableColumn fx:id="tableColumnSolicitante" prefWidth="112.79998779296875" text="SOLICITANTE" />
-                      <TableColumn fx:id="tableColumnContato" prefWidth="108.80001831054688" text="CONTATO" />
-                        <TableColumn fx:id="tableColumnServico" prefWidth="145.60003662109375" text="SERVIÇO" />
-                        <TableColumn fx:id="tableColumnDestino" prefWidth="148.0" text="DESTINO" />
-                        <TableColumn fx:id="tableColumnData" prefWidth="97.5999755859375" text="DATA" />
-                        <TableColumn fx:id="tableColumnUPDATE" prefWidth="64.0" />
-                        <TableColumn fx:id="tableColumnDELETE" minWidth="0.0" prefWidth="87.99997558593748" />
+                        <TableColumn fx:id="tableColumnID" prefWidth="57.600006103515625" text="ID" />
+                      <TableColumn fx:id="tableColumnSolicitante" prefWidth="136.79998779296875" text="SOLICITANTE" />
+                      <TableColumn fx:id="tableColumnContato" prefWidth="122.39996337890625" text="CONTATO" />
+                        <TableColumn fx:id="tableColumnServico" prefWidth="138.4000244140625" text="SERVIÇO" />
+                        <TableColumn fx:id="tableColumnDestino" prefWidth="138.4000244140625" text="DESTINO" />
+                        <TableColumn fx:id="tableColumnData" prefWidth="100.79986572265625" text="DATA" />
+                        <TableColumn fx:id="tableColumnUPDATE" prefWidth="56.0" />
+                        <TableColumn fx:id="tableColumnDELETE" minWidth="0.0" prefWidth="69.5999755859375" />
                     </columns>
                   </TableView>
                   <HBox layoutX="593.0" layoutY="529.0" spacing="20.0" />
@@ -63,7 +63,10 @@
                         <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="26.0" prefWidth="160.0" text="HOME" />
                      </children>
                   </GridPane>
-                  <Button layoutX="702.0" layoutY="547.0" mnemonicParsing="false" onAction="#handleRegistrarOrdemMissao" prefHeight="26.0" prefWidth="151.0" text="Nova Ordem de Missão" />
+                  <Button layoutX="672.0" layoutY="540.0" mnemonicParsing="false" onAction="#handleRegistrarOrdemMissao" prefHeight="35.0" prefWidth="174.0" text="Nova Ordem de Missão">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
          </children>
