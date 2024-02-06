@@ -10,15 +10,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.Time;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneId;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class FXMLOrdemMissaoFormController implements Initializable {
@@ -71,7 +72,7 @@ public class FXMLOrdemMissaoFormController implements Initializable {
                 obj.setContato(textFieldContato.getText());
                 obj.setDestino(textFieldDestino.getText());
                 obj.setServico(textFieldServico.getText());
-                obj.setData(LocalDate.ofInstant(Instant.from(datePickerData.getValue()), ZoneId.systemDefault()));
+                obj.setData(Date.valueOf(datePickerData.getValue()));
                 clearFileds();
                 alert.setTitle("SUCESSO!");
                 alert.setHeaderText("Veículo Atualizado!");
@@ -129,6 +130,8 @@ public class FXMLOrdemMissaoFormController implements Initializable {
         textFieldContato.setText(missao.getContato());
         textFieldDestino.setText(missao.getDestino());
         textFieldServico.setText(missao.getServico());
-        datePickerData.setValue(missao.getData());
+        if(missao.getData() != null){
+            datePickerData.setValue(LocalDate.ofInstant(missao.getData().toInstant(), ZoneId.systemDefault()));
+        }
     }
 }

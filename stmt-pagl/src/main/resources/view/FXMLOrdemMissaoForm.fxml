@@ -39,7 +39,7 @@
             <TextField fx:id="textFieldServico" prefHeight="26.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label text="SERVIÇO" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label text="DATA" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <DatePicker fx:id="textFieldData" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <DatePicker fx:id="datePickerData" GridPane.columnIndex="2" GridPane.rowIndex="6" />
             <Label text="ID" GridPane.rowIndex="1" />
          </children>
       </GridPane>

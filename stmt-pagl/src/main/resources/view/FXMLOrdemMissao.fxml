@@ -26,7 +26,7 @@
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TableView layoutX="357.0" layoutY="73.0" prefHeight="454.0" prefWidth="842.0">
+                  <TableView fx:id="tableViewMissoes" layoutX="357.0" layoutY="73.0" prefHeight="454.0" prefWidth="842.0">
                     <columns>
                         <TableColumn fx:id="tableColumnID" prefWidth="75.0" text="ID" />
                       <TableColumn fx:id="tableColumnSolicitante" prefWidth="112.79998779296875" text="SOLICITANTE" />

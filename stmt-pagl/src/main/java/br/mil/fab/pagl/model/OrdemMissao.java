@@ -1,10 +1,8 @@
 package br.mil.fab.pagl.model;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.Date;
 import java.util.Objects;
 
 public class OrdemMissao implements Serializable {
@@ -15,12 +13,12 @@ public class OrdemMissao implements Serializable {
     private String contato;
     private String destino;
     private String servico;
-    private LocalDate data;
+    private Date data;
 
     public OrdemMissao() {
     }
 
-    public OrdemMissao(Integer id_ordem, String soliciante, String contato, String destino, String servico, LocalDate data) {
+    public OrdemMissao(Integer id_ordem, String soliciante, String contato, String destino, String servico, Date data) {
         this.id_ordem = id_ordem;
         this.soliciante = soliciante;
         this.contato = contato;
@@ -69,14 +67,13 @@ public class OrdemMissao implements Serializable {
         this.servico = servico;
     }
 
-    public LocalDate getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(Date data) {
         this.data = data;
     }
-
 
     @Override
     public boolean equals(Object o) {
