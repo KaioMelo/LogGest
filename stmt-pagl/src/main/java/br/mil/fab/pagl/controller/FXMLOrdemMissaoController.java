@@ -5,6 +5,7 @@ import br.mil.fab.pagl.model.Veiculo;
 import br.mil.fab.pagl.service.OrdemMissaoService;
 import br.mil.fab.pagl.util.Alerts;
 import br.mil.fab.pagl.util.Utils;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -84,12 +85,12 @@ public class FXMLOrdemMissaoController implements Initializable {
         tableColumnID.setCellValueFactory(new PropertyValueFactory<>("id_ordem"));
         tableColumnSolicitante.setCellValueFactory(new PropertyValueFactory<>("solicitante"));
         tableColumnContato.setCellValueFactory(new PropertyValueFactory<>("contato"));
-        tableColumnServico.setCellValueFactory(new PropertyValueFactory<>("servico"));
         tableColumnDestino.setCellValueFactory(new PropertyValueFactory<>("destino"));
+        tableColumnServico.setCellValueFactory(new PropertyValueFactory<>("servico"));
         tableColumnData.setCellValueFactory(new PropertyValueFactory<>("data"));
-        tableViewMissoes.getItems().addAll(service.findAll());
         initEditButtons();
         initRemoveButtons();
+        tableViewMissoes.getItems().addAll(service.findAll());
     }
 
     @FXML

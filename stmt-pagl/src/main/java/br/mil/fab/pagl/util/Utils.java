@@ -14,6 +14,14 @@ public class Utils {
         return (Stage) ((Node)event.getSource()).getScene().getWindow();
     }
 
+    public static Integer tryParseToInt(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
     public static void formatDatePicker(DatePicker datePicker, String format) {
         datePicker.setConverter(new StringConverter<LocalDate>() {
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(format);

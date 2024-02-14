@@ -11,19 +11,19 @@ public class OrdemMissao implements Serializable {
     private Integer id_ordem;
     private String solicitante;
     private String contato;
-    private String destino;
     private String servico;
+    private String destino;
     private Date data;
 
     public OrdemMissao() {
     }
 
-    public OrdemMissao(Integer id_ordem, String solicitante, String contato, String destino, String servico, Date data) {
+    public OrdemMissao(Integer id_ordem, String solicitante, String contato,  String servico, String destino, Date data) {
         this.id_ordem = id_ordem;
         this.solicitante = solicitante;
         this.contato = contato;
-        this.destino = destino;
         this.servico = servico;
+        this.destino = destino;
         this.data = data;
     }
 
@@ -51,6 +51,14 @@ public class OrdemMissao implements Serializable {
         this.contato = contato;
     }
 
+    public String getServico() {
+        return servico;
+    }
+
+    public void setServico(String servico) {
+        this.servico = servico;
+    }
+
     public String getDestino() {
         return destino;
     }
@@ -59,13 +67,6 @@ public class OrdemMissao implements Serializable {
         this.destino = destino;
     }
 
-    public String getServico() {
-        return servico;
-    }
-
-    public void setServico(String servico) {
-        this.servico = servico;
-    }
 
     public Date getData() {
         return data;

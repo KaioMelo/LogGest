@@ -4,8 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -61,29 +59,63 @@
             </AnchorPane>
             <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1028.0">
                <children>
-                  <Label layoutX="447.0" layoutY="23.0" text="Ordens de Missões">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="tableViewMissoes" layoutX="141.0" layoutY="73.0" prefHeight="454.0" prefWidth="823.0">
-                    <columns>
-                        <TableColumn fx:id="tableColumnID" prefWidth="57.600006103515625" text="ID" />
-                      <TableColumn fx:id="tableColumnSolicitante" prefWidth="136.79998779296875" text="SOLICITANTE" />
-                      <TableColumn fx:id="tableColumnContato" prefWidth="122.39996337890625" text="CONTATO" />
-                        <TableColumn fx:id="tableColumnServico" prefWidth="138.4000244140625" text="SERVIÇO" />
-                        <TableColumn fx:id="tableColumnDestino" prefWidth="138.4000244140625" text="DESTINO" />
-                        <TableColumn fx:id="tableColumnData" prefWidth="100.79986572265625" text="DATA" />
-                        <TableColumn fx:id="tableColumnUPDATE" prefWidth="56.0" />
-                        <TableColumn fx:id="tableColumnDELETE" minWidth="0.0" prefWidth="69.5999755859375" />
-                    </columns>
-                  </TableView>
-                  <HBox layoutX="593.0" layoutY="529.0" spacing="20.0" />
-                  <Button layoutX="465.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleRegistrarOrdemMissao" prefHeight="35.0" prefWidth="174.0" text="Nova Ordem de Missão">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Button>
+                  <GridPane layoutX="32.0" layoutY="31.0" prefHeight="199.0" prefWidth="900.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="250.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.19998168945312" minWidth="10.0" prefWidth="76.79995117187497" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="250.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.2000732421875" minWidth="10.0" prefWidth="72.00003662109373" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" prefWidth="250.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="221.0" layoutY="14.0" text="0">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="58.0" layoutY="125.0" text="Total de Missões">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIconView glyphName="CHECK" layoutX="17.0" layoutY="94.0" size="40" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+                           <children>
+                              <Label layoutX="221.0" layoutY="14.0" text="0">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="58.0" layoutY="125.0" text="Total de Veículos">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIconView glyphName="CAR" layoutX="17.0" layoutY="94.0" size="40" />
+                           </children></AnchorPane>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4">
+                           <children>
+                              <FontAwesomeIconView glyphName="USERS" layoutX="17.0" layoutY="94.0" size="40" />
+                              <Label layoutX="221.0" layoutY="14.0" text="0">
+                                 <font>
+                                    <Font name="System Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="58.0" layoutY="125.0" text="Total de Motoristas">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
+                     </children>
+                  </GridPane>
                </children>
             </AnchorPane>
          </children>

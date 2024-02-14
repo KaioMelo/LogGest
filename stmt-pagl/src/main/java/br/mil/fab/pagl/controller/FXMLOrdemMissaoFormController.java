@@ -1,25 +1,25 @@
 package br.mil.fab.pagl.controller;
 
-import br.mil.fab.pagl.dao.OrdemMissaoDAO;
 
-import br.mil.fab.pagl.dao.impl.OrdemMissaoDAOImpl;
+import br.mil.fab.pagl.exceptions.ValidationException;
 import br.mil.fab.pagl.model.OrdemMissao;
 import br.mil.fab.pagl.model.Veiculo;
 import br.mil.fab.pagl.service.OrdemMissaoService;
+import br.mil.fab.pagl.util.Alerts;
 import br.mil.fab.pagl.util.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.sql.Time;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
 
@@ -31,9 +31,9 @@ public class FXMLOrdemMissaoFormController implements Initializable {
     @FXML
     private TextField textFieldContato;
     @FXML
-    private TextField textFieldDestino;
-    @FXML
     private TextField textFieldServico;
+    @FXML
+    private TextField textFieldDestino;
     @FXML
     private DatePicker datePickerData;
     @FXML
@@ -43,11 +43,13 @@ public class FXMLOrdemMissaoFormController implements Initializable {
 
     private OrdemMissao missao;
     private OrdemMissaoService service = new OrdemMissaoService();
+    private OrdemMissao obj;
 
-    private void setOrdemMissaoService(OrdemMissaoService service){
+    private void setOrdemMissaoService(OrdemMissaoService service) {
         this.service = service;
     }
-    public void setOrdemMissao(OrdemMissao missao){
+
+    public void setOrdemMissao(OrdemMissao missao) {
         this.missao = missao;
     }
 
@@ -56,7 +58,7 @@ public class FXMLOrdemMissaoFormController implements Initializable {
         initializeNodes();
     }
 
-    private void initializeNodes(){
+    private void initializeNodes() {
         Utils.formatDatePicker(datePickerData, "dd/MM/yyyy");
     }
 
@@ -66,75 +68,85 @@ public class FXMLOrdemMissaoFormController implements Initializable {
     }
 
     @FXML
-    public void handleRegistrarMissao(ActionEvent event){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        OrdemMissao obj = new OrdemMissao();
+    public void handleRegistrarMissao(ActionEvent event) {
+        if (missao == null) {
+            throw new IllegalStateException("Entity was null");
+        }
+        if (service == null) {
+            throw new IllegalStateException("Service was null");
+        }
         try {
-            if (validarEntradasDeDados()) {
-                obj.setSolicitante(textFieldSolicitante.getText().trim().toUpperCase());
-                obj.setContato(textFieldContato.getText().trim());
-                obj.setServico(textFieldServico.getText().trim());
-                obj.setDestino(textFieldDestino.getText().trim());
-                obj.setData(Date.valueOf(datePickerData.getValue()));
-                clearFileds();
-                alert.setTitle("SUCESSO!");
-                alert.setHeaderText("Veículo Atualizado!");
-                alert.show();
-                service.saveOrUpdate(obj);
-                Utils.currentStage(event).close();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+            missao = validarEntradasDeDados();
+            service.saveOrUpdate(missao);
+            clearFields();
+            Alerts.showAlert("SUCESSO", "Missão Atualizado!", null, Alert.AlertType.ERROR);
+            Utils.currentStage(event).close();
+
+        }catch (RuntimeException e) {
+            Alerts.showAlert("Error saving object", null, e.getMessage(), Alert.AlertType.ERROR);
         }
     }
 
-    private boolean validarEntradasDeDados() {
+    private OrdemMissao validarEntradasDeDados() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        String errorMessage = "";
-        Veiculo obj = new Veiculo();
+        ValidationException exception = new ValidationException("Validation error");
+        OrdemMissao obj = new OrdemMissao();
+
+        obj.setId_ordem(Utils.tryParseToInt(textFieldIdMissao.getText()));
 
         if (textFieldSolicitante.getText() == null || textFieldSolicitante.getText().trim().equals("")) {
-            errorMessage += "Solicitante Inválido: \n";
+            exception.addError("Solicitante", "Inválido");
         }
+        obj.setSolicitante(textFieldSolicitante.getText());
         if (textFieldContato.getText() == null || textFieldContato.getText().trim().equals("")) {
-            errorMessage += "Contato Inválido: \n";
+            exception.addError("Contato", "Inválido");
         }
+        obj.setContato(textFieldContato.getText());
         if (textFieldServico.getText() == null || textFieldServico.getText().trim().equals("")) {
-            errorMessage += "Serviço Inválido: \n";
+            exception.addError("Serviço", "Inválido");
         }
+        obj.setServico(textFieldServico.getText());
         if (textFieldDestino.getText() == null || textFieldDestino.getText().trim().equals("")) {
-            errorMessage += "Destino Inválido: \n";
+            exception.addError("Destino", "Inválido");
         }
-        if (errorMessage.length() == 0) {
-            return true;
-        } else {
-            clearFileds();
+        obj.setDestino(textFieldDestino.getText());
+        if (datePickerData.getValue() == null){
+            exception.addError("Data", "Inválido");
+        }else{
+            Instant instant = Instant.from(datePickerData.getValue().atStartOfDay(ZoneId.systemDefault()));
+            obj.setData(Date.from(instant));
+        }
+        if (exception.getErrors().size() > 0) {
+            clearFields();
             alert.setTitle("ERROR ao Registrar Missão!");
             alert.setHeaderText("Campos inválidos, por favor, corrija!");
-            alert.setContentText(errorMessage);
             alert.show();
-            return false;
+            throw exception;
         }
+        return obj;
     }
 
-    public void clearFileds() {
+    public void clearFields() {
         textFieldSolicitante.setText("");
         textFieldContato.setText("");
         textFieldServico.setText("");
         textFieldDestino.setText("");
+        datePickerData.setValue(null);
     }
 
-    public void updateFormData(){
-        if(missao == null){
-            throw  new IllegalArgumentException("Missão está nulo");
+    public void updateFormData() {
+        if (missao == null) {
+            throw new IllegalArgumentException("Missão está nulo");
         }
         textFieldIdMissao.setText(String.valueOf(missao.getId_ordem()));
         textFieldSolicitante.setText(missao.getSolicitante());
         textFieldContato.setText(missao.getContato());
         textFieldServico.setText(missao.getServico());
         textFieldDestino.setText(missao.getDestino());
-        if(missao.getData() != null){
-            datePickerData.setValue(LocalDate.ofInstant(missao.getData().toInstant(), ZoneId.systemDefault()));
+        if (missao.getData() != null) {
+            Date dataSql = (Date) missao.getData();
+            java.util.Date utilDate = new java.util.Date(dataSql.getTime());
+            datePickerData.setValue(utilDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         }
     }
 }

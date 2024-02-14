@@ -38,11 +38,7 @@ public class OrdemMissaoDAOImpl implements OrdemMissaoDAO {
 
     @Override
     public void update(OrdemMissao obj) {
-        if (obj == null || obj.getId_ordem() == null) {
-            System.out.println("Não foi possivel atualizar o registro");
-            return;
-        }
-        String sql = "UPDATE missao SET solicitante=?, contato=?, servico=?, destino=?,  data_missao=? WHERE id_ordem=?";
+        String sql = "UPDATE missao SET solicitante=?, contato=?, servico=?, destino=?, data_missao=? WHERE id_ordem=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, obj.getSolicitante());
