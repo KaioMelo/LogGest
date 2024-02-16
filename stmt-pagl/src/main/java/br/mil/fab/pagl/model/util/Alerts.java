@@ -1,4 +1,4 @@
-package br.mil.fab.pagl.util;
+package br.mil.fab.pagl.model.util;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

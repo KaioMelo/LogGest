@@ -1,8 +1,8 @@
-package br.mil.fab.pagl.dao.impl;
+package br.mil.fab.pagl.model.dao.impl;
 
-import br.mil.fab.pagl.dao.MotoristaDAO;
-import br.mil.fab.pagl.model.Motorista;
-import br.mil.fab.pagl.util.ConfigConnectionDB;
+import br.mil.fab.pagl.model.dao.MotoristaDAO;
+import br.mil.fab.pagl.model.entities.Motorista;
+import br.mil.fab.pagl.model.util.ConfigConnectionDB;
 
 import java.sql.*;
 import java.util.ArrayList;

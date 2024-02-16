@@ -1,7 +1,6 @@
-package br.mil.fab.pagl.model;
+package br.mil.fab.pagl.model.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 

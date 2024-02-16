@@ -1,4 +1,4 @@
-package br.mil.fab.pagl.exceptions;
+package br.mil.fab.pagl.model.exceptions;
 
 import java.util.HashMap;
 import java.util.Map;

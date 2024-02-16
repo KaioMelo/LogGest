@@ -1,6 +1,6 @@
-package br.mil.fab.pagl.dao;
+package br.mil.fab.pagl.model.dao;
 
-import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.model.entities.Veiculo;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package br.mil.fab.pagl.dao.impl;
+package br.mil.fab.pagl.model.dao.impl;
 
-import br.mil.fab.pagl.dao.OrdemMissaoDAO;
-import br.mil.fab.pagl.model.OrdemMissao;
-import br.mil.fab.pagl.util.ConfigConnectionDB;
+import br.mil.fab.pagl.model.dao.OrdemMissaoDAO;
+import br.mil.fab.pagl.model.entities.OrdemMissao;
+import br.mil.fab.pagl.model.util.ConfigConnectionDB;
 
 import java.sql.*;
 import java.util.ArrayList;

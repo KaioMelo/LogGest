@@ -1,8 +1,8 @@
-package br.mil.fab.pagl.dao;
+package br.mil.fab.pagl.model.dao;
 
-import br.mil.fab.pagl.dao.impl.MotoristaDAOImpl;
-import br.mil.fab.pagl.dao.impl.OrdemMissaoDAOImpl;
-import br.mil.fab.pagl.dao.impl.VeiculoDAOImpl;
+import br.mil.fab.pagl.model.dao.impl.MotoristaDAOImpl;
+import br.mil.fab.pagl.model.dao.impl.OrdemMissaoDAOImpl;
+import br.mil.fab.pagl.model.dao.impl.VeiculoDAOImpl;
 
 public class DAOFactory {
     public static VeiculoDAO createVeiculoDAO(){

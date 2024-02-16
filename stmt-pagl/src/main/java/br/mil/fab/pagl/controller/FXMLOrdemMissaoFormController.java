@@ -1,12 +1,11 @@
 package br.mil.fab.pagl.controller;
 
 
-import br.mil.fab.pagl.exceptions.ValidationException;
-import br.mil.fab.pagl.model.OrdemMissao;
-import br.mil.fab.pagl.model.Veiculo;
-import br.mil.fab.pagl.service.OrdemMissaoService;
-import br.mil.fab.pagl.util.Alerts;
-import br.mil.fab.pagl.util.Utils;
+import br.mil.fab.pagl.model.exceptions.ValidationException;
+import br.mil.fab.pagl.model.entities.OrdemMissao;
+import br.mil.fab.pagl.model.service.OrdemMissaoService;
+import br.mil.fab.pagl.model.util.Alerts;
+import br.mil.fab.pagl.model.util.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +18,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
 

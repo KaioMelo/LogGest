@@ -1,8 +1,8 @@
-package br.mil.fab.pagl.service;
+package br.mil.fab.pagl.model.service;
 
-import br.mil.fab.pagl.dao.DAOFactory;
-import br.mil.fab.pagl.dao.MotoristaDAO;
-import br.mil.fab.pagl.model.Motorista;
+import br.mil.fab.pagl.model.dao.DAOFactory;
+import br.mil.fab.pagl.model.dao.MotoristaDAO;
+import br.mil.fab.pagl.model.entities.Motorista;
 
 import java.util.List;
 

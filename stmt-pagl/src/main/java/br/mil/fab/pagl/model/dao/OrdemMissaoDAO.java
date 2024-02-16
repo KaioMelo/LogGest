@@ -1,7 +1,7 @@
-package br.mil.fab.pagl.dao;
+package br.mil.fab.pagl.model.dao;
 
 
-import br.mil.fab.pagl.model.OrdemMissao;
+import br.mil.fab.pagl.model.entities.OrdemMissao;
 
 import java.util.List;
 

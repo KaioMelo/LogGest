@@ -1,4 +1,4 @@
-package br.mil.fab.pagl.util;
+package br.mil.fab.pagl.model.util;
 
 import java.io.IOException;
 import java.io.InputStream;

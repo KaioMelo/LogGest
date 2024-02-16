@@ -1,12 +1,10 @@
 package br.mil.fab.pagl.controller;
 
-import br.mil.fab.pagl.dao.MotoristaDAO;
-import br.mil.fab.pagl.dao.impl.MotoristaDAOImpl;
-import br.mil.fab.pagl.model.Motorista;
-import br.mil.fab.pagl.model.Veiculo;
-import br.mil.fab.pagl.service.MotoristaService;
-import br.mil.fab.pagl.util.Alerts;
-import br.mil.fab.pagl.util.Utils;
+import br.mil.fab.pagl.model.entities.Motorista;
+import br.mil.fab.pagl.model.entities.Veiculo;
+import br.mil.fab.pagl.model.service.MotoristaService;
+import br.mil.fab.pagl.model.util.Alerts;
+import br.mil.fab.pagl.model.util.Utils;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

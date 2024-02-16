@@ -16,16 +16,16 @@
    <content>
       <HBox>
          <children>
-            <AnchorPane prefHeight="400.0" prefWidth="300.0">
+            <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="left-form" stylesheets="@../css/index.css">
                <children>
-                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/fab.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="45.0" layoutY="212.0" text="FORÇA ÁEREA BRASILEIRA">
+                  <Label layoutX="37.0" layoutY="254.0" text="FORÇA ÁEREA BRASILEIRA" textFill="WHITE">
                      <font>
-                        <Font size="18.0" />
+                        <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
@@ -38,11 +38,6 @@
                   </Label>
                   <Group layoutX="48.0" layoutY="141.0">
                      <children>
-                        <Label prefHeight="20.0" prefWidth="43.0" text="CPF">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
                         <TextField fx:id="textFieldCPF" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" />
                         <Label layoutY="63.0" prefHeight="20.0" prefWidth="43.0" text="Senha">
                            <font>
@@ -61,6 +56,11 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Button>
+                  <Label layoutX="49.0" layoutY="135.0" prefHeight="20.0" prefWidth="43.0" text="E-mail">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

@@ -19,7 +19,7 @@
    <content>
       <HBox prefHeight="600.0" prefWidth="1200.0">
          <children>
-            <AnchorPane prefHeight="600.0" prefWidth="300.0">
+            <AnchorPane prefHeight="600.0" prefWidth="300.0" styleClass="left-form" stylesheets="@../css/index.css">
                <children>
                   <GridPane layoutX="36.0" layoutY="229.0" prefHeight="217.0" prefWidth="163.0">
                      <columnConstraints>
@@ -40,24 +40,24 @@
                         <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="26.0" prefWidth="160.0" text="MISSÕES" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <Label layoutX="73.0" layoutY="134.0" text="Bem-Vindo,">
+                  <Label layoutX="73.0" layoutY="134.0" text="Bem-Vindo," textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="57.0" layoutY="161.0" text="Nome Admin">
+                  <Label layoutX="57.0" layoutY="161.0" text="Nome Admin" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Line endX="100.0" layoutX="120.0" layoutY="191.0" startX="-100.0" />
-                  <Label layoutX="57.0" layoutY="553.0" text="Sair">
+                  <Line endX="100.0" layoutX="120.0" layoutY="191.0" startX="-100.0" stroke="#ffffff81" />
+                  <Label layoutX="57.0" layoutY="553.0" text="Sair" textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <FontAwesomeIconView fx:id="iconUser" glyphName="USER" layoutX="89.0" layoutY="122.0" size="80" />
-                  <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="22.0" layoutY="579.0" size="30" />
+                  <FontAwesomeIconView fx:id="iconUser" fill="WHITE" glyphName="USER" layoutX="89.0" layoutY="122.0" size="80" />
+                  <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" layoutX="22.0" layoutY="579.0" size="30" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1200.0">

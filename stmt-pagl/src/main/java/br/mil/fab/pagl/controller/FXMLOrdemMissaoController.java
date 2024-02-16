@@ -1,11 +1,9 @@
 package br.mil.fab.pagl.controller;
 
-import br.mil.fab.pagl.model.OrdemMissao;
-import br.mil.fab.pagl.model.Veiculo;
-import br.mil.fab.pagl.service.OrdemMissaoService;
-import br.mil.fab.pagl.util.Alerts;
-import br.mil.fab.pagl.util.Utils;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import br.mil.fab.pagl.model.entities.OrdemMissao;
+import br.mil.fab.pagl.model.service.OrdemMissaoService;
+import br.mil.fab.pagl.model.util.Alerts;
+import br.mil.fab.pagl.model.util.Utils;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

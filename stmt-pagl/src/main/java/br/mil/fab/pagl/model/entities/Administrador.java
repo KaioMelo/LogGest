@@ -1,4 +1,4 @@
-package br.mil.fab.pagl.model;
+package br.mil.fab.pagl.model.entities;
 
 import java.util.Objects;
 

@@ -1,4 +1,4 @@
-package br.mil.fab.pagl.util;
+package br.mil.fab.pagl.model.util;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;

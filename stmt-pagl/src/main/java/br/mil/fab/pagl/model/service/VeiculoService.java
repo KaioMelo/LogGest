@@ -1,8 +1,8 @@
-package br.mil.fab.pagl.service;
+package br.mil.fab.pagl.model.service;
 
-import br.mil.fab.pagl.dao.DAOFactory;
-import br.mil.fab.pagl.dao.VeiculoDAO;
-import br.mil.fab.pagl.model.Veiculo;
+import br.mil.fab.pagl.model.dao.DAOFactory;
+import br.mil.fab.pagl.model.dao.VeiculoDAO;
+import br.mil.fab.pagl.model.entities.Veiculo;
 
 import java.util.List;
 
