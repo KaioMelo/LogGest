@@ -1,32 +1,21 @@
 package br.mil.fab.pagl.controller;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.stage.Screen;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLLoginController implements Initializable {
-
-    @FXML
-    private TextField textFieldCPF;
-    @FXML
-    private TextField getTextFielSenha;
-    @FXML
-    private Button btnLogin;
+public class FXMLInicioController implements Initializable {
     @Override
-    public void initialize(URL url, ResourceBundle rB) {
+    public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
     private void loadScene(String fxmlPath, ActionEvent event) throws IOException {
@@ -40,7 +29,22 @@ public class FXMLLoginController implements Initializable {
     }
 
     @FXML
-    public void entrarInterfaceHome(ActionEvent event) throws IOException{
+    public void handleHome(ActionEvent event) throws IOException {
         loadScene("/view/FXMLInicio.fxml", event);
+    }
+
+    @FXML
+    public void handleMissao(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLOrdemMissao.fxml", event);
+    }
+
+    @FXML
+    public void handleVeiculo(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLVeiculo.fxml", event);
+    }
+
+    @FXML
+    public void handleMotorista(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLMotorista.fxml", event);
     }
 }

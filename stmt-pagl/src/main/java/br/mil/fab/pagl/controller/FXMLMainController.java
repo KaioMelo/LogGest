@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 public class FXMLMainController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rB) {
-
     }
     @FXML
     public void entrarLoginAdmin(ActionEvent event) throws IOException{
@@ -26,5 +25,6 @@ public class FXMLMainController implements Initializable {
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
     }
 }

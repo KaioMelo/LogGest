@@ -32,11 +32,11 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
+                        <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="26.0" prefWidth="160.0" text="INÍCIO" />
+                        <Button mnemonicParsing="false" onAction="#handleMissao" prefHeight="26.0" prefWidth="160.0" text="MISSÕES" GridPane.rowIndex="1" />
                         <Button mnemonicParsing="false" onAction="#handleVeiculo" prefHeight="26.0" prefWidth="160.0" text="VEÍCULOS" GridPane.rowIndex="2" />
                         <Button mnemonicParsing="false" onAction="#handleMotorista" prefHeight="26.0" prefWidth="160.0" text="MOTORISTAS" GridPane.rowIndex="3" />
                         <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" text="RELATÓRIOS" GridPane.rowIndex="4" />
-                        <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="26.0" prefWidth="160.0" text="INÍCIO" />
-                        <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="26.0" prefWidth="160.0" text="MISSÕES" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                   <Label layoutX="73.0" layoutY="134.0" text="Bem-Vindo," textFill="WHITE">
@@ -61,12 +61,12 @@
             </AnchorPane>
             <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1028.0">
                <children>
-                  <Label layoutX="447.0" layoutY="23.0" text="Ordens de Missões">
+                  <Label layoutX="359.0" layoutY="21.0" text="Ordens de Missões">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tableViewMissoes" layoutX="141.0" layoutY="73.0" prefHeight="454.0" prefWidth="823.0">
+                  <TableView fx:id="tableViewMissoes" layoutX="70.0" layoutY="73.0" prefHeight="454.0" prefWidth="823.0">
                     <columns>
                         <TableColumn fx:id="tableColumnID" prefWidth="57.600006103515625" text="ID" />
                       <TableColumn fx:id="tableColumnSolicitante" prefWidth="136.79998779296875" text="SOLICITANTE" />
@@ -79,7 +79,7 @@
                     </columns>
                   </TableView>
                   <HBox layoutX="593.0" layoutY="529.0" spacing="20.0" />
-                  <Button layoutX="465.0" layoutY="537.0" mnemonicParsing="false" onAction="#handleRegistrarOrdemMissao" prefHeight="35.0" prefWidth="174.0" text="Nova Ordem de Missão">
+                  <Button layoutX="377.0" layoutY="543.0" mnemonicParsing="false" onAction="#handleRegistrarOrdemMissao" prefHeight="35.0" prefWidth="174.0" text="Nova Ordem de Missão">
                      <font>
                         <Font size="14.0" />
                      </font>

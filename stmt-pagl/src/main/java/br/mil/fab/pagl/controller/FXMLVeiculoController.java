@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -76,15 +77,21 @@ public class FXMLVeiculoController implements Initializable {
 
     private void loadScene(String fxmlPath, ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-        Parent root = loader.load();
+        ScrollPane root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+        stage.centerOnScreen();
     }
 
     @FXML
     public void handleHome(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLInicio.fxml", event);
+    }
+
+    @FXML
+    public void handleMissao(ActionEvent event) throws IOException {
         loadScene("/view/FXMLOrdemMissao.fxml", event);
     }
 
