@@ -4,33 +4,33 @@ import java.util.Objects;
 
 public class Administrador {
 
-    private int id_adm;
-    private String usuario;
+    private Integer id_adm;
+    private String email;
     private String senha;
 
     public Administrador() {
     }
 
-    public Administrador(int id_adm, String usuario, String senha) {
+    public Administrador(Integer id_adm, String email, String senha) {
         this.id_adm = id_adm;
-        this.usuario = usuario;
+        this.email = email;
         this.senha = senha;
     }
 
-    public int getId_adm() {
+    public Integer getId_adm() {
         return id_adm;
     }
 
-    public void setId_adm(int id_adm) {
+    public void setId_adm(Integer id_adm) {
         this.id_adm = id_adm;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getSenha() {
