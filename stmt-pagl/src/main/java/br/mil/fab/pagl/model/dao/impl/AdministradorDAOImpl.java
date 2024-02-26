@@ -5,7 +5,6 @@ import br.mil.fab.pagl.model.entities.Administrador;
 import br.mil.fab.pagl.model.util.ConfigConnectionDB;
 
 import java.sql.*;
-import java.util.List;
 
 public class AdministradorDAOImpl implements AdministradorDAO {
     @Override
@@ -51,8 +50,9 @@ public class AdministradorDAOImpl implements AdministradorDAO {
         }
     }
 
+    @Override
     public boolean getAllAdmin (Administrador obj){
-        String sql = "SELECT * FROM administrador WHERE email = ? AND senha = ?";
+        String sql = "SELECT email, senha FROM administrador WHERE email = ? AND senha = ?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)){
             ps.setString(1, obj.getEmail());

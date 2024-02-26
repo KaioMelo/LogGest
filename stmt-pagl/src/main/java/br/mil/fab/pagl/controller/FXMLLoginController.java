@@ -1,27 +1,19 @@
 package br.mil.fab.pagl.controller;
 
 import br.mil.fab.pagl.model.entities.Administrador;
-import br.mil.fab.pagl.model.entities.OrdemMissao;
 import br.mil.fab.pagl.model.exceptions.ValidationException;
 import br.mil.fab.pagl.model.service.AdministradorService;
 import br.mil.fab.pagl.model.util.Alerts;
-import br.mil.fab.pagl.model.util.Utils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Date;
-import java.time.Instant;
-import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class FXMLLoginController implements Initializable {
@@ -35,7 +27,7 @@ public class FXMLLoginController implements Initializable {
 
     private Administrador adm;
 
-    private AdministradorService service;
+    private AdministradorService service = new AdministradorService();
 
     public void setAdministrador(Administrador adm){
         this.adm = adm;
@@ -61,16 +53,17 @@ public class FXMLLoginController implements Initializable {
     @FXML
     public void handleLoginAdmin(ActionEvent event) throws IOException{
         try{
-            if(textFieldEmail.getText().isBlank() == false && passwordFieldSenha.getText().isBlank() == false){
-                Administrador obj = new Administrador();
-                obj = validarLogin();
-                service.verificarLogin(obj);
-//                Alerts.showAlert("SUCESSO", "Olá seja bem-vindo", null, Alert.AlertType.NONE);
-//                clearFields();
-                loadScene("/view/FXMLInicio.fxml", event);
+            if(!textFieldEmail.getText().trim().isBlank() && !passwordFieldSenha.getText().trim().isBlank()){
+                Administrador obj = validarLogin();
+                if(service.verificarLogin(obj)){
+                    Alerts.showAlert("SUCESSO", "Login bem sucedido!", null, Alert.AlertType.INFORMATION);
+                    loadScene("/view/FXMLInicio.fxml", event);
+                }else{
+                    Alerts.showAlert("ERROR", "E-mail ou senha incorretos!", null, Alert.AlertType.ERROR);
+                }
             }
             else{
-                Alerts.showAlert("ERROR", "Usuário incorreto ou não existe!", null, Alert.AlertType.ERROR);
+                Alerts.showAlert("ERROR", "Campos inválidos!", null, Alert.AlertType.ERROR);
                 clearFields();
             }
         }catch (Exception e){
@@ -102,7 +95,6 @@ public class FXMLLoginController implements Initializable {
 //    }
 
     private boolean validarEntradaDeDados(){
-        Alert alert = new Alert(Alert.AlertType.ERROR);
         ValidationException exception = new ValidationException("Validation error");
         Administrador obj = new Administrador();
 
@@ -118,9 +110,7 @@ public class FXMLLoginController implements Initializable {
             return true;
         }else{
             clearFields();
-            alert.setTitle("ERROR ao Fazer Login!");
-            alert.setHeaderText("Campos inválidos, por favor, corrija!");
-            alert.show();
+            Alerts.showAlert("ERROR ao Fazer Login!", "Campos inválidos, por favor, corrija!", null, Alert.AlertType.ERROR);
             return false;
         }
     }

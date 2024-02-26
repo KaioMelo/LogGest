@@ -15,7 +15,7 @@ public class AdministradorService {
             dao.update(obj);
         }
     }
-    public void verificarLogin(Administrador obj){
-        dao.getAllAdmin(obj);
+    public boolean verificarLogin(Administrador obj){
+        return dao.getAllAdmin(obj);
     }
 }
