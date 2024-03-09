@@ -61,7 +61,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnLogin" layoutX="48.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleLoginAdmin" prefHeight="30.0" prefWidth="200.0" text="Login">
+                  <Button fx:id="btnLogin" layoutX="48.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleLoginAdmin" prefHeight="30.0" prefWidth="200.0" stylesheets="@../css/index.css" text="Login" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

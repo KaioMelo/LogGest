@@ -36,11 +36,14 @@
                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="26.0" prefWidth="160.0" text="INÍCIO" />
-                              <Button mnemonicParsing="false" onAction="#handleMissao" prefHeight="26.0" prefWidth="160.0" text="MISSÕES" GridPane.rowIndex="1" />
-                              <Button mnemonicParsing="false" onAction="#handleVeiculo" prefHeight="26.0" prefWidth="160.0" text="VEÍCULOS" GridPane.rowIndex="2" />
-                              <Button mnemonicParsing="false" onAction="#handleMotorista" prefHeight="26.0" prefWidth="160.0" text="MOTORISTAS" GridPane.rowIndex="3" />
-                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" text="RELATÓRIOS" GridPane.rowIndex="4" />
+                              <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="26.0" prefWidth="160.0" text="INÍCIO" textFill="WHITE" />
+                              <Button mnemonicParsing="false" onAction="#handleMissao" prefHeight="26.0" prefWidth="160.0" text="MISSÕES" textFill="WHITE" GridPane.rowIndex="1" />
+                              <Button mnemonicParsing="false" onAction="#handleVeiculo" prefHeight="26.0" prefWidth="160.0" text="VEÍCULOS" textFill="WHITE" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font></Button>
+                              <Button mnemonicParsing="false" onAction="#handleMotorista" prefHeight="26.0" prefWidth="160.0" text="MOTORISTAS" textFill="WHITE" GridPane.rowIndex="3" />
+                              <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" text="RELATÓRIOS" textFill="WHITE" GridPane.rowIndex="4" />
                            </children>
                         </GridPane>
                         <Label layoutX="73.0" layoutY="134.0" text="Bem-Vindo," textFill="WHITE">

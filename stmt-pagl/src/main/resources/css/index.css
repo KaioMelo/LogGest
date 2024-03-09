@@ -1,5 +1,13 @@
+.main{
+    -fx-background-color: linear-gradiente(to bottom right, #0069D9, #1D3C54);
+}
+
 .left-form{
     -fx-background-color: linear-gradient(to bottom right, blue, black);
     -fx-border-color: #000;
     -fx-border-width: .4px .0px .4px .4px;
+}
+
+.button{
+    -fx-background-color: #0069D9;
 }

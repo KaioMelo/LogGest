@@ -1,0 +1,7 @@
+.button-update{
+    -fx-background-color: green;
+}
+
+.button-delete{
+    -fx-background-color: red;
+}
