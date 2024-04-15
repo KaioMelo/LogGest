@@ -47,7 +47,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="57.0" layoutY="161.0" text="Nome Admin" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="114.0" layoutY="161.0" prefHeight="30.0" prefWidth="8.0" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -77,7 +77,7 @@
                         <TableColumn fx:id="tableColumnServico" prefWidth="138.4000244140625" text="SERVIÇO" />
                         <TableColumn fx:id="tableColumnDestino" prefWidth="138.4000244140625" text="DESTINO" />
                         <TableColumn fx:id="tableColumnData" prefWidth="100.79986572265625" text="DATA" />
-                        <TableColumn fx:id="tableColumnUPDATE" prefWidth="56.0" />
+                        <TableColumn id="#button-update" fx:id="tableColumnUPDATE" prefWidth="56.0" />
                         <TableColumn fx:id="tableColumnDELETE" minWidth="0.0" prefWidth="69.5999755859375" />
                     </columns>
                   </TableView>

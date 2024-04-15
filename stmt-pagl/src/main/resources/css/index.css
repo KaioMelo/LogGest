@@ -2,6 +2,15 @@
     -fx-background-color: linear-gradiente(to bottom right, #0069D9, #1D3C54);
 }
 
+.container{
+    -fx-background-color: #FFF;
+}
+
+.menu-box{
+    -fx-background-color: linear-gradiente(to bottom right, #E1DEDF 40%, #9CA196 60%);
+     -fx-border-width: .4px .0px .4px .4px;
+}
+
 .left-form{
     -fx-background-color: linear-gradient(to bottom right, blue, black);
     -fx-border-color: #000;
