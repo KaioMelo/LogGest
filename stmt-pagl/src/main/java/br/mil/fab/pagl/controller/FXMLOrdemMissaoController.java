@@ -63,10 +63,7 @@ public class FXMLOrdemMissaoController implements Initializable {
         stage.centerOnScreen();
     }
 
-    @FXML
-    public void handleHome(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLInicio.fxml", event);
-    }
+
 
     @FXML
     public void handleMissao(ActionEvent event) throws IOException {

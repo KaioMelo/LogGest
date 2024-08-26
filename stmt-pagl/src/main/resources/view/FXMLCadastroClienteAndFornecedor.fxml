@@ -40,13 +40,13 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#handleClienteAndFornecedor" prefHeight="35.0" prefWidth="200.0" text="CLIENTE / FORNECEDOR" textFill="WHITE" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" onAction="#handleVeiculos" prefHeight="35.0" prefWidth="200.0" text="VEÍCULOS" textFill="WHITE" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" onAction="#handleRecursosHumanos" prefHeight="35.0" prefWidth="200.0" text="RECURSOS HUMANOS" textFill="WHITE" GridPane.rowIndex="5" />
-                        <Button mnemonicParsing="false" onAction="#handleFinanceiro" prefHeight="35.0" prefWidth="200.0" text="FINANÇAS" textFill="WHITE" GridPane.rowIndex="6" />
-                        <Button mnemonicParsing="false" onAction="#handleRelatorios" prefHeight="35.0" prefWidth="200.0" text="RELATÓRIOS" textFill="WHITE" GridPane.rowIndex="7" />
-                        <Button mnemonicParsing="false" onAction="#handleEstoque" prefHeight="35.0" prefWidth="200.0" text="ESTOQUE" textFill="WHITE" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#handleSinistro" prefHeight="35.0" prefWidth="200.0" text="SINISTRO" textFill="WHITE" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#handleMissao" prefHeight="35.0" prefWidth="200.0" text="CLIENTE / FORNECEDOR" textFill="WHITE" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#handleVeiculo" prefHeight="35.0" prefWidth="200.0" text="VEÍCULOS" textFill="WHITE" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#handleMotorista" prefHeight="35.0" prefWidth="200.0" text="RECURSOS HUMANOS" textFill="WHITE" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="FINANÇAS" textFill="WHITE" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="RELATÓRIOS" textFill="WHITE" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#handleMissao" prefHeight="35.0" prefWidth="200.0" text="ESTOQUE" textFill="WHITE" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#handleVeiculo" prefHeight="35.0" prefWidth="200.0" text="SINISTRO" textFill="WHITE" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                   <Label layoutX="101.0" layoutY="147.0" text="Bem-Vindo," textFill="WHITE">
@@ -71,23 +71,26 @@
             </AnchorPane>
             <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1000.0" styleClass="container" stylesheets="@../css/index.css">
                <children>
-                  <GridPane layoutX="50.0" layoutY="145.0" prefHeight="400.0" prefWidth="900.0">
-                    <columnConstraints>
+                  <Label layoutX="215.0" layoutY="7.0" text="Registro de Clientes e Fornecedores" textAlignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="190.0" layoutY="200.0" prefHeight="200.0" prefWidth="620.0">
+                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="228.80003662109374" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="223.99995117187498" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="222.800048828125" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                     </columnConstraints>
+                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" stylesheets="@../css/index.css">
                            <children>
-                              <Label layoutX="57.0" layoutY="20.0" text="CLIENTES / FORNECEDORES">
+                              <Label layoutX="69.0" layoutY="20.0" text="CADASTRO DE CLIENTES">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -100,7 +103,7 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" GridPane.columnIndex="2">
                            <children>
-                              <Label layoutX="115.0" layoutY="20.0" text="ESTOQUE">
+                              <Label layoutX="46.0" layoutY="20.0" text="CADASTRO DE FORNECEDORES">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -108,58 +111,8 @@
                               <FontAwesomeIconView glyphName="CUBES" layoutX="107.0" layoutY="118.0" size="60" />
                            </children>
                         </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" stylesheets="@../css/index.css" GridPane.rowIndex="2">
-                           <children>
-                              <Label layoutX="74.0" layoutY="20.0" text="RECURSOS HUMANOS">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <FontAwesomeIconView glyphName="ID_CARD" layoutX="114.0" layoutY="118.0" size="60" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" stylesheets="@../css/index.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                           <children>
-                              <Label layoutX="111.0" layoutY="20.0" text="FINANÇAS">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <FontAwesomeIconView glyphName="MONEY" layoutX="114.0" layoutY="118.0" size="60" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" stylesheets="@../css/index.css" GridPane.columnIndex="4">
-                           <children>
-                              <Label layoutX="113.0" layoutY="20.0" text="VEÍCULOS">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <FontAwesomeIconView glyphName="CAR" layoutX="111.0" layoutY="118.0" size="60" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" stylesheets="@../css/index.css" GridPane.columnIndex="4" GridPane.rowIndex="2">
-                           <children>
-                              <Label layoutX="103.0" layoutY="20.0" text="RELÁTORIOS">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <FontAwesomeIconView glyphName="FILE" layoutX="120.0" layoutY="118.0" size="60" />
-                           </children>
-                        </Pane>
                      </children>
                   </GridPane>
-                  <Label layoutX="166.0" layoutY="26.0" text="SEJA BEM-VINDO AO LOGGEST" textAlignment="CENTER">
-                     <font>
-                        <Font size="48.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="251.0" layoutY="83.0" text="SEU MELHOR SISTEMA PARA GERENCIAMENTO DE LOGÍSTICA">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
                </children>
             </AnchorPane>
          </children>

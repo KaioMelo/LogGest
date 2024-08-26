@@ -40,13 +40,13 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#handleClienteAndFornecedor" prefHeight="35.0" prefWidth="200.0" text="CLIENTE / FORNECEDOR" textFill="WHITE" GridPane.rowIndex="1" />
-                        <Button mnemonicParsing="false" onAction="#handleVeiculos" prefHeight="35.0" prefWidth="200.0" text="VEÍCULOS" textFill="WHITE" GridPane.rowIndex="3" />
-                        <Button mnemonicParsing="false" onAction="#handleRecursosHumanos" prefHeight="35.0" prefWidth="200.0" text="RECURSOS HUMANOS" textFill="WHITE" GridPane.rowIndex="5" />
-                        <Button mnemonicParsing="false" onAction="#handleFinanceiro" prefHeight="35.0" prefWidth="200.0" text="FINANÇAS" textFill="WHITE" GridPane.rowIndex="6" />
-                        <Button mnemonicParsing="false" onAction="#handleRelatorios" prefHeight="35.0" prefWidth="200.0" text="RELATÓRIOS" textFill="WHITE" GridPane.rowIndex="7" />
-                        <Button mnemonicParsing="false" onAction="#handleEstoque" prefHeight="35.0" prefWidth="200.0" text="ESTOQUE" textFill="WHITE" GridPane.rowIndex="2" />
-                        <Button mnemonicParsing="false" onAction="#handleSinistro" prefHeight="35.0" prefWidth="200.0" text="SINISTRO" textFill="WHITE" GridPane.rowIndex="4" />
+                        <Button mnemonicParsing="false" onAction="#handleMissao" prefHeight="35.0" prefWidth="200.0" text="CLIENTE / FORNECEDOR" textFill="WHITE" GridPane.rowIndex="1" />
+                        <Button mnemonicParsing="false" onAction="#handleVeiculo" prefHeight="35.0" prefWidth="200.0" text="VEÍCULOS" textFill="WHITE" GridPane.rowIndex="3" />
+                        <Button mnemonicParsing="false" onAction="#handleMotorista" prefHeight="35.0" prefWidth="200.0" text="RECURSOS HUMANOS" textFill="WHITE" GridPane.rowIndex="5" />
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="FINANÇAS" textFill="WHITE" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="RELATÓRIOS" textFill="WHITE" GridPane.rowIndex="7" />
+                        <Button mnemonicParsing="false" onAction="#handleMissao" prefHeight="35.0" prefWidth="200.0" text="ESTOQUE" textFill="WHITE" GridPane.rowIndex="2" />
+                        <Button mnemonicParsing="false" onAction="#handleVeiculo" prefHeight="35.0" prefWidth="200.0" text="SINISTRO" textFill="WHITE" GridPane.rowIndex="4" />
                      </children>
                   </GridPane>
                   <Label layoutX="101.0" layoutY="147.0" text="Bem-Vindo," textFill="WHITE">
@@ -87,7 +87,7 @@
                      <children>
                         <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" stylesheets="@../css/index.css">
                            <children>
-                              <Label layoutX="57.0" layoutY="20.0" text="CLIENTES / FORNECEDORES">
+                              <Label layoutX="70.0" layoutY="20.0" text="REGISTRO DE VEÍCULOS">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -100,7 +100,7 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" GridPane.columnIndex="2">
                            <children>
-                              <Label layoutX="115.0" layoutY="20.0" text="ESTOQUE">
+                              <Label layoutX="96.0" layoutY="20.0" text="MANUTENÇÃO">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -110,7 +110,7 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" stylesheets="@../css/index.css" GridPane.rowIndex="2">
                            <children>
-                              <Label layoutX="74.0" layoutY="20.0" text="RECURSOS HUMANOS">
+                              <Label layoutX="90.0" layoutY="20.0" text="TROCA DE PNEUS">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -120,7 +120,7 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" stylesheets="@../css/index.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <children>
-                              <Label layoutX="111.0" layoutY="20.0" text="FINANÇAS">
+                              <Label layoutX="116.0" layoutY="20.0" text="VIAGENS">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -130,7 +130,7 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" stylesheets="@../css/index.css" GridPane.columnIndex="4">
                            <children>
-                              <Label layoutX="113.0" layoutY="20.0" text="VEÍCULOS">
+                              <Label layoutX="87.0" layoutY="20.0" text="ABASTECIMENTO">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -140,7 +140,7 @@
                         </Pane>
                         <Pane prefHeight="200.0" prefWidth="200.0" styleClass="menu-box" stylesheets="@../css/index.css" GridPane.columnIndex="4" GridPane.rowIndex="2">
                            <children>
-                              <Label layoutX="103.0" layoutY="20.0" text="RELÁTORIOS">
+                              <Label layoutX="81.0" layoutY="20.0" text="ESTACIONAMENTO">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
@@ -150,14 +150,9 @@
                         </Pane>
                      </children>
                   </GridPane>
-                  <Label layoutX="166.0" layoutY="26.0" text="SEJA BEM-VINDO AO LOGGEST" textAlignment="CENTER">
+                  <Label layoutX="420.0" layoutY="7.0" text="VEÍCULOS" textAlignment="CENTER">
                      <font>
-                        <Font size="48.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="251.0" layoutY="83.0" text="SEU MELHOR SISTEMA PARA GERENCIAMENTO DE LOGÍSTICA">
-                     <font>
-                        <Font size="18.0" />
+                        <Font size="36.0" />
                      </font>
                   </Label>
                </children>
