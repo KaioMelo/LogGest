@@ -1,22 +1,32 @@
 .main{
-    -fx-background-color: linear-gradiente(to bottom right, #0069D9, #1D3C54);
+    -fx-background-color: #1D3C54;
 }
 
 .container{
     -fx-background-color: #FFF;
 }
 
-.menu-box{
-    -fx-background-color: linear-gradiente(to bottom right, #E1DEDF 40%, #9CA196 60%);
-     -fx-border-width: .4px .0px .4px .4px;
-}
-
 .left-form{
-    -fx-background-color: linear-gradient(to bottom right, blue, black);
-    -fx-border-color: #000;
-    -fx-border-width: .4px .0px .4px .4px;
+    -fx-background-color: #1D3C54;
 }
 
-.button{
-    -fx-background-color: #0069D9;
+.button-menu{
+    -fx-background-color: #EDEDED;
+    -fx-color: #316186;
+}
+
+.barra-pesquisa{
+    -fx-border-radius: 8px;
+}
+
+.texto-painel{
+     -fx-background-color: #EDEDED;
+}
+
+.button-painel{
+    -fx-background-color: #31495C;
+}
+
+.fundo-painel{
+    -fx-background-color: #316186;
 }

@@ -11,8 +11,8 @@ import java.util.List;
 public class VeiculoDAOImpl implements VeiculoDAO {
     @Override
     public void create(Veiculo veiculo) {
-        try(Connection con = ConfigConnectionDB.connect();
-            ) {
+        try(Connection con = ConfigConnectionDB.connect()
+        ) {
             PreparedStatement ps = con.prepareStatement("INSERT INTO veiculo (rg_fab, placa, marca, modelo) " +
                     "VALUES (?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);

@@ -56,7 +56,7 @@ public class FXMLMainController implements Initializable {
         protected ObservableList call() throws Exception {
             for(int i = 0; i < 101; i++){
                 updateProgress(i, 99);
-                updateMessage(""+i);
+                updateMessage(String.valueOf(i));
                 Thread.sleep(100);
             }
             return null;

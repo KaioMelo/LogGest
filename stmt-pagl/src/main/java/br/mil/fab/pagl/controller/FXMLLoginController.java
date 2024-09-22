@@ -56,7 +56,7 @@ public class FXMLLoginController implements Initializable {
             if(!textFieldEmail.getText().trim().isBlank() && !passwordFieldSenha.getText().trim().isBlank()){
                 Administrador obj = validarLogin();
                 if(service.verificarLogin(obj)){
-                    Alerts.showAlert("SUCESSO", "Login bem sucedido!", null, Alert.AlertType.INFORMATION);
+                    //Alerts.showAlert("SUCESSO", "Login bem sucedido!", null, Alert.AlertType.INFORMATION);
                     loadScene("/view/FXMLInicio.fxml", event);
                 }else{
                     Alerts.showAlert("ERROR", "E-mail ou senha incorretos!", null, Alert.AlertType.ERROR);

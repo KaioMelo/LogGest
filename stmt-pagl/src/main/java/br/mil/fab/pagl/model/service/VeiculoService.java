@@ -8,7 +8,7 @@ import java.util.List;
 
 public class VeiculoService {
 
-    private VeiculoDAO dao = DAOFactory.createVeiculoDAO();
+    private final VeiculoDAO dao = DAOFactory.createVeiculoDAO();
 
     public List<Veiculo> findAll(){
         return dao.findAll();

@@ -6,14 +6,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLInicioController implements Initializable {
+public class FXMLControleVeiculosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
@@ -35,7 +35,7 @@ public class FXMLInicioController implements Initializable {
 
     @FXML
     public void handleClientes(ActionEvent event) throws IOException {
-            loadScene("/view/FXMLRegistroClientes.fxml", event);
+        loadScene("/view/FXMLRegistroClientes.fxml", event);
     }
 
     @FXML

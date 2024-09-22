@@ -9,8 +9,8 @@ import java.sql.*;
 public class AdministradorDAOImpl implements AdministradorDAO {
     @Override
     public void create(Administrador obj) {
-        try(Connection con = ConfigConnectionDB.connect();
-            ) {
+        try(Connection con = ConfigConnectionDB.connect()
+        ) {
             PreparedStatement ps = con.prepareStatement("INSERT INTO administrador (email, senha) " +
                     "VALUES (?,?)",
                     Statement.RETURN_GENERATED_KEYS);

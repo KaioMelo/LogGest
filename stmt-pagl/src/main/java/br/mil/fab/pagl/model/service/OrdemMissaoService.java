@@ -8,7 +8,7 @@ import java.util.List;
 
 public class OrdemMissaoService {
 
-    private OrdemMissaoDAO dao = DAOFactory.createOrdemMissaoDAO();
+    private final OrdemMissaoDAO dao = DAOFactory.createOrdemMissaoDAO();
 
     public List<OrdemMissao> findAll(){
         return dao.findAll();

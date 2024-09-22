@@ -24,7 +24,7 @@ public class Utils {
 
     public static void formatDatePicker(DatePicker datePicker, String format) {
         datePicker.setConverter(new StringConverter<LocalDate>() {
-            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(format);
+            final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(format);
             {
                 datePicker.setPromptText(format.toLowerCase());
             }

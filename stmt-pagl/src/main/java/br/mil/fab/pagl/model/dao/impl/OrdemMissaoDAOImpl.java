@@ -11,8 +11,8 @@ import java.util.List;
 public class OrdemMissaoDAOImpl implements OrdemMissaoDAO {
     @Override
     public void create(OrdemMissao obj) {
-        try(Connection con = ConfigConnectionDB.connect();
-            ) {
+        try(Connection con = ConfigConnectionDB.connect()
+        ) {
             PreparedStatement ps = con.prepareStatement("INSERT INTO missao (solicitante, contato, servico, destino, data_missao) " +
                     "VALUES (?,?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);

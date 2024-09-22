@@ -8,7 +8,7 @@ import java.util.List;
 
 public class MotoristaService {
 
-    private MotoristaDAO dao = DAOFactory.createMotoristaDAO();
+    private final MotoristaDAO dao = DAOFactory.createMotoristaDAO();
 
     public List<Motorista> findAll(){
         return dao.findAll();

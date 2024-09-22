@@ -11,8 +11,8 @@ import java.util.List;
 public class MotoristaDAOImpl implements MotoristaDAO {
     @Override
     public void create(Motorista obj) {
-        try(Connection con = ConfigConnectionDB.connect();
-            ) {
+        try(Connection con = ConfigConnectionDB.connect()
+        ) {
             PreparedStatement ps = con.prepareStatement("INSERT INTO motorista (nome_motorista, cnh, om, sessao) " +
                     "VALUES (?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);

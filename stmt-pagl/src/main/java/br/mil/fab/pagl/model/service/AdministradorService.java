@@ -6,7 +6,7 @@ import br.mil.fab.pagl.model.entities.Administrador;
 
 public class AdministradorService {
 
-    private AdministradorDAO dao = DAOFactory.createAdministradorDAO();
+    private final AdministradorDAO dao = DAOFactory.createAdministradorDAO();
 
     public void saveOrUpdate(Administrador obj){
         if(obj.getId_adm() == null){

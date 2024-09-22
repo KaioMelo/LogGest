@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLSinistroController implements Initializable {
+public class FXMLRegistroFornecedoresController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
@@ -34,37 +34,42 @@ public class FXMLSinistroController implements Initializable {
     }
 
     @FXML
-    public void handleClienteAndFornecedor(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLCadastroClienteAndFornecedor.fxml", event);
+    public void handleClientes(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLRegistroClientes.fxml", event);
+    }
+
+    @FXML
+    public void handleFornecedores(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLRegistroFornecedores.fxml", event);
     }
 
     @FXML
     public void handleEstoque(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLEstoque.fxml", event);
+        loadScene("/view/FXMLControleEstoque.fxml", event);
     }
 
     @FXML
     public void handleVeiculos(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLVeiculos.fxml", event);
-    }
-
-    @FXML
-    public void handleSinistro(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLSinistro.fxml", event);
+        loadScene("/view/FXMLControleVeiculos.fxml", event);
     }
 
     @FXML
     public void handleRecursosHumanos(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLRecursosHumanos.fxml", event);
+        loadScene("/view/FXMLControleRecursosHumanos.fxml", event);
     }
 
     @FXML
     public void handleFinanceiro(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLFinancas.fxml", event);
+        loadScene("/view/FXMLControleFinanceiro.fxml", event);
     }
 
     @FXML
     public void handleRelatorios(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLRelatorios.fxml", event);
+        loadScene("/view/FXMLControleRelatorios.fxml", event);
+    }
+
+    @FXML
+    public void handleEstatisticas(ActionEvent event) throws IOException {
+        loadScene("/view/FXMLEstatisticas.fxml", event);
     }
 }
