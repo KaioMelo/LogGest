@@ -2,50 +2,34 @@ package br.mil.fab.pagl.model.entities;
 
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Objects;
 
 public class Veiculo implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Integer id_veiculo;
-    private String rg_fab;
-    private String placa;
+    private Long id;
     private String marca;
     private String modelo;
+    private Integer anoFabricacao;
+    private Integer anoModelo;
+    private Integer numeroChassi;
+    private Integer numeroMotor;
+    private String cor;
+    private String placa;
+    private String prefixo;
+    private Calendar dataDeCompra;
+    private Long valorDeCompra;
+    private Calendar dataDeVenda;
+    private Long valorDeVenda;
+    private Documentos documentos;
 
-    public Veiculo() {
+    public Long getId() {
+        return id;
     }
 
-    public Veiculo(Integer id_veiculo, String rg_fab, String placa, String marca, String modelo) {
-        this.id_veiculo = id_veiculo;
-        this.rg_fab = rg_fab;
-        this.placa = placa;
-        this.marca = marca;
-        this.modelo = modelo;
-    }
-
-    public Integer getId_veiculo() {
-        return id_veiculo;
-    }
-
-    public void setId_veiculo(Integer id_veiculo) {
-        this.id_veiculo = id_veiculo;
-    }
-
-    public String getRg_fab() {
-        return rg_fab;
-    }
-
-    public void setRg_fab(String rg_fab) {
-        this.rg_fab = rg_fab;
-    }
-
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getMarca() {
@@ -64,16 +48,92 @@ public class Veiculo implements Serializable {
         this.modelo = modelo;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Veiculo veiculo = (Veiculo) o;
-        return Objects.equals(id_veiculo, veiculo.id_veiculo) && Objects.equals(rg_fab, veiculo.rg_fab) && Objects.equals(placa, veiculo.placa);
+    public Integer getAnoFabricacao() {
+        return anoFabricacao;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id_veiculo, rg_fab, placa);
+    public void setAnoFabricacao(Integer anoFabricacao) {
+        this.anoFabricacao = anoFabricacao;
     }
+
+    public Integer getAnoModelo() {
+        return anoModelo;
+    }
+
+    public void setAnoModelo(Integer anoModelo) {
+        this.anoModelo = anoModelo;
+    }
+
+    public Integer getNumeroChassi() {
+        return numeroChassi;
+    }
+
+    public void setNumeroChassi(Integer numeroChassi) {
+        this.numeroChassi = numeroChassi;
+    }
+
+    public Integer getNumeroMotor() {
+        return numeroMotor;
+    }
+
+    public void setNumeroMotor(Integer numeroMotor) {
+        this.numeroMotor = numeroMotor;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+
+    public String getPrefixo() {
+        return prefixo;
+    }
+
+    public void setPrefixo(String prefixo) {
+        this.prefixo = prefixo;
+    }
+
+    public Calendar getDataDeCompra() {
+        return dataDeCompra;
+    }
+
+    public void setDataDeCompra(Calendar dataDeCompra) {
+        this.dataDeCompra = dataDeCompra;
+    }
+
+    public Long getValorDeCompra() {
+        return valorDeCompra;
+    }
+
+    public void setValorDeCompra(Long valorDeCompra) {
+        this.valorDeCompra = valorDeCompra;
+    }
+
+    public Calendar getDataDeVenda() {
+        return dataDeVenda;
+    }
+
+    public void setDataDeVenda(Calendar dataDeVenda) {
+        this.dataDeVenda = dataDeVenda;
+    }
+
+    public Long getValorDeVenda() {
+        return valorDeVenda;
+    }
+
+    public void setValorDeVenda(Long valorDeVenda) {
+        this.valorDeVenda = valorDeVenda;
+    }
+
 }

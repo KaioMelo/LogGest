@@ -4,25 +4,17 @@ import java.util.Objects;
 
 public class Administrador {
 
-    private Integer id_adm;
+    private Long id;
     private String email;
+    private Integer matricula;
     private String senha;
 
-    public Administrador() {
+    public Long getId() {
+        return id;
     }
 
-    public Administrador(Integer id_adm, String email, String senha) {
-        this.id_adm = id_adm;
-        this.email = email;
-        this.senha = senha;
-    }
-
-    public Integer getId_adm() {
-        return id_adm;
-    }
-
-    public void setId_adm(Integer id_adm) {
-        this.id_adm = id_adm;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmail() {
@@ -33,24 +25,19 @@ public class Administrador {
         this.email = email;
     }
 
+    public Integer getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(Integer matricula) {
+        this.matricula = matricula;
+    }
+
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Administrador that = (Administrador) o;
-        return id_adm == that.id_adm;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id_adm);
     }
 }

@@ -99,7 +99,19 @@
             </AnchorPane>
             <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1000.0" styleClass="container" stylesheets="@../css/index.css">
                <children>
-                  <TextField layoutX="20.0" layoutY="40.0" prefHeight="30.0" prefWidth="500.0" styleClass="barra-pesquisa" stylesheets="@../css/index.css" />
+                  <GridPane layoutX="20.0" layoutY="40.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="462.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="77.8" minWidth="10.0" prefWidth="77.8" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <TextField prefHeight="30.0" prefWidth="462.0" styleClass="barra-pesquisa" stylesheets="@../css/index.css" />
+                        <Button mnemonicParsing="false" prefHeight="30.0" text="PESQUISAR" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
                   <Label layoutX="20.0" layoutY="83.0" text="Controle de Estoque">
                      <font>
                         <Font size="20.0" />
@@ -107,12 +119,6 @@
                   </Label>
                   <GlyphsStack layoutX="129.0" layoutY="312.0" />
                   <FontAwesomeIconView fill="#00000080" glyphName="BELL" layoutX="955.0" layoutY="64.0" size="25" text="" />
-                  <FontAwesomeIconView fill="#00000080" glyphName="SEARCH" layoutX="28.0" layoutY="64.0" size="25" />
-                  <Label layoutX="70.0" layoutY="45.0" text="Pesquisar">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
                   <FontAwesomeIconView fill="#00000080" glyphName="ARROW_LEFT" layoutX="20.0" layoutY="581.0" size="30" />
                   <FontAwesomeIconView fill="#00000080" glyphName="GEAR" layoutX="923.0" layoutY="63.0" size="25" />
                   <FontAwesomeIconView fill="#00000080" glyphName="DATABASE" layoutX="972.0" layoutY="576.0" size="18" />
