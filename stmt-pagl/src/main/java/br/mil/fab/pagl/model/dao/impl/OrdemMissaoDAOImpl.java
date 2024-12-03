@@ -1,7 +1,7 @@
 package br.mil.fab.pagl.model.dao.impl;
 
 import br.mil.fab.pagl.model.dao.OrdemMissaoDAO;
-import br.mil.fab.pagl.model.entities.OrdemMissao;
+import br.mil.fab.pagl.model.entities.Viagens;
 import br.mil.fab.pagl.model.util.ConfigConnectionDB;
 
 import java.sql.*;
@@ -10,7 +10,7 @@ import java.util.List;
 
 public class OrdemMissaoDAOImpl implements OrdemMissaoDAO {
     @Override
-    public void create(OrdemMissao obj) {
+    public void create(Viagens obj) {
         try(Connection con = ConfigConnectionDB.connect()
         ) {
             PreparedStatement ps = con.prepareStatement("INSERT INTO missao (solicitante, contato, servico, destino, data_missao) " +
@@ -37,7 +37,7 @@ public class OrdemMissaoDAOImpl implements OrdemMissaoDAO {
     }
 
     @Override
-    public void update(OrdemMissao obj) {
+    public void update(Viagens obj) {
         String sql = "UPDATE missao SET solicitante=?, contato=?, servico=?, destino=?, data_missao=? WHERE id_ordem=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)){
@@ -68,14 +68,14 @@ public class OrdemMissaoDAOImpl implements OrdemMissaoDAO {
     }
 
     @Override
-    public List<OrdemMissao> findAll() {
+    public List<Viagens> findAll() {
         String sql = "SELECT * FROM missao";
-        List<OrdemMissao> missaoList = new ArrayList<>();
+        List<Viagens> missaoList = new ArrayList<>();
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)){
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
-                missaoList.add(new OrdemMissao(
+                missaoList.add(new Viagens(
                         rs.getInt("id_ordem"),
                         rs.getString("solicitante"),
                         rs.getString("contato"),

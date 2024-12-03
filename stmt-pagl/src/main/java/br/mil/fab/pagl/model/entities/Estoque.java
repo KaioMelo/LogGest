@@ -1,26 +1,46 @@
 package br.mil.fab.pagl.model.entities;
 
 import br.mil.fab.pagl.model.entities.enuns.TipoProduto;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Objects;
 
+@Entity
+@Table(name = "CAD_ESTOQUE")
 public class Estoque implements Serializable {
     private static final long serialVersionUID=1L;
 
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "DATA_ENTRADA")
     private Calendar dataEntrada;
+    @Column(name = "DATA_SAIDA")
     private Calendar dataSaida;
+    @Column(name = "NUM_NF")
     private Long numeroNf;
+    @Column(name = "NCM_SH")
     private Integer ncm_sh;
+    @Column(name = "CST_CSON")
     private Integer cst_csosn;
+    @Column(name = "CFOP")
     private Integer cfop;
+    @Column(name = "VALOR_UNITARIO")
     private Double valorUnitario;
+    @Column(name = "QUANTIDADE")
     private Long quantidade;
+    @Column(name = "VALOR_TOTAL")
     private Double valorTotal;
+    @Column(name = "PRODUTO")
     private String produto;
+    @Column(name = "DATA_VALIDADE")
     private Calendar validade;
+    @Column(name = "DATA_GARANTIA")
     private Calendar garantia;
+    @Column(name = "FK_TIPO_PRODUTO")
     private TipoProduto tipoProduto;
 
     public Long getId() {
@@ -133,5 +153,18 @@ public class Estoque implements Serializable {
 
     public void setTipoProduto(TipoProduto tipoProduto) {
         this.tipoProduto = tipoProduto;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Estoque estoque = (Estoque) o;
+        return Objects.equals(id, estoque.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

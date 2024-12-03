@@ -1,6 +1,6 @@
 //package br.mil.fab.pagl.controller;
 //
-//import br.mil.fab.pagl.model.entities.OrdemMissao;
+//import br.mil.fab.pagl.model.entities.Viagens;
 //import br.mil.fab.pagl.model.service.OrdemMissaoService;
 //import br.mil.fab.pagl.model.util.Alerts;
 //import br.mil.fab.pagl.model.util.Utils;
@@ -24,23 +24,23 @@
 //
 //public class FXMLOrdemMissaoController implements Initializable {
 //    @FXML
-//    private TableView<OrdemMissao> tableViewMissoes;
+//    private TableView<Viagens> tableViewMissoes;
 //    @FXML
-//    private TableColumn<OrdemMissao, Integer> tableColumnID;
+//    private TableColumn<Viagens, Integer> tableColumnID;
 //    @FXML
-//    private TableColumn<OrdemMissao, String> tableColumnSolicitante;
+//    private TableColumn<Viagens, String> tableColumnSolicitante;
 //    @FXML
-//    private TableColumn<OrdemMissao, String> tableColumnContato;
+//    private TableColumn<Viagens, String> tableColumnContato;
 //    @FXML
-//    private TableColumn<OrdemMissao, String> tableColumnServico;
+//    private TableColumn<Viagens, String> tableColumnServico;
 //    @FXML
-//    private TableColumn<OrdemMissao, String> tableColumnDestino;
+//    private TableColumn<Viagens, String> tableColumnDestino;
 //    @FXML
-//    private TableColumn<OrdemMissao, Date> tableColumnData;
+//    private TableColumn<Viagens, Date> tableColumnData;
 //    @FXML
-//    private TableColumn<OrdemMissao, OrdemMissao> tableColumnUPDATE;
+//    private TableColumn<Viagens, Viagens> tableColumnUPDATE;
 //    @FXML
-//    private TableColumn<OrdemMissao, OrdemMissao> tableColumnDELETE;
+//    private TableColumn<Viagens, Viagens> tableColumnDELETE;
 //
 //    private OrdemMissaoService service = new OrdemMissaoService();
 //
@@ -96,11 +96,11 @@
 //    @FXML
 //    public void handleRegistrarOrdemMissao(ActionEvent event){
 //        Stage parentStage = Utils.currentStage(event);
-//        OrdemMissao obj = new OrdemMissao();
+//        Viagens obj = new Viagens();
 //        createDialogForm(obj,"/view/FXMLOrdemMissaoForm.fxml", parentStage);
 //    }
 //
-//    private void createDialogForm(OrdemMissao obj, String absolutName, Stage parentStage){
+//    private void createDialogForm(Viagens obj, String absolutName, Stage parentStage){
 //        try{
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource(absolutName));
 //            Pane pane = loader.load();
@@ -123,10 +123,10 @@
 //
 //    private void initEditButtons() {
 //        tableColumnUPDATE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-//        tableColumnUPDATE.setCellFactory(param -> new TableCell<OrdemMissao, OrdemMissao>() {
+//        tableColumnUPDATE.setCellFactory(param -> new TableCell<Viagens, Viagens>() {
 //            private final Button button = new Button("Editar");
 //            @Override
-//            protected void updateItem(OrdemMissao obj, boolean empty) {
+//            protected void updateItem(Viagens obj, boolean empty) {
 //                super.updateItem(obj, empty);
 //                if (obj == null) {
 //                    setGraphic(null);
@@ -142,10 +142,10 @@
 //
 //    private void initRemoveButtons() {
 //        tableColumnDELETE.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue()));
-//        tableColumnDELETE.setCellFactory(param -> new TableCell<OrdemMissao, OrdemMissao>() {
+//        tableColumnDELETE.setCellFactory(param -> new TableCell<Viagens, Viagens>() {
 //            private final Button button = new Button("Remover");
 //            @Override
-//            protected void updateItem(OrdemMissao obj, boolean empty) {
+//            protected void updateItem(Viagens obj, boolean empty) {
 //                super.updateItem(obj, empty);
 //                if (obj == null) {
 //                    setGraphic(null);
@@ -157,7 +157,7 @@
 //        });
 //    }
 //
-//    private void removerMissao(OrdemMissao obj) {
+//    private void removerMissao(Viagens obj) {
 //        Optional<ButtonType> result = Alerts.showConfirmation("Confirmação", "Tem certeza que deseja deletar:");
 //        if(result.get() == ButtonType.OK){
 //            if(service == null){

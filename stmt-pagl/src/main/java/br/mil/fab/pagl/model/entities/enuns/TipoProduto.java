@@ -1,7 +1,10 @@
 package br.mil.fab.pagl.model.entities.enuns;
 
 public enum TipoProduto {
-    LITROS, PECAS, UNIDADE, CAIXA;
-    private Integer codigo;
-    private String descricao;
+    LITROS("LITROS"), PECAS("LITROS"), UNIDADE("LITROS"), CAIXA("LITROS");
+
+    TipoProduto(String tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+    private String tipoProduto;
 }

@@ -1,43 +1,34 @@
 package br.mil.fab.pagl.model.entities;
 
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Objects;
-
-public class Motorista implements Serializable {
+@Entity
+@Table(name = "CAD_MOTORISTAS")
+public class Motorista extends Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    private Integer id_motorista;
-    private String nome_motorista;
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(name = "CNH")
     private Integer cnh;
-    private String om;
-    private String sessao;
+    @Column(name = "VENCIMENTO_CNH")
+    private Calendar vencimentoCnh;
+    @Column(name = "FK_CAD_TOXICOLOGICOS")
+    private Toxicologico toxicologico;
 
-    public Motorista() {
+    @Override
+    public Long getId() {
+        return id;
     }
 
-    public Motorista(Integer id_motorista, String nome_motorista, Integer cnh, String om, String sessao) {
-        this.id_motorista = id_motorista;
-        this.nome_motorista = nome_motorista;
-        this.cnh = cnh;
-        this.om = om;
-        this.sessao = sessao;
-    }
-
-    public Integer getId_motorista() {
-        return id_motorista;
-    }
-
-    public void setId_motorista(Integer id_motorista) {
-        this.id_motorista = id_motorista;
-    }
-
-    public String getNome_motorista() {
-        return nome_motorista;
-    }
-
-    public void setNome_motorista(String nome_motorista) {
-        this.nome_motorista = nome_motorista;
+    @Override
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getCnh() {
@@ -48,20 +39,20 @@ public class Motorista implements Serializable {
         this.cnh = cnh;
     }
 
-    public String getOm() {
-        return om;
+    public Calendar getVencimentoCnh() {
+        return vencimentoCnh;
     }
 
-    public void setOm(String om) {
-        this.om = om;
+    public void setVencimentoCnh(Calendar vencimentoCnh) {
+        this.vencimentoCnh = vencimentoCnh;
     }
 
-    public String getSessao() {
-        return sessao;
+    public Toxicologico getToxicologico() {
+        return toxicologico;
     }
 
-    public void setSessao(String sessao) {
-        this.sessao = sessao;
+    public void setToxicologico(Toxicologico toxicologico) {
+        this.toxicologico = toxicologico;
     }
 
     @Override
@@ -69,11 +60,11 @@ public class Motorista implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Motorista motorista = (Motorista) o;
-        return Objects.equals(id_motorista, motorista.id_motorista) && Objects.equals(cnh, motorista.cnh);
+        return Objects.equals(id, motorista.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id_motorista, cnh);
+        return Objects.hash(id);
     }
 }

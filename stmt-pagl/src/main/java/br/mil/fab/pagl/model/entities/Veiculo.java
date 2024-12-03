@@ -1,28 +1,49 @@
 package br.mil.fab.pagl.model.entities;
 
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Objects;
 
+@Entity
+@Table(name = "CAD_VEICULOS")
 public class Veiculo implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "MARCA")
     private String marca;
+    @Column(name = "MODELO")
     private String modelo;
+    @Column(name = "ANO_FABRICACAO")
     private Integer anoFabricacao;
+    @Column(name = "ANO_MODELO")
     private Integer anoModelo;
+    @Column(name = "NUMERO_CHASSI")
     private Integer numeroChassi;
+    @Column(name = "NUMERO_MOTOR")
     private Integer numeroMotor;
+    @Column(name = "COR")
     private String cor;
+    @Column(name = "PLACA")
     private String placa;
+    @Column(name = "PREFIXO")
     private String prefixo;
+    @Column(name = "DATA_COMPRA")
     private Calendar dataDeCompra;
+    @Column(name = "VALOR COMPRA")
     private Long valorDeCompra;
+    @Column(name = "DATA_VENDA")
     private Calendar dataDeVenda;
+    @Column(name = "VALOR_VENDA")
     private Long valorDeVenda;
-    private Documentos documentos;
+    @Column(name = "FK_CAD_DOCUMENTOS_ANEXOS")
+    private DocumentosAnexos documentos;
 
     public Long getId() {
         return id;
@@ -136,4 +157,16 @@ public class Veiculo implements Serializable {
         this.valorDeVenda = valorDeVenda;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Veiculo veiculo = (Veiculo) o;
+        return Objects.equals(id, veiculo.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

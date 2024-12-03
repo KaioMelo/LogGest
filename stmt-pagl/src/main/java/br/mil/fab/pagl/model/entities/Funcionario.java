@@ -1,24 +1,29 @@
 package br.mil.fab.pagl.model.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Objects;
 
+@Entity
+@Table(name = "CAD_FUNCIONARIOS")
 public class Funcionario implements Serializable {
     private static final long serialVersionUID=1L;
 
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "MATRICULA")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer matricula;
-    private String nome;
-    private Integer rg;
-    private String cpf;
-    private String titulo;
-    private String Pis;
-    private Integer ctps;
-    private Integer cnh;
-    private Calendar vencimentoCnh;
-    private Endereco endereco;
+    @Column(name = "FK_CAD_PESSOA")
+    private Pessoa pessoa;
+    @Column(name = "FK_FIN_VENCIMENTOS")
     private Vencimentos vencimentos;
-    private Toxicologico toxicologico;
+    @Column(name = "FK_CAD_DOCUMENTOS_ANEXOS")
+    private DocumentoAnexo documento;
 
     public Long getId() {
         return id;
@@ -34,54 +39,6 @@ public class Funcionario implements Serializable {
 
     public void setMatricula(Integer matricula) {
         this.matricula = matricula;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Integer getRg() {
-        return rg;
-    }
-
-    public void setRg(Integer rg) {
-        this.rg = rg;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getPis() {
-        return Pis;
-    }
-
-    public void setPis(String pis) {
-        Pis = pis;
-    }
-
-    public Integer getCtps() {
-        return ctps;
-    }
-
-    public void setCtps(Integer ctps) {
-        this.ctps = ctps;
     }
 
     public Integer getCnh() {
@@ -100,12 +57,12 @@ public class Funcionario implements Serializable {
         this.vencimentoCnh = vencimentoCnh;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     public Vencimentos getVencimentos() {
@@ -122,5 +79,26 @@ public class Funcionario implements Serializable {
 
     public void setToxicologico(Toxicologico toxicologico) {
         this.toxicologico = toxicologico;
+    }
+
+    public DocumentoAnexo getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(DocumentoAnexo documento) {
+        this.documento = documento;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Funcionario that = (Funcionario) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

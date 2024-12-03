@@ -2,7 +2,7 @@
 //
 //
 //import br.mil.fab.pagl.model.exceptions.ValidationException;
-//import br.mil.fab.pagl.model.entities.OrdemMissao;
+//import br.mil.fab.pagl.model.entities.Viagens;
 //import br.mil.fab.pagl.model.service.OrdemMissaoService;
 //import br.mil.fab.pagl.model.util.Alerts;
 //import br.mil.fab.pagl.model.util.Utils;
@@ -39,15 +39,15 @@
 //    @FXML
 //    private Button buttonCancelar;
 //
-//    private OrdemMissao missao;
+//    private Viagens missao;
 //    private OrdemMissaoService service = new OrdemMissaoService();
-//    private OrdemMissao obj;
+//    private Viagens obj;
 //
 //    private void setOrdemMissaoService(OrdemMissaoService service) {
 //        this.service = service;
 //    }
 //
-//    public void setOrdemMissao(OrdemMissao missao) {
+//    public void setOrdemMissao(Viagens missao) {
 //        this.missao = missao;
 //    }
 //
@@ -85,10 +85,10 @@
 //        }
 //    }
 //
-//    private OrdemMissao validarEntradasDeDados() {
+//    private Viagens validarEntradasDeDados() {
 //        Alert alert = new Alert(Alert.AlertType.ERROR);
 //        ValidationException exception = new ValidationException("Validation error");
-//        OrdemMissao obj = new OrdemMissao();
+//        Viagens obj = new Viagens();
 //
 //        obj.setId_ordem(Utils.tryParseToInt(textFieldIdMissao.getText()));
 //

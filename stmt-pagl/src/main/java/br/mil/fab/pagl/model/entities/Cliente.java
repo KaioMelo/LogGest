@@ -1,17 +1,23 @@
 package br.mil.fab.pagl.model.entities;
 
-import java.io.Serializable;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.Objects;
+
+@Entity
+@Table(name = "CAD_CLIENTES")
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
-
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name = "NOME")
     private String nome;
-    private String cpf;
-    private String cnpj;
-    private Endereco endereco;
-    private Contato telefone;
-    private Email email;
+    @Column(name = "FK_CAD_PESSOA")
+    private Pessoa pessoa;
+
 
     public Long getId() {
         return id;
@@ -29,43 +35,16 @@ public class Cliente implements Serializable {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(id, cliente.id);
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Contato getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(Contato telefone) {
-        this.telefone = telefone;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

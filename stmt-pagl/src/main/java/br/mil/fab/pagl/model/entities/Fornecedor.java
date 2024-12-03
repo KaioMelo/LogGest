@@ -1,17 +1,22 @@
 package br.mil.fab.pagl.model.entities;
 
-import java.io.Serializable;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.Objects;
+@Entity
+@Table(name = "CAD_FORNECEDORES")
 public class Fornecedor implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nome;
-    private String cpf;
-    private String cnpj;
-    private Endereco endereco;
-    private Contato telefone;
-    private Email email;
+    @Column(name = "FK_CAD_PESSOA")
+    private Pessoa pessoa;
+    @Column(name = "FK_CAD_DOCUMENTOS_ANEXOS")
+    private DocumentoAnexo documento;
 
     public Long getId() {
         return id;
@@ -21,51 +26,32 @@ public class Fornecedor implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
-    public String getCpf() {
-        return cpf;
+    public DocumentoAnexo getDocumento() {
+        return documento;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setDocumento(DocumentoAnexo documento) {
+        this.documento = documento;
     }
 
-    public String getCnpj() {
-        return cnpj;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Fornecedor that = (Fornecedor) o;
+        return Objects.equals(id, that.id);
     }
 
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Contato getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(Contato telefone) {
-        this.telefone = telefone;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
