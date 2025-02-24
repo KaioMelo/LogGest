@@ -15,10 +15,10 @@ public class Administrador {
     private Long id;
     @Column(name = "FK_CAD_EMAILS")
     private Email email;
+    @Column(name = "FK_CAD_SENHAS")
+    private Senhas senhas;
     @Column(name = "FK_CAD_FUNCIONARIOS")
     private Funcionario funcionario;
-    @Column(name = "FK_CAD_SENHAS")
-    private Senha senha;
 
     public Long getId() {
         return id;
@@ -36,20 +36,20 @@ public class Administrador {
         this.email = email;
     }
 
+    public Senhas getSenhas() {
+        return senhas;
+    }
+
+    public void setSenhas(Senhas senhas) {
+        this.senhas = senhas;
+    }
+
     public Funcionario getFuncionario() {
         return funcionario;
     }
 
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
-    }
-
-    public Senha getSenha() {
-        return senha;
-    }
-
-    public void setSenha(Senha senha) {
-        this.senha = senha;
     }
 
     @Override

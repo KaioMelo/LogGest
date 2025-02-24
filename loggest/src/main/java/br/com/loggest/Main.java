@@ -18,7 +18,7 @@ public class Main extends Application {
             ScrollPane root = loader.load();
             Scene mainScene = new Scene(root);
             primaryStage.setScene(mainScene);
-            primaryStage.setTitle("Prefeitura da Aéronautica do Galeão (PAGL)");
+            primaryStage.setTitle("LoggGest - Seu sistema de gerenciamento");
             primaryStage.centerOnScreen();
             primaryStage.show();
         } else {

@@ -18,6 +18,8 @@ public class Motorista extends Funcionario implements Serializable {
     private Integer cnh;
     @Column(name = "VENCIMENTO_CNH")
     private Calendar vencimentoCnh;
+    @Column(name = "FK_CAD_PESSOA")
+    private Pessoa pessoa;
     @Column(name = "FK_CAD_TOXICOLOGICOS")
     private Toxicologico toxicologico;
 

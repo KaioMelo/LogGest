@@ -16,7 +16,7 @@ public class Fornecedor implements Serializable {
     @Column(name = "FK_CAD_PESSOA")
     private Pessoa pessoa;
     @Column(name = "FK_CAD_DOCUMENTOS_ANEXOS")
-    private DocumentoAnexo documento;
+    private DocumentosAnexos documento;
 
     public Long getId() {
         return id;
@@ -34,11 +34,11 @@ public class Fornecedor implements Serializable {
         this.pessoa = pessoa;
     }
 
-    public DocumentoAnexo getDocumento() {
+    public DocumentosAnexos getDocumento() {
         return documento;
     }
 
-    public void setDocumento(DocumentoAnexo documento) {
+    public void setDocumento(DocumentosAnexos documento) {
         this.documento = documento;
     }
 

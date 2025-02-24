@@ -56,7 +56,6 @@ public class FXMLLoginController implements Initializable {
             if(!textFieldEmail.getText().trim().isBlank() && !passwordFieldSenha.getText().trim().isBlank()){
                 Administrador obj = validarLogin();
                 if(service.verificarLogin(obj)){
-                    //Alerts.showAlert("SUCESSO", "Login bem sucedido!", null, Alert.AlertType.INFORMATION);
                     loadScene("/view/FXMLInicio.fxml", event);
                 }else{
                     Alerts.showAlert("ERROR", "E-mail ou senha incorretos!", null, Alert.AlertType.ERROR);
@@ -74,8 +73,8 @@ public class FXMLLoginController implements Initializable {
     public Administrador validarLogin(){
         Administrador obj = new Administrador();
         if(validarEntradaDeDados()){
-            obj.setEmail(textFieldEmail.getText());
-            obj.setSenha(passwordFieldSenha.getText());
+            obj.getEmail().setDescricao(textFieldEmail.getText());
+            obj.setSenhas(passwordFieldSenha.getText());
         }
         return obj;
     }
@@ -101,11 +100,11 @@ public class FXMLLoginController implements Initializable {
         if (textFieldEmail.getText() == null || textFieldEmail.getText().trim().equals("")) {
             exception.addError("E-mail", "Inválido");
         }
-        obj.setEmail(textFieldEmail.getText());
+        obj.getEmail().setDescricao(textFieldEmail.getText());
         if (passwordFieldSenha.getText() == null || passwordFieldSenha.getText().trim().equals("")) {
             exception.addError("Senha", "Inválido");
         }
-        obj.setSenha(passwordFieldSenha.getText());
+        obj.setSenhas(passwordFieldSenha.getText());
         if (exception.getErrors().size() == 0) {
             return true;
         }else{

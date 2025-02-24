@@ -23,7 +23,7 @@ public class Funcionario implements Serializable {
     @Column(name = "FK_FIN_VENCIMENTOS")
     private Vencimentos vencimentos;
     @Column(name = "FK_CAD_DOCUMENTOS_ANEXOS")
-    private DocumentoAnexo documento;
+    private DocumentosAnexos documento;
 
     public Long getId() {
         return id;
@@ -39,22 +39,6 @@ public class Funcionario implements Serializable {
 
     public void setMatricula(Integer matricula) {
         this.matricula = matricula;
-    }
-
-    public Integer getCnh() {
-        return cnh;
-    }
-
-    public void setCnh(Integer cnh) {
-        this.cnh = cnh;
-    }
-
-    public Calendar getVencimentoCnh() {
-        return vencimentoCnh;
-    }
-
-    public void setVencimentoCnh(Calendar vencimentoCnh) {
-        this.vencimentoCnh = vencimentoCnh;
     }
 
     public Pessoa getPessoa() {
@@ -73,19 +57,11 @@ public class Funcionario implements Serializable {
         this.vencimentos = vencimentos;
     }
 
-    public Toxicologico getToxicologico() {
-        return toxicologico;
-    }
-
-    public void setToxicologico(Toxicologico toxicologico) {
-        this.toxicologico = toxicologico;
-    }
-
-    public DocumentoAnexo getDocumento() {
+    public DocumentosAnexos getDocumento() {
         return documento;
     }
 
-    public void setDocumento(DocumentoAnexo documento) {
+    public void setDocumento(DocumentosAnexos documento) {
         this.documento = documento;
     }
 
