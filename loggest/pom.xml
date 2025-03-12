@@ -35,6 +35,13 @@
             <version>4.13.2</version>
             <scope>test</scope>
         </dependency>
+        <!--Mockito-->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>4.5.1</version>
+            <scope>test</scope>
+        </dependency>
         <!--Hibernate-->
         <dependency>
             <groupId>org.hibernate</groupId>

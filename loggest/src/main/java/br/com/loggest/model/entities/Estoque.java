@@ -8,7 +8,7 @@ import java.util.Calendar;
 import java.util.Objects;
 
 @Entity
-@Table(name = "CAD_ESTOQUE")
+@Table(name = "TAB_ESTOQUE")
 public class Estoque implements Serializable {
     private static final long serialVersionUID=1L;
 

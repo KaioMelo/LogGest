@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "CAD_PESSOA_JURIDICA")
+@Table(name = "TAB_PESSOA_JURIDICA")
 public class PessoaJuridica extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 

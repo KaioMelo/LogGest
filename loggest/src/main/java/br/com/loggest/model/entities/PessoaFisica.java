@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Objects;
 
 @Entity
-@Table(name = "CAD_PESSOA_FISICA")
+@Table(name = "TAB_PESSOA_FISICA")
 public class PessoaFisica extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 

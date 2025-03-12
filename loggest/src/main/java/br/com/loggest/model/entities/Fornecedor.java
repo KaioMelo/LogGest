@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 @Entity
-@Table(name = "CAD_FORNECEDORES")
+@Table(name = "TAB_FORNECEDORES")
 public class Fornecedor implements Serializable {
     private static final long serialVersionUID = 1L;
 

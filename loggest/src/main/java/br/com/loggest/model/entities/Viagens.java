@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Objects;
 
 @Entity
-@Table(name = "CAD_VIAGENS")
+@Table(name = "TAB_VIAGENS")
 public class Viagens implements Serializable {
     private final static long serialVersionUID = 1L;
 

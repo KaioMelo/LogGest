@@ -74,24 +74,10 @@ public class FXMLLoginController implements Initializable {
         Administrador obj = new Administrador();
         if(validarEntradaDeDados()){
             obj.getEmail().setDescricao(textFieldEmail.getText());
-            obj.setSenhas(passwordFieldSenha.getText());
+            obj.getSenhas().setSenhaNova(passwordFieldSenha.getText());
         }
         return obj;
     }
-
-//    private void saveAndUpdate(ActionEvent event){
-//        if(adm == null){
-//            throw new IllegalStateException("Entity was null");
-//        }
-//        if (service == null) {
-//            throw new IllegalStateException("Service was null");
-//        }
-//        try{
-//            service.saveOrUpdate(adm);
-//        }catch (Exception e){
-//
-//        }
-//    }
 
     private boolean validarEntradaDeDados(){
         ValidationException exception = new ValidationException("Validation error");
@@ -104,7 +90,7 @@ public class FXMLLoginController implements Initializable {
         if (passwordFieldSenha.getText() == null || passwordFieldSenha.getText().trim().equals("")) {
             exception.addError("Senha", "Inválido");
         }
-        obj.setSenhas(passwordFieldSenha.getText());
+        obj.getSenhas().setSenhaNova(passwordFieldSenha.getText());
         if (exception.getErrors().size() == 0) {
             return true;
         }else{

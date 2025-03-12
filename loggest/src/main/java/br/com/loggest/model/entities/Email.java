@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "CAD_EMAILS")
+@Table(name = "TAB_EMAILS")
 public class Email implements Serializable {
 
     private static final long serialVersionUID=1l;

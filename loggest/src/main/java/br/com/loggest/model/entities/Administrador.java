@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "CAD_ADMINISTRADOR")
+@Table(name = "TAB_ADMINISTRADOR")
 public class Administrador {
     private static final long serialVersionUID = 1L;
 

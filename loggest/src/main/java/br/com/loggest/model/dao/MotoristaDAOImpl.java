@@ -1,6 +1,5 @@
-package br.com.loggest.model.dao.impl;
+package br.com.loggest.model.dao;
 
-import br.com.loggest.model.dao.MotoristaDAO;
 import br.com.loggest.model.entities.Motorista;
 import br.com.loggest.model.util.ConfigConnectionDB;
 
@@ -13,19 +12,19 @@ public class MotoristaDAOImpl implements MotoristaDAO {
     public void create(Motorista obj) {
         try(Connection con = ConfigConnectionDB.connect()
         ) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO motorista (nome_motorista, cnh, om, sessao) " +
+            PreparedStatement ps = con.prepareStatement("INSERT INTO TAB_MOTORISTAS (CNH, VENCIMENTO_CNH, FK_CAD_PESSOA, FK_CAD_DOCUMENTOS_ANEXOS) " +
                     "VALUES (?,?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, obj.getNome_motorista());
-            ps.setInt(2, obj.getCnh());
-            ps.setString(3, obj.getOm());
-            ps.setString(4, obj.getSessao());
+            ps.setInt(1, obj.getCnh());
+            ps.setDate(2, (Date) obj.getVencimentoCnh().getTime());
+            ps.setObject(3, obj.getPessoa());
+            ps.setObject(4, obj.getDocumentosAnexos());
             int rowsAffected = ps.executeUpdate();
             if(rowsAffected > 0){
                 ResultSet rs = ps.getGeneratedKeys();
                 if(rs.next()){
-                    int id = rs.getInt(1);
-                    obj.setId_motorista(id);
+                    Long id = rs.getLong(1);
+                    obj.setId(id);
                 }
                 rs.close();
             }
@@ -37,18 +36,18 @@ public class MotoristaDAOImpl implements MotoristaDAO {
 
     @Override
     public void update(Motorista obj) {
-        if (obj == null || obj.getId_motorista() == null) {
+        if (obj == null || obj.getId() == null) {
             System.out.println("Não foi possivel atualizar o registro");
             return;
         }
         String sql = "UPDATE motorista SET nome_motorista=?, cnh=?, om=?, sessao=? WHERE id_motorista=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)){
-            ps.setString(1, obj.getNome_motorista());
-            ps.setInt(2, obj.getCnh());
-            ps.setString(3, obj.getOm());
-            ps.setString(4, obj.getSessao());
-            ps.setInt(5, obj.getId_motorista());
+            ps.setInt(1, obj.getCnh());
+            ps.setDate(2, (Date) obj.getVencimentoCnh().getTime());
+            ps.setObject(3, obj.getPessoa());
+            ps.setObject(4, obj.getDocumentosAnexos());
+            ps.setLong(5, obj.getId());
             ps.executeUpdate();
         }
         catch (SQLException e){
@@ -57,11 +56,11 @@ public class MotoristaDAOImpl implements MotoristaDAO {
     }
 
     @Override
-    public void deleteById(Integer id) {
+    public void deleteById(Long id) {
         String sql = "DELETE FROM motorista WHERE id_motorista=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, id);
+            ps.setLong(1, id);
             ps.executeUpdate();
         }
         catch (SQLException e){
@@ -78,11 +77,11 @@ public class MotoristaDAOImpl implements MotoristaDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 motoristaList.add(new Motorista(
-                        rs.getInt("id_motorista"),
-                        rs.getString("nome_motorista"),
+                        rs.getInt("id"),
                         rs.getInt("cnh"),
-                        rs.getString("om"),
-                        rs.getString("sessao")
+                        rs.getDate("vencimentoCnh"),
+                        rs.getObject("pessoa"),
+                        rs.getObject("documentosAnexos")
                 ));
             }
             con.close();

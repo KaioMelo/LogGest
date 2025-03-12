@@ -4,10 +4,11 @@ package br.com.loggest.model.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.Calendar;
 import java.util.Objects;
 @Entity
-@Table(name = "CAD_MOTORISTAS")
+@Table(name = "TAB_MOTORISTAS")
 public class Motorista extends Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -20,8 +21,12 @@ public class Motorista extends Funcionario implements Serializable {
     private Calendar vencimentoCnh;
     @Column(name = "FK_CAD_PESSOA")
     private Pessoa pessoa;
-    @Column(name = "FK_CAD_TOXICOLOGICOS")
-    private Toxicologico toxicologico;
+    @Column(name = "FK_CAD_DOCUMENTOS_ANEXOS")
+    private DocumentosAnexos documentosAnexos;
+
+    public Motorista(int id, int cnh, Date vencimentoCnh, Object pessoa, Object documentosAnexos) {
+        super();
+    }
 
     @Override
     public Long getId() {
@@ -49,12 +54,12 @@ public class Motorista extends Funcionario implements Serializable {
         this.vencimentoCnh = vencimentoCnh;
     }
 
-    public Toxicologico getToxicologico() {
-        return toxicologico;
+    public DocumentosAnexos getDocumentosAnexos() {
+        return documentosAnexos;
     }
 
-    public void setToxicologico(Toxicologico toxicologico) {
-        this.toxicologico = toxicologico;
+    public void setDocumentosAnexos(DocumentosAnexos documentosAnexos) {
+        this.documentosAnexos = documentosAnexos;
     }
 
     @Override

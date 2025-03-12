@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "CAD_ENDERECOS")
+@Table(name = "TAB_ENDERECOS")
 public class Endereco implements Serializable {
 
     private static final long serialVersionUID=1l;
