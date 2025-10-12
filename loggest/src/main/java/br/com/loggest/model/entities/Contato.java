@@ -16,6 +16,7 @@ public class Contato implements Serializable {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Enumerated(EnumType.STRING)
     @Column(name = "TIPO_CONTATO")
     private TipoContato tipoContato;
     @Column(name = "DDD")
@@ -26,7 +27,8 @@ public class Contato implements Serializable {
     private Boolean verificado;
     @Column(name = "AUTORIZA")
     private Boolean autoriza;
-    @Column(name = "FK_ID_PESSOA")
+    @ManyToOne
+    @JoinColumn(name = "FK_PESSOAS", referencedColumnName = "ID")
     private Pessoa pessoa;
 
     public Long getId() {

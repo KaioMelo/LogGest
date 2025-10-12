@@ -13,8 +13,6 @@ public class Cliente implements Serializable {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "NOME")
-    private String nome;
     @Column(name = "FK_CAD_PESSOA")
     private Pessoa pessoa;
 
@@ -25,14 +23,6 @@ public class Cliente implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     @Override

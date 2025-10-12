@@ -40,7 +40,7 @@ public class Estoque implements Serializable {
     private Calendar validade;
     @Column(name = "DATA_GARANTIA")
     private Calendar garantia;
-    @Column(name = "FK_TIPO_PRODUTO")
+    @Column(name = "TIPO_PRODUTO")
     private TipoProduto tipoProduto;
 
     public Long getId() {

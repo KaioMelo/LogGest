@@ -29,6 +29,9 @@ public class Endereco implements Serializable {
     private String complemento;
     @Column(name = "CEP")
     private Integer cep;
+    @ManyToOne
+    @JoinColumn(name = "FK_PESSOAS", referencedColumnName = "ID")
+    private Pessoa pessoa;
 
     public Long getId() {
         return id;
@@ -92,6 +95,14 @@ public class Endereco implements Serializable {
 
     public void setCep(Integer cep) {
         this.cep = cep;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     @Override

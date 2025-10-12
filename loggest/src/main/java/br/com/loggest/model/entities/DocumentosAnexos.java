@@ -14,7 +14,7 @@ public class DocumentosAnexos {
     @Column(name = "DESCRICAO")
     private String descricao;
 
-    @Column(name = "FK_TIPO_ARQUIVO")
+    @Column(name = "TIPO_ARQUIVO")
     private Long tipoArquivo;
 
     @Column(name = "SITUACAO")

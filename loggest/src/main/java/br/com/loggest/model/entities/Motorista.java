@@ -19,10 +19,9 @@ public class Motorista extends Funcionario implements Serializable {
     private Integer cnh;
     @Column(name = "VENCIMENTO_CNH")
     private Calendar vencimentoCnh;
-    @Column(name = "FK_CAD_PESSOA")
+    @OneToOne
+    @JoinColumn(name = "FK_PESSOAS")
     private Pessoa pessoa;
-    @Column(name = "FK_CAD_DOCUMENTOS_ANEXOS")
-    private DocumentosAnexos documentosAnexos;
 
     public Motorista(int id, int cnh, Date vencimentoCnh, Object pessoa, Object documentosAnexos) {
         super();
@@ -54,12 +53,13 @@ public class Motorista extends Funcionario implements Serializable {
         this.vencimentoCnh = vencimentoCnh;
     }
 
-    public DocumentosAnexos getDocumentosAnexos() {
-        return documentosAnexos;
+    @Override
+    public Pessoa getPessoa() {
+        return pessoa;
     }
-
-    public void setDocumentosAnexos(DocumentosAnexos documentosAnexos) {
-        this.documentosAnexos = documentosAnexos;
+    @Override
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
     @Override

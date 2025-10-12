@@ -20,8 +20,9 @@ public class Senhas {
     @Column(name = "OBSERVACAO")
     private String observacao;
 
-    @Column(name = "FK_CAD_ADMINISTRADOR")
-    private Administrador administrador;
+    @ManyToOne
+    @JoinColumn(name = "FK_PESSOAS", referencedColumnName = "ID")
+    private Pessoa pessoa;
 
     public Long getId() {
         return id;
@@ -55,11 +56,11 @@ public class Senhas {
         this.observacao = observacao;
     }
 
-    public Administrador getAdministrador() {
-        return administrador;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }

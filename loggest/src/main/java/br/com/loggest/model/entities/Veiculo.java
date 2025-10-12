@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -42,8 +43,9 @@ public class   Veiculo implements Serializable {
     private Calendar dataDeVenda;
     @Column(name = "VALOR_VENDA")
     private Long valorDeVenda;
-    @Column(name = "FK_CAD_DOCUMENTOS_ANEXOS")
-    private DocumentosAnexos documentos;
+    @ManyToOne
+    @JoinColumn(name = "FK_DOCUMENTOS_ANEXOS")
+    private List<DocumentosAnexos> documentos;
 
     public Long getId() {
         return id;
@@ -155,6 +157,14 @@ public class   Veiculo implements Serializable {
 
     public void setValorDeVenda(Long valorDeVenda) {
         this.valorDeVenda = valorDeVenda;
+    }
+
+    public List<DocumentosAnexos> getDocumentos() {
+        return documentos;
+    }
+
+    public void setDocumentos(List<DocumentosAnexos> documentos) {
+        this.documentos = documentos;
     }
 
     @Override

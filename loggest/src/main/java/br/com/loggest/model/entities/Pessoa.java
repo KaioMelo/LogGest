@@ -4,6 +4,7 @@ import br.com.loggest.model.entities.enuns.TipoPessoa;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -15,14 +16,18 @@ public class Pessoa implements Serializable {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "FK_CAD_CONTATOS")
-    private Contato contatos;
-    @Column(name = "FK_CAD_EMAILS")
-    private Email email;
-    @Column(name = "FK_CAD_ENDERECOS")
-    private Endereco endereco;
-    @Column(name = "FK_CAD_TIPO_PESSOA")
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Contato> contatos;
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Email> emails;;
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Endereco> enderecos;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "TIPO_PESSOA")
     private TipoPessoa tipoPessoa;
+    @ManyToOne
+    @JoinColumn(name = "FK_DOCUMENTOS_ANEXOS")
+    private List<DocumentosAnexos> documento;
 
     public Long getId() {
         return id;
@@ -32,28 +37,28 @@ public class Pessoa implements Serializable {
         this.id = id;
     }
 
-    public Contato getContatos() {
+    public List<Contato> getContatos() {
         return contatos;
     }
 
-    public void setContatos(Contato contatos) {
+    public void setContatos(List<Contato> contatos) {
         this.contatos = contatos;
     }
 
-    public Email getEmail() {
-        return email;
+    public List<Email> getEmails() {
+        return emails;
     }
 
-    public void setEmail(Email email) {
-        this.email = email;
+    public void setEmails(List<Email> emails) {
+        this.emails = emails;
     }
 
-    public Endereco getEndereco() {
-        return endereco;
+    public List<Endereco> getEnderecos() {
+        return enderecos;
     }
 
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
+    public void setEnderecos(List<Endereco> enderecos) {
+        this.enderecos = enderecos;
     }
 
     public TipoPessoa getTipoPessoa() {
@@ -62,6 +67,14 @@ public class Pessoa implements Serializable {
 
     public void setTipoPessoa(TipoPessoa tipoPessoa) {
         this.tipoPessoa = tipoPessoa;
+    }
+
+    public List<DocumentosAnexos> getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(List<DocumentosAnexos> documento) {
+        this.documento = documento;
     }
 
     @Override

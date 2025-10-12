@@ -13,11 +13,8 @@ public class Administrador {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "FK_CAD_EMAILS")
-    private Email email;
-    @Column(name = "FK_CAD_SENHAS")
-    private Senhas senhas;
-    @Column(name = "FK_CAD_FUNCIONARIOS")
+    @OneToOne
+    @JoinColumn(name = "FK_FUNCIONARIOS", referencedColumnName = "ID")
     private Funcionario funcionario;
 
     public Long getId() {
@@ -26,22 +23,6 @@ public class Administrador {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
-    }
-
-    public Senhas getSenhas() {
-        return senhas;
-    }
-
-    public void setSenhas(Senhas senhas) {
-        this.senhas = senhas;
     }
 
     public Funcionario getFuncionario() {

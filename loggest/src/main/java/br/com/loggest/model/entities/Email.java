@@ -21,7 +21,8 @@ public class Email implements Serializable {
     private Boolean verificado;
     @Column(name = "AUTORIZA")
     private Boolean autoriza;
-    @Column(name = "FK_ID_PESSOA")
+    @ManyToOne
+    @JoinColumn(name = "FK_PESSOAS", referencedColumnName = "ID")
     private Pessoa pessoa;
 
     public Long getId() {

@@ -18,12 +18,12 @@ public class Funcionario implements Serializable {
     @Column(name = "MATRICULA")
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer matricula;
-    @Column(name = "FK_CAD_PESSOA")
+    @OneToOne
+    @JoinColumn(name = "FK_PESSOAS")
     private Pessoa pessoa;
-    @Column(name = "FK_FIN_VENCIMENTOS")
+    @ManyToOne
+    @JoinColumn(name = "FK_VENCIMENTOS")
     private Vencimentos vencimentos;
-    @Column(name = "FK_CAD_DOCUMENTOS_ANEXOS")
-    private DocumentosAnexos documento;
 
     public Long getId() {
         return id;
@@ -55,14 +55,6 @@ public class Funcionario implements Serializable {
 
     public void setVencimentos(Vencimentos vencimentos) {
         this.vencimentos = vencimentos;
-    }
-
-    public DocumentosAnexos getDocumento() {
-        return documento;
-    }
-
-    public void setDocumento(DocumentosAnexos documento) {
-        this.documento = documento;
     }
 
     @Override

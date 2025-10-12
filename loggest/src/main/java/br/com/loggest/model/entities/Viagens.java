@@ -15,10 +15,6 @@ public class Viagens implements Serializable {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column(name = "FK_CAD_VEICULOS")
-    private Veiculo veiculo;
-    @Column(name = "FK_CAD_MOTORISTAS")
-    private Motorista motorista;
     @Column(name = "DATA_SAIDA")
     private Calendar dataSaida;
     @Column(name = "ORIGEM")
@@ -31,8 +27,12 @@ public class Viagens implements Serializable {
     private Calendar dataChegada;
     @Column(name = "KM_FINAL")
     private Integer kmFinal;
-    @Column(name = "VALOR_FINALL")
+    @Column(name = "VALOR_FINAL")
     private Double valorFinal;
+    @Column(name = "FK_VEICULOS")
+    private Veiculo veiculo;
+    @Column(name = "FK_MOTORISTAS")
+    private Motorista motorista;
 
     public Integer getId() {
         return id;
