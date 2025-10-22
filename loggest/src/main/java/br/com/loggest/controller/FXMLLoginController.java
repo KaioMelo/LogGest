@@ -1,8 +1,8 @@
 package br.com.loggest.controller;
 
-import br.com.loggest.model.entities.Administrador;
+import br.com.loggest.model.entities.Funcionario;
 import br.com.loggest.model.exceptions.ValidationException;
-import br.com.loggest.model.service.AdministradorService;
+import br.com.loggest.model.service.FuncionarioService;
 import br.com.loggest.model.util.Alerts;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,21 +19,21 @@ import java.util.ResourceBundle;
 public class FXMLLoginController implements Initializable {
 
     @FXML
-    private TextField textFieldEmail;
+    private TextField textFieldMatricula;
     @FXML
     private PasswordField passwordFieldSenha;
     @FXML
     private Button btnLogin;
 
-    private Administrador adm;
+    private Funcionario funcionario;
 
-    private AdministradorService service = new AdministradorService();
+    private FuncionarioService service = new FuncionarioService();
 
-    public void setAdministrador(Administrador adm){
-        this.adm = adm;
+    public void setFuncionario(Funcionario funcionario){
+        this.funcionario = funcionario;
     }
 
-    public void setAdministradorService(AdministradorService service){
+    public void setAdministradorService(FuncionarioService service){
         this.service = service;
     }
     @Override
@@ -53,9 +53,13 @@ public class FXMLLoginController implements Initializable {
     @FXML
     public void handleLoginAdmin(ActionEvent event) throws IOException{
         try{
-            if(!textFieldEmail.getText().trim().isBlank() && !passwordFieldSenha.getText().trim().isBlank()){
-                Administrador obj = validarLogin();
-                if(service.verificarLogin(obj)){
+//            if(!textFieldMatricula.getText().trim().isBlank() && !passwordFieldSenha.getText().trim().isBlank()){
+            if(validarLogin()){
+//                Pessoa obj = new Pessoa();
+                String matricula = textFieldMatricula.getText().trim();
+                String senha = passwordFieldSenha.getText().trim();
+
+                if(service.verificarLogin(matricula, senha)){
                     loadScene("/view/FXMLInicio.fxml", event);
                 }else{
                     Alerts.showAlert("ERROR", "E-mail ou senha incorretos!", null, Alert.AlertType.ERROR);
@@ -70,27 +74,27 @@ public class FXMLLoginController implements Initializable {
         }
     }
 
-    public Administrador validarLogin(){
-        Administrador obj = new Administrador();
+    public Boolean validarLogin(){
+//        Pessoa obj = new Pessoa();
         if(validarEntradaDeDados()){
-            obj.getEmail().setDescricao(textFieldEmail.getText());
-            obj.getSenhas().setSenhaNova(passwordFieldSenha.getText());
+//            obj.getEmails().get(0).setDescricao(textFieldEmail.getText());
+//            obj.getSenha().setSenhaNova(passwordFieldSenha.getText());
+            return true;
         }
-        return obj;
+        return false;
     }
 
     private boolean validarEntradaDeDados(){
         ValidationException exception = new ValidationException("Validation error");
-        Administrador obj = new Administrador();
-
-        if (textFieldEmail.getText() == null || textFieldEmail.getText().trim().equals("")) {
-            exception.addError("E-mail", "Inválido");
+//        Pessoa obj = new Pessoa();
+        if (textFieldMatricula.getText() == null || textFieldMatricula.getText().trim().equals("")) {
+            exception.addError("Matricula", "Inválido");
         }
-        obj.getEmail().setDescricao(textFieldEmail.getText());
+//        obj.getEmails().get(0).setDescricao(textFieldMatricula.getText());
         if (passwordFieldSenha.getText() == null || passwordFieldSenha.getText().trim().equals("")) {
             exception.addError("Senha", "Inválido");
         }
-        obj.getSenhas().setSenhaNova(passwordFieldSenha.getText());
+//        obj.getSenha().setSenhaNova(passwordFieldSenha.getText());
         if (exception.getErrors().size() == 0) {
             return true;
         }else{
@@ -101,7 +105,7 @@ public class FXMLLoginController implements Initializable {
     }
 
     public void clearFields() {
-        textFieldEmail.setText("");
+        textFieldMatricula.setText("");
         passwordFieldSenha.setText("");
     }
 }

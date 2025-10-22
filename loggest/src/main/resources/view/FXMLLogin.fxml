@@ -33,12 +33,12 @@
                   </Label>
                   <Group layoutX="48.0" layoutY="141.0">
                      <children>
-                        <Label prefHeight="20.0" prefWidth="78.0" text="CPF / CNPJ">
+                        <Label prefHeight="20.0" prefWidth="78.0" text="Matrícula">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldEmail" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" />
+                        <TextField fx:id="textFieldMatricula" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" />
                         <Label layoutY="63.0" prefHeight="20.0" prefWidth="43.0" text="Senha">
                            <font>
                               <Font name="System Bold" size="14.0" />

@@ -22,6 +22,12 @@ public class Pessoa implements Serializable {
     private List<Email> emails;;
     @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Endereco> enderecos;
+    @Column(name = "SENHA_ANTERIOR")
+    private String senhaAnterior;
+    @Column(name = "SENHA_ATUAL")
+    private String senhaAtual;
+    @Column(name = "OBSERVACAO")
+    private String observacao;
     @Enumerated(EnumType.STRING)
     @Column(name = "TIPO_PESSOA")
     private TipoPessoa tipoPessoa;
@@ -59,6 +65,30 @@ public class Pessoa implements Serializable {
 
     public void setEnderecos(List<Endereco> enderecos) {
         this.enderecos = enderecos;
+    }
+
+    public String getSenhaAnterior() {
+        return senhaAnterior;
+    }
+
+    public void setSenhaAnterior(String senhaAnterior) {
+        this.senhaAnterior = senhaAnterior;
+    }
+
+    public String getSenhaAtual() {
+        return senhaAtual;
+    }
+
+    public void setSenhaAtual(String senhaAtual) {
+        this.senhaAtual = senhaAtual;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
     public TipoPessoa getTipoPessoa() {

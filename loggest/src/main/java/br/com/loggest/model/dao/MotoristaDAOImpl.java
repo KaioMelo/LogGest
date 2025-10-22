@@ -12,13 +12,13 @@ public class MotoristaDAOImpl implements MotoristaDAO {
     public void create(Motorista obj) {
         try(Connection con = ConfigConnectionDB.connect()
         ) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO TAB_MOTORISTAS (CNH, VENCIMENTO_CNH, FK_CAD_PESSOA, FK_CAD_DOCUMENTOS_ANEXOS) " +
-                    "VALUES (?,?,?,?)",
+            PreparedStatement ps = con.prepareStatement("INSERT INTO TAB_MOTORISTAS (CNH, VENCIMENTO_CNH, FK_CAD_PESSOA) " +
+                    "VALUES (?,?,?)",
                     Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, obj.getCnh());
             ps.setDate(2, (Date) obj.getVencimentoCnh().getTime());
             ps.setObject(3, obj.getPessoa());
-            ps.setObject(4, obj.getDocumentosAnexos());
+//            ps.setObject(4, obj.get);
             int rowsAffected = ps.executeUpdate();
             if(rowsAffected > 0){
                 ResultSet rs = ps.getGeneratedKeys();
@@ -40,13 +40,13 @@ public class MotoristaDAOImpl implements MotoristaDAO {
             System.out.println("Não foi possivel atualizar o registro");
             return;
         }
-        String sql = "UPDATE motorista SET nome_motorista=?, cnh=?, om=?, sessao=? WHERE id_motorista=?";
+        String sql = "UPDATE motorista SET CNH=?, VENCIMENTO_CNH=?, FK_CAD_PESSOA=? WHERE id_motorista=?";
         try(Connection con = ConfigConnectionDB.connect();
             PreparedStatement ps = con.prepareStatement(sql)){
             ps.setInt(1, obj.getCnh());
             ps.setDate(2, (Date) obj.getVencimentoCnh().getTime());
             ps.setObject(3, obj.getPessoa());
-            ps.setObject(4, obj.getDocumentosAnexos());
+//            ps.setObject(4, obj.getDocumentosAnexos());
             ps.setLong(5, obj.getId());
             ps.executeUpdate();
         }
