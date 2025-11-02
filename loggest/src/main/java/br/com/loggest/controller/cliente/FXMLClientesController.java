@@ -1,7 +1,9 @@
-package br.com.loggest.controller;
+package br.com.loggest.controller.cliente;
 
 
+import br.com.loggest.model.util.SceneNavigator;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -9,16 +11,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLRegistroFornecedoresController implements Initializable {
+public class FXMLClientesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
 
-    private void loadScene(String fxmlPath, ActionEvent event) throws IOException {
+    private void loadScene(String fxmlPath, Event event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
         ScrollPane root = loader.load();
         Scene scene = new Scene(root);
@@ -26,6 +30,7 @@ public class FXMLRegistroFornecedoresController implements Initializable {
         stage.setScene(scene);
         stage.show();
         stage.centerOnScreen();
+        SceneNavigator.navigateTo(scene);
     }
 
     @FXML
@@ -35,7 +40,7 @@ public class FXMLRegistroFornecedoresController implements Initializable {
 
     @FXML
     public void handleClientes(ActionEvent event) throws IOException {
-        loadScene("/view/cliente/FXMLCadastrarClientesPF.fxml", event);
+        loadScene("/view/cliente/FXMLClientes.fxml", event);
     }
 
     @FXML
@@ -71,5 +76,20 @@ public class FXMLRegistroFornecedoresController implements Initializable {
     @FXML
     public void handleEstatisticas(ActionEvent event) throws IOException {
         loadScene("/view/FXMLEstatisticas.fxml", event);
+    }
+
+    @FXML
+    public void handleBack(Event event) {
+        SceneNavigator.goBack();
+    }
+
+    @FXML
+    public void onMouseClickPessoaFisica(Event event) throws  IOException{
+        loadScene("/view/cliente/FXMLClientesPF.fxml", event);
+    }
+
+    @FXML
+    public void onMouseClickPessoaJuridica(Event event) throws  IOException{
+        loadScene("/view/cliente/FXMLClientesPJ.fxml", event);
     }
 }

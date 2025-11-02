@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.GlyphsStack?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
@@ -18,11 +16,11 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.loggest.controller.FXMLRegistroVeiculosController">
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.loggest.controller.cliente.FXMLCadastrarClientesPFController">
    <content>
       <HBox prefHeight="600.0" prefWidth="1200.0">
          <children>
-            <AnchorPane prefHeight="600.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../css/index.css">
+            <AnchorPane prefHeight="600.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../../css/index.css">
                <children>
                   <GridPane alignment="CENTER" layoutX="25.0" layoutY="214.0" prefHeight="286.0" prefWidth="150.0">
                      <columnConstraints>
@@ -40,7 +38,7 @@
                         <RowConstraints minHeight="10.0" percentHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="25.0" prefWidth="150.0" styleClass="button-menus" stylesheets="@../css/index.css" text="Início" textFill="#316186">
+                        <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="25.0" prefWidth="150.0" styleClass="button-menus" stylesheets="@../../css/index.css" text="Início" textFill="#316186">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -99,139 +97,93 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1000.0" styleClass="container" stylesheets="@../css/index.css">
+            <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1000.0" styleClass="container" stylesheets="@../../css/index.css">
                <children>
-                  <Label layoutX="33.0" layoutY="26.0" text="Cadastrar Novo Veículo">
+                  <Label layoutX="33.0" layoutY="26.0" text="Cadastrar novo Clientes">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <GlyphsStack layoutX="129.0" layoutY="312.0" />
-                  <FontAwesomeIconView fill="#00000080" glyphName="BELL" layoutX="955.0" layoutY="64.0" size="25" text="" />
-                  <FontAwesomeIconView fill="#00000080" glyphName="ARROW_LEFT" layoutX="20.0" layoutY="581.0" size="30" />
-                  <FontAwesomeIconView fill="#00000080" glyphName="GEAR" layoutX="923.0" layoutY="63.0" size="25" />
-                  <FontAwesomeIconView fill="#00000080" glyphName="DATABASE" layoutX="972.0" layoutY="576.0" size="18" />
-                  <FontAwesomeIconView fill="#00000080" glyphName="SIGNAL" layoutX="946.0" layoutY="576.0" size="18" />
-                  <GridPane layoutX="103.0" layoutY="132.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.rowIndex="1" />
-                        <Label text="Marca">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label text="Modelo" GridPane.columnIndex="2">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Label text="Ano Fabricação" GridPane.columnIndex="4">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                        <Label text="Ano Modelo" GridPane.columnIndex="6">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
-                        <Label text="Cor" GridPane.columnIndex="8">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </GridPane>
-                  <GridPane layoutX="103.0" layoutY="201.0">
+                  <GridPane layoutX="106.0" layoutY="89.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.rowIndex="1" />
-                        <Label text="Nº Motor">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label text="Nº Chassi" GridPane.columnIndex="2">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Label text="Placa" GridPane.columnIndex="4">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                        <Label text="Prefixo" GridPane.columnIndex="6">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </GridPane>
-                  <GridPane layoutX="103.0" layoutY="270.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="500.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label text="Possui Fornecedor?">
+                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.rowIndex="1" />
+                        <Label text="CPF / CNPJ">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
                         <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label text="CPF / CNPJ" GridPane.columnIndex="2">
+                        <Label text="Nome" GridPane.columnIndex="2">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <GridPane prefHeight="30.0" prefWidth="100.0" GridPane.rowIndex="1">
-                          <columnConstraints>
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="106.0" layoutY="158.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="50.0" minWidth="10.0" prefWidth="50.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Tipo de Contato">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Label text="DDD" GridPane.columnIndex="2">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <Label text="Número" GridPane.columnIndex="4">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <SplitMenuButton mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" GridPane.rowIndex="1">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="CRLV" />
+                              <MenuItem mnemonicParsing="false" text="Alvará" />
+                              <MenuItem mnemonicParsing="false" text="Autorização" />
+                              <MenuItem mnemonicParsing="false" text="Laudo de Vistoria" />
+                              <MenuItem mnemonicParsing="false" text="Tacógrafo" />
+                              <MenuItem mnemonicParsing="false" text="Seguro" />
+                           </items>
+                        </SplitMenuButton>
+                        <Label text="Autoriza divulgação?" GridPane.columnIndex="6">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <GridPane prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
                            <children>
                               <RadioButton mnemonicParsing="false" text="Sim" />
                               <RadioButton mnemonicParsing="false" text="Não" GridPane.columnIndex="1" />
@@ -239,15 +191,50 @@
                         </GridPane>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="98.0" layoutY="337.0">
+                  <GridPane layoutX="106.0" layoutY="227.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="E-mail">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label text="Autoriza divulgação?" GridPane.columnIndex="2">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <GridPane prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <RadioButton mnemonicParsing="false" text="Sim" />
+                              <RadioButton mnemonicParsing="false" text="Não" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="106.0" layoutY="294.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="300.0" minWidth="10.0" prefWidth="300.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="350.0" minWidth="10.0" prefWidth="350.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -255,80 +242,68 @@
                      </rowConstraints>
                      <children>
                         <TextField prefHeight="30.0" prefWidth="150.0" GridPane.rowIndex="1" />
-                        <Label text="Data de Compra">
+                        <Label text="CEP">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
                         <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label text="Valor de Compra" GridPane.columnIndex="2">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                        <Label text="Valor de Venda" GridPane.columnIndex="6">
+                        <Label text="Estado" GridPane.columnIndex="2">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
                         <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Label text="Data de Venda" GridPane.columnIndex="4">
+                        <Label text="Cidade" GridPane.columnIndex="4">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="98.0" layoutY="404.0">
+                  <GridPane layoutX="106.0" layoutY="361.0">
                      <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="425000.0" minWidth="10.0" prefWidth="250.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="400.0" />
                      </columnConstraints>
                      <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label text="Documentos">
+                        <Label text="Bairro">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
                         <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Label text="Anexo" GridPane.columnIndex="2">
+                        <Label text="Logradouro" GridPane.columnIndex="2">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Label text="Data de Vencimento" GridPane.columnIndex="4">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </Label>
-                        <SplitMenuButton mnemonicParsing="false" prefHeight="30.0" prefWidth="150.0" text="SplitMenuButton" GridPane.rowIndex="1">
-                          <items>
-                              <MenuItem mnemonicParsing="false" text="CRLV" />
-                              <MenuItem mnemonicParsing="false" text="Alvará" />
-                              <MenuItem mnemonicParsing="false" text="Autorização" />
-                              <MenuItem mnemonicParsing="false" text="Laudo de Vistoria" />
-                              <MenuItem mnemonicParsing="false" text="Tacógrafo" />
-                              <MenuItem mnemonicParsing="false" text="Seguro" />
-                          </items>
-                        </SplitMenuButton>
+                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
-                  <ListView layoutX="746.0" layoutY="231.0" prefHeight="238.0" prefWidth="150.0" />
-                  <Label layoutX="746.0" layoutY="205.0" text="Docs Anexados">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <GridPane layoutX="450.0" layoutY="494.0" prefHeight="34.0" prefWidth="100.0">
+                  <GridPane layoutX="106.0" layoutY="430.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="500.0" minWidth="10.0" prefWidth="500.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Complemento">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField prefHeight="30.0" prefWidth="150.0" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="450.0" layoutY="510.0" prefHeight="34.0" prefWidth="100.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
                      </columnConstraints>
@@ -336,18 +311,18 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <AnchorPane layoutX="20.0" prefHeight="200.0" prefWidth="200.0" styleClass="button-painel" stylesheets="@../css/index.css">
-                           <children>
-                              <Label layoutX="50.0" layoutY="7.0" text="Salvar" textFill="#ededed">
-                                 <font>
-                                    <Font name="System Bold" size="14.0" />
-                                 </font>
-                              </Label>
-                              <FontAwesomeIconView fill="#ededed" glyphName="SAVE" layoutX="10.0" layoutY="25.0" size="25" text="" />
-                           </children>
-                        </AnchorPane>
+                        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" styleClass="button-painel" stylesheets="@../../css/index.css" text="Salvar" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Button>
                      </children>
                   </GridPane>
+                  <FontAwesomeIconView fill="#00000080" glyphName="BELL" layoutX="955.0" layoutY="64.0" size="25" text="" />
+                  <FontAwesomeIconView fill="#00000080" glyphName="ARROW_LEFT" layoutX="20.0" layoutY="581.0" size="30" />
+                  <FontAwesomeIconView fill="#00000080" glyphName="GEAR" layoutX="923.0" layoutY="63.0" size="25" />
+                  <FontAwesomeIconView fill="#00000080" glyphName="DATABASE" layoutX="972.0" layoutY="576.0" size="18" />
+                  <FontAwesomeIconView fill="#00000080" glyphName="SIGNAL" layoutX="946.0" layoutY="576.0" size="18" />
                </children>
             </AnchorPane>
          </children>

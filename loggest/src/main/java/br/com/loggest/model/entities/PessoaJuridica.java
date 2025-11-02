@@ -5,20 +5,13 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-@Table(name = "TAB_PESSOA_JURIDICA")
 public class PessoaJuridica extends Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "RAZAO_SOCIAL")
     private String razaoSocial;
-    @Column(name = "NOME_FANTASIA")
     private String nomeFantasia;
-    @Column(name = "CNPJ")
+
     private String cnpj;
 
     @Override

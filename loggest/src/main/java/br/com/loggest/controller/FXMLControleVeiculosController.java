@@ -3,17 +3,14 @@ package br.com.loggest.controller;
 
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,12 +41,12 @@ public class FXMLControleVeiculosController implements Initializable {
 
     @FXML
     public void handleHome(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLInicio.fxml", event);
+        loadScene("/view/home/FXMLInicio.fxml", event);
     }
 
     @FXML
     public void handleClientes(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLRegistroClientes.fxml", event);
+        loadScene("/view/cliente/FXMLClientes.fxml", event);
     }
 
     @FXML

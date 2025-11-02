@@ -5,9 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -15,12 +12,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.loggest.controller.home.FXMLInicioController">
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.loggest.controller.cliente.FXMLClientesController">
    <content>
       <HBox prefHeight="600.0" prefWidth="1200.0">
          <children>
-            <AnchorPane prefHeight="600.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../css/index.css">
+            <AnchorPane prefHeight="600.0" prefWidth="200.0" styleClass="left-form" stylesheets="@../../css/index.css">
                <children>
                   <GridPane alignment="CENTER" layoutX="25.0" layoutY="214.0" prefHeight="286.0" prefWidth="150.0">
                      <columnConstraints>
@@ -38,7 +36,7 @@
                         <RowConstraints minHeight="10.0" percentHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="25.0" prefWidth="150.0" styleClass="button-menus" stylesheets="@../css/index.css" text="Início" textFill="#316186">
+                        <Button mnemonicParsing="false" onAction="#handleHome" prefHeight="25.0" prefWidth="150.0" styleClass="button-menus" stylesheets="@../../css/index.css" text="Início" textFill="#316186">
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font>
@@ -97,79 +95,61 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1000.0" styleClass="container" stylesheets="@../css/index.css">
+            <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1000.0" styleClass="container" stylesheets="@../../css/index.css">
                <children>
-                  <GridPane layoutX="20.0" layoutY="40.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="462.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="77.8" minWidth="10.0" prefWidth="77.8" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <TextField prefHeight="30.0" prefWidth="462.0" styleClass="barra-pesquisa" stylesheets="@../css/index.css" />
-                        <Button mnemonicParsing="false" prefHeight="30.0" text="PESQUISAR" GridPane.columnIndex="1" />
-                     </children>
-                  </GridPane>
-                  <Label layoutX="20.0" layoutY="83.0" text="Registro de Veículos">
+                  <Label layoutX="20.0" layoutY="83.0" text="Controle de Clientes">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
                   <GlyphsStack layoutX="129.0" layoutY="312.0" />
                   <FontAwesomeIconView fill="#00000080" glyphName="BELL" layoutX="955.0" layoutY="64.0" size="25" text="" />
-                  <FontAwesomeIconView fill="#00000080" glyphName="ARROW_LEFT" layoutX="20.0" layoutY="581.0" size="30" />
+                  <FontAwesomeIconView fill="#00000080" glyphName="ARROW_LEFT" layoutX="20.0" layoutY="581.0" onMouseClicked="#handleBack" size="30" />
                   <FontAwesomeIconView fill="#00000080" glyphName="GEAR" layoutX="923.0" layoutY="63.0" size="25" />
                   <FontAwesomeIconView fill="#00000080" glyphName="DATABASE" layoutX="972.0" layoutY="576.0" size="18" />
                   <FontAwesomeIconView fill="#00000080" glyphName="SIGNAL" layoutX="946.0" layoutY="576.0" size="18" />
-                  <GridPane layoutX="20.0" layoutY="126.0">
+                  <GridPane layoutX="20.0" layoutY="124.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="0.0" prefWidth="5.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <AnchorPane layoutX="20.0" onMouseClicked="#handleCadastrarVeiculo" prefHeight="200.0" prefWidth="200.0" styleClass="button-painel" stylesheets="@../css/index.css">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="fundo-painel" stylesheets="@../../css/index.css">
                            <children>
-                              <FontAwesomeIconView fill="#ededed" glyphName="PLUS" layoutX="4.0" layoutY="25.0" size="25" />
-                              <Label layoutX="30.0" layoutY="5.0" text="Novo" textFill="#ededed">
+                              <Text fill="#ebebeb99" layoutX="14.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controle de registro de Pessoa Física" wrappingWidth="150.0" />
+                              <FontAwesomeIconView fill="#ebebebcc" glyphName="ARROW_RIGHT" layoutX="155.0" layoutY="181.0" onMouseClicked="#onMouseClickPessoaFisica" size="30" text="" />
+                              <Text fill="#ebebebcc" layoutX="14.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Pessoa Física" wrappingWidth="150.0">
                                  <font>
-                                    <Font name="System Bold" size="14.0" />
+                                    <Font name="System Bold" size="16.0" />
                                  </font>
-                              </Label>
+                              </Text>
+                              <FontAwesomeIconView fill="#ebebebcc" glyphName="USERS" layoutX="14.0" layoutY="57.0" size="50" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="button-painel" stylesheets="@../css/index.css" GridPane.columnIndex="2">
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="fundo-painel" stylesheets="@../../css/index.css" GridPane.columnIndex="2">
                            <children>
-                              <FontAwesomeIconView fill="#ededed" glyphName="PRINT" layoutX="2.0" layoutY="24.0" size="25" />
-                              <Label layoutX="30.0" layoutY="5.0" text="Imprimir" textFill="#ededed">
+                              <Text fill="#ebebeb99" layoutX="14.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Controle de registro de Pessoa Júridica" wrappingWidth="150.0" />
+                              <FontAwesomeIconView fill="#ebebebcc" glyphName="ARROW_RIGHT" layoutX="155.0" layoutY="181.0" onMouseClicked="#onMouseClickPessoaJuridica" size="30" text="" />
+                              <FontAwesomeIconView fill="#ebebebcc" glyphName="GAVEL" layoutX="14.0" layoutY="57.0" size="50" />
+                              <Text fill="#ebebebcc" layoutX="14.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registro de Pessoa Júridica" wrappingWidth="150.0">
                                  <font>
-                                    <Font name="System Bold" size="14.0" />
+                                    <Font name="System Bold" size="16.0" />
                                  </font>
-                              </Label>
+                              </Text>
                            </children>
                         </AnchorPane>
                      </children>
                   </GridPane>
-                  <TableView fx:id="tableViewVeiculo" layoutX="20.0" layoutY="170.0" prefHeight="372.0" prefWidth="960.0">
-                     <columns>
-                        <TableColumn fx:id="tableColumnIDVeiculo" prefWidth="45.60003662109375" text="ID" />
-                        <TableColumn fx:id="tableColumnRegFab" prefWidth="116.800048828125" text="MARCA" />
-                        <TableColumn fx:id="tableColumnPlaca" prefWidth="112.79998779296875" text="MODELO" />
-                        <TableColumn fx:id="tableColumnMarca" prefWidth="111.19992065429688" text="ANO FABRICAÇÃO" />
-                        <TableColumn fx:id="tableColumnModelo" minWidth="8.79998779296875" prefWidth="115.2000732421875" text="ANO MODELO" />
-                        <TableColumn fx:id="tableColumnModelo1" minWidth="0.0" prefWidth="99.9998779296875" text="PLACA" />
-                        <TableColumn fx:id="tableColumnModelo11" minWidth="0.0" prefWidth="99.9998779296875" text="PREFIXO" />
-                        <TableColumn fx:id="tableColumnModelo111" prefWidth="60.0" />
-                        <TableColumn fx:id="tableColumnModelo1111" prefWidth="60.0" />
-                        <TableColumn fx:id="tableColumnModelo11111" prefWidth="60.0" />
-                        <TableColumn fx:id="tableColumnDELETE" prefWidth="60.0" />
-                     </columns>
-                  </TableView>
                </children>
             </AnchorPane>
          </children>

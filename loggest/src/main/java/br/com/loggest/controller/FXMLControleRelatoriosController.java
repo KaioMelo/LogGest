@@ -30,12 +30,12 @@ public class FXMLControleRelatoriosController implements Initializable {
 
     @FXML
     public void handleHome(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLInicio.fxml", event);
+        loadScene("/view/home/FXMLInicio.fxml", event);
     }
 
     @FXML
     public void handleClientes(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLRegistroClientes.fxml", event);
+        loadScene("/view/cliente/FXMLClientes.fxml", event);
     }
 
     @FXML

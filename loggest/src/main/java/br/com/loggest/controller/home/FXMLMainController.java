@@ -1,10 +1,9 @@
-package br.com.loggest.controller;
+package br.com.loggest.controller.home;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -37,12 +36,14 @@ public class FXMLMainController implements Initializable {
         new Thread(task).start();
         task.setOnSucceeded(ev -> {
             labelProgress.setText("Tudo pronto!");
-            progressBar.getScene().getWindow().hide();
-            Stage stage = new Stage();
+//            progressBar.getScene().getWindow().hide();
+//            Stage stage = new Stage();
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FXMLLogin.fxml"));
+                Stage stage = (Stage) progressBar.getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/home/FXMLLogin.fxml"));
                 Parent root = loader.load();
                 stage.setScene(new Scene(root));
+                stage.setResizable(false);
                 stage.show();
                 stage.centerOnScreen();
             } catch (IOException e) {

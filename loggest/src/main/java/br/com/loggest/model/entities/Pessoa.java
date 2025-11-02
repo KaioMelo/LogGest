@@ -1,6 +1,8 @@
 package br.com.loggest.model.entities;
 
+import br.com.loggest.model.entities.enuns.TipoFuncaoPessoa;
 import br.com.loggest.model.entities.enuns.TipoPessoa;
+import br.com.loggest.model.entities.enuns.TipoSexo;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -12,28 +14,21 @@ import java.util.Objects;
 public class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Contato> contatos;
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Email> emails;;
-    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Endereco> enderecos;
-    @Column(name = "SENHA_ANTERIOR")
-    private String senhaAnterior;
-    @Column(name = "SENHA_ATUAL")
-    private String senhaAtual;
-    @Column(name = "OBSERVACAO")
-    private String observacao;
-    @Enumerated(EnumType.STRING)
-    @Column(name = "TIPO_PESSOA")
+    private TipoSexo tipoSexo;
     private TipoPessoa tipoPessoa;
-    @ManyToOne
-    @JoinColumn(name = "FK_DOCUMENTOS_ANEXOS")
+    private TipoFuncaoPessoa tipoFuncaoPessoa;
+    private String senhaAnterior;
+    private String senhaAtual;
+    private String observacao;
     private List<DocumentosAnexos> documento;
+
+    private List<Contato> contatos;
+
+    private List<Email> emails;;
+
+    private List<Endereco> enderecos;
+
 
     public Long getId() {
         return id;
@@ -41,6 +36,26 @@ public class Pessoa implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public TipoSexo getTipoSexo() {
+        return tipoSexo;
+    }
+
+    public void setTipoSexo(TipoSexo tipoSexo) {
+        this.tipoSexo = tipoSexo;
+    }
+
+    public void setTipoPessoa(TipoPessoa tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
+    }
+
+    public TipoFuncaoPessoa getTipoFuncaoPessoa() {
+        return tipoFuncaoPessoa;
+    }
+
+    public void setTipoFuncaoPessoa(TipoFuncaoPessoa tipoFuncaoPessoa) {
+        this.tipoFuncaoPessoa = tipoFuncaoPessoa;
     }
 
     public List<Contato> getContatos() {
@@ -91,12 +106,12 @@ public class Pessoa implements Serializable {
         this.observacao = observacao;
     }
 
-    public TipoPessoa getTipoPessoa() {
-        return tipoPessoa;
+    public TipoFuncaoPessoa getTipoPessoa() {
+        return tipoFuncaoPessoa;
     }
 
-    public void setTipoPessoa(TipoPessoa tipoPessoa) {
-        this.tipoPessoa = tipoPessoa;
+    public void setTipoPessoa(TipoFuncaoPessoa tipoFuncaoPessoa) {
+        this.tipoFuncaoPessoa = tipoFuncaoPessoa;
     }
 
     public List<DocumentosAnexos> getDocumento() {

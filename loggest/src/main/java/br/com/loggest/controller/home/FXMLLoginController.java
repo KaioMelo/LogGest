@@ -1,9 +1,10 @@
-package br.com.loggest.controller;
+package br.com.loggest.controller.home;
 
 import br.com.loggest.model.entities.Funcionario;
 import br.com.loggest.model.exceptions.ValidationException;
 import br.com.loggest.model.service.FuncionarioService;
 import br.com.loggest.model.util.Alerts;
+import br.com.loggest.model.util.SceneNavigator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,8 +47,10 @@ public class FXMLLoginController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.show();
         stage.centerOnScreen();
+        SceneNavigator.navigateTo(scene);
     }
 
     @FXML
@@ -60,7 +63,7 @@ public class FXMLLoginController implements Initializable {
                 String senha = passwordFieldSenha.getText().trim();
 
                 if(service.verificarLogin(matricula, senha)){
-                    loadScene("/view/FXMLInicio.fxml", event);
+                    loadScene("/view/home/FXMLInicio.fxml", event);
                 }else{
                     Alerts.showAlert("ERROR", "E-mail ou senha incorretos!", null, Alert.AlertType.ERROR);
                 }

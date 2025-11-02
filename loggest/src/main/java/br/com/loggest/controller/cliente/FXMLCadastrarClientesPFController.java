@@ -1,4 +1,4 @@
-package br.com.loggest.controller;
+package br.com.loggest.controller.cliente;
 
 
 import javafx.event.ActionEvent;
@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLRegistroClientesController implements Initializable {
+public class FXMLCadastrarClientesPFController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
@@ -30,12 +30,12 @@ public class FXMLRegistroClientesController implements Initializable {
 
     @FXML
     public void handleHome(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLInicio.fxml", event);
+        loadScene("/view/home/FXMLInicio.fxml", event);
     }
 
     @FXML
     public void handleClientes(ActionEvent event) throws IOException {
-        loadScene("/view/FXMLRegistroClientes.fxml", event);
+        loadScene("/view/cliente/FXMLClientes.fxml", event);
     }
 
     @FXML

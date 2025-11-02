@@ -12,15 +12,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.loggest.controller.FXMLLoginController">
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.loggest.controller.home.FXMLLoginController">
    <content>
       <HBox>
          <children>
-            <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="left-form" stylesheets="@../css/index.css">
+            <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="left-form" stylesheets="@../../css/index.css">
                <children>
                   <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="50.0" layoutY="100.0">
                      <image>
-                        <Image url="@../img/Logo.png" />
+                        <Image url="@../../img/Logo.png" />
                      </image>
                   </ImageView>
                </children></AnchorPane>
@@ -56,7 +56,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnLogin" layoutX="48.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleLoginAdmin" prefHeight="30.0" prefWidth="200.0" stylesheets="@../css/index.css" text="Login" textFill="#316186">
+                  <Button fx:id="btnLogin" layoutX="48.0" layoutY="334.0" mnemonicParsing="false" onAction="#handleLoginAdmin" prefHeight="30.0" prefWidth="200.0" stylesheets="@../../css/index.css" text="Login" textFill="#316186">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

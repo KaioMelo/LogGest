@@ -1,13 +1,14 @@
 package br.com.loggest.model.entities.enuns;
 
-public enum TipoPessoa {
-    PESSOA_FISICA(1, "PESSOA_FISICA"),
-    PESSOA_JURIDICA(2, "PESSOA_FISICA");
+public enum TipoSexo {
+
+    MASCULINO(1, "M"),
+    FEMININO(2, "F");
 
     private int id;
     private String descricao;
 
-    TipoPessoa(int id, String descricao) {
+    TipoSexo(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
@@ -19,5 +20,4 @@ public enum TipoPessoa {
     public String getDescricao() {
         return descricao;
     }
-
 }

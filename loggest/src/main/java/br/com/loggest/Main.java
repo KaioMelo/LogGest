@@ -1,6 +1,7 @@
 package br.com.loggest;
 
 
+import br.com.loggest.model.util.SceneNavigator;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
@@ -12,7 +13,8 @@ import java.net.URL;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        URL fxmlURL = getClass().getResource("/view/FXMLMain.fxml");
+        SceneNavigator.setPrimaryStage(primaryStage);
+        URL fxmlURL = getClass().getResource("/view/home/FXMLMain.fxml");
         if (fxmlURL != null) {
             FXMLLoader loader = new FXMLLoader(fxmlURL);
             ScrollPane root = loader.load();
