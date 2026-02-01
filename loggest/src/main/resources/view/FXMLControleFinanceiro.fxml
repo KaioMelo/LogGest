@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -98,19 +97,6 @@
             </AnchorPane>
             <AnchorPane fx:id="anchoPane" prefHeight="600.0" prefWidth="1000.0" styleClass="container" stylesheets="@../css/index.css">
                <children>
-                  <GridPane layoutX="20.0" layoutY="40.0">
-                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="462.0" minWidth="10.0" prefWidth="462.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="77.8" minWidth="10.0" prefWidth="77.8" />
-                     </columnConstraints>
-                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                     </rowConstraints>
-                     <children>
-                        <TextField prefHeight="30.0" prefWidth="462.0" styleClass="barra-pesquisa" stylesheets="@../css/index.css" />
-                        <Button mnemonicParsing="false" prefHeight="30.0" text="PESQUISAR" GridPane.columnIndex="1" />
-                     </children>
-                  </GridPane>
                   <Label layoutX="20.0" layoutY="83.0" text="Controle Financeiro">
                      <font>
                         <Font size="20.0" />

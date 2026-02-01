@@ -2,8 +2,21 @@ package br.com.loggest.model.entities.enuns;
 
 public enum TipoContato {
 
-    TELEFONE("TELEFONE"), CELULAR("CELULAR");
+    TELEFONE(1,"TELEFONE"), CELULAR(1,"CELULAR");
 
-    TipoContato(String tipoContato) {this.tipoContato = tipoContato;}
-    private String tipoContato;
+    private int id;
+    private String descricao;
+
+    TipoContato(int id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
 }

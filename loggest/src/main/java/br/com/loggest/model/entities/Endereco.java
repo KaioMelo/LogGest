@@ -11,27 +11,21 @@ public class Endereco implements Serializable {
 
     private static final long serialVersionUID=1l;
 
-    @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(name = "ESTADO")
+    private String uf;
+    private String localidade;
     private String estado;
-    @Column(name = "CIDADE")
     private String cidade;
-    @Column(name = "BAIRRO")
     private String bairro;
-    @Column(name = "RUA")
     private String rua;
-    @Column(name = "LOGRADOURO")
     private String logradouro;
-    @Column(name = "COMPLEMENTO")
     private String complemento;
-    @Column(name = "CEP")
-    private Integer cep;
+    private String cep;
     @ManyToOne
     @JoinColumn(name = "FK_PESSOAS", referencedColumnName = "ID")
     private Pessoa pessoa;
+
+    private boolean erro;
 
     public Long getId() {
         return id;
@@ -89,12 +83,28 @@ public class Endereco implements Serializable {
         this.complemento = complemento;
     }
 
-    public Integer getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(Integer cep) {
+    public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public String getLocalidade() {
+        return localidade;
+    }
+
+    public void setLocalidade(String localidade) {
+        this.localidade = localidade;
+    }
+
+    public String getUf() {
+        return uf;
+    }
+
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
     public Pessoa getPessoa() {
@@ -103,6 +113,14 @@ public class Endereco implements Serializable {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
+    }
+
+    public boolean isErro() {
+        return erro;
+    }
+
+    public void setErro(boolean erro) {
+        this.erro = erro;
     }
 
     @Override
